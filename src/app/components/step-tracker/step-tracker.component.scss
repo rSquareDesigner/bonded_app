@@ -1,0 +1,47 @@
+@import '../../../globals.scss';
+
+
+.progress_tracker_label{
+    color: grey;
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+}
+
+.progress_tracker_dot{
+    width:17px;
+    height: 17px;
+    background-color: grey;
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    z-index: 10;
+}
+
+.progress_tracker_line {
+    width: 49%;
+    height:3px;
+    background-color: grey;
+    position: absolute;
+    top:33px;
+}
+
+.progress_tracker_line4 {
+    width: 33%;
+    height:3px;
+    background-color: grey;
+    position: absolute;
+    top:33px;
+}
+
+.highlight {
+    background-color: $color-one;
+}
+
+.highlight_text {
+    color: $color-one;
+}
+
+.track_bar_container{
+    height:60px;
+}

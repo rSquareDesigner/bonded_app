@@ -1,0 +1,88 @@
+@import '../../../globals.scss';
+
+.profile_image {
+    width: 125px;
+    height: 125px;
+    border: solid 1px lightgrey;
+    border-radius: 50%;
+}
+
+.ccx {
+    padding-top:100px;
+}
+
+.stats_button {
+    width: 100px;
+    font-size: 18px;
+}
+
+.no_items_image {
+    width: 240px;
+    margin: auto;
+    display: block;
+}
+
+.no_items_label {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    padding: 30px 0;
+}
+
+.profile_name_container {
+    display: inline-block;
+    padding-left: 30px;
+    vertical-align: middle;
+}
+
+.result_container{
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.result_image {
+    width: 100%;
+    height: 180px;
+    object-fit:cover;
+    object-position: center;
+    background-color: lightgrey;
+}
+
+.results_container{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    display: block;
+    padding: 25px 30px;
+}
+
+.price_font {
+    font-size: 20px;
+}
+
+.back_button {
+    width: 30px;
+    height: 30px;
+    background-color: lightgrey;
+    color: grey;
+    position: absolute;
+    border-radius: 50%;
+    padding: 0px;
+    top: 20px;
+    left: 10px;
+}
+
+.grey_star {
+    color:lightgrey;
+}
+
+.yellow_star {
+    color: gold;
+}
+
+@media only screen and (max-width: 768px) {
+    .ccx {
+        padding-top: 0;
+    }
+}

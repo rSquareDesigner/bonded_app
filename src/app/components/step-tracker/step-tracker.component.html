@@ -1,0 +1,24 @@
+<div class="col-12 track_bar_container" *ngIf="total_steps == 3">
+    <label class="progress_tracker_label highlight_text" style="left:0;"></label>
+    <label class="progress_tracker_label" style="left:calc(50% - 50px);"></label>
+    <label class="progress_tracker_label" style="right:0;"></label>
+    <div class="progress_tracker_dot highlight" style="left:10px;"></div>
+    <div class="progress_tracker_line" [ngClass]="{'highlight': step_number > 1}" style="left:10px;"></div>
+    <div class="progress_tracker_dot" [ngClass]="{'highlight': step_number > 1}" style="left:calc(50% - 7px);"></div>
+    <div class="progress_tracker_line" [ngClass]="{'highlight': step_number > 2}" style="right:10px;"></div>
+    <div class="progress_tracker_dot" [ngClass]="{'highlight': step_number > 2}" style="right:10px;"></div>
+</div>
+
+<div class="col-12 track_bar_container" *ngIf="total_steps == 4">
+    <label class="progress_tracker_label highlight_text" style="left:0;"></label>
+    <label class="progress_tracker_label" style="left:calc(33% - 50px);"></label>
+    <label class="progress_tracker_label" style="left:calc(67% - 50px);"></label>
+    <label class="progress_tracker_label" style="right:0;"></label>
+    <div class="progress_tracker_dot highlight" style="left:10px;"></div>
+    <div class="progress_tracker_line4" [ngClass]="{'highlight': step_number > 1}" style="left:10px;"></div>
+    <div class="progress_tracker_dot" [ngClass]="{'highlight': step_number > 1}" style="left:calc(33% - 7px);"></div>
+    <div class="progress_tracker_line4" [ngClass]="{'highlight': step_number > 2}" style="left:calc(33% - 4px);"></div>
+    <div class="progress_tracker_dot" [ngClass]="{'highlight': step_number > 2}" style="left:calc(67% - 7px);"></div>
+    <div class="progress_tracker_line4" [ngClass]="{'highlight': step_number > 3}" style="right:10px;"></div>
+    <div class="progress_tracker_dot" [ngClass]="{'highlight': step_number > 3}" style="right:10px;"></div>
+</div>

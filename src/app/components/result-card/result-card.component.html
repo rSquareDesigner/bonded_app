@@ -1,0 +1,14 @@
+<div (click)="gotoItem(listing)" style="cursor:pointer;">
+    <div *ngIf="listing.is_promoted == true" class="is_promoted">Promoted</div> 
+    <img src="{{listing.imagex}}" class="result_image">
+    <strong>{{listing.type}}</strong><br>
+    <span *ngIf="listing.type == 'Surf/Longboard' || listing.type == 'Skimboard' || listing.type == 'Boogie Board'">{{listing.length_feet}}&nbsp;{{listing.length_inches}}<br></span>
+    <span *ngIf="listing.type == 'Paddle Board'">{{listing.item_subtype == 'sup' ? 'Stand Up': 'Prone' }}<br></span>
+    <span *ngIf="listing.type == 'Surf Fins'">{{listing.item_subtype == 'surf-fins' ? 'Surfboard Fins': 'Center Fins' }}<br></span>
+    <span *ngIf="listing.type == 'Kayak'">{{listing.is_traditional == true ? 'Traditional': (listing.is_inflatable == true ? 'Inflatable':'') }}<br></span>
+    <span *ngIf="listing.type == 'Surf Racks'">{{listing.is_storage == true ? 'Storage': (listing.is_transport == true ? 'Transport':'') }}<br></span>
+    <span *ngIf="listing.type == 'Wetsuit'">{{listing.is_mens == true ? 'Mens': (listing.is_womens == true ? 'Inflatable': (listing.is_youth == true ? 'Youth':'')) }}<br></span>
+    <span class="price_font">${{listing.price}}</span>
+</div>
+
+                        

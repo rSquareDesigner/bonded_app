@@ -1,0 +1,255 @@
+<nav class="navbar navbar-expand-lg"> <!--d-xs-block d-lg-none-->
+
+   
+    <img class="logo d-none d-md-block" src="../../../assets/images/Surfgenie_white.png" (click)="redirectTo(['home'],{})">
+    
+    <div class="d-block d-md-none logo_container">
+        <img class="navbar_logo" src="../../../assets/images/SurfGenie_illustration.png" (click)="redirectTo(['home'],{})">
+    </div>
+    <!--
+    <img class="logo_small d-block d-md-none" src="../../../assets/images/logo_white_no_background.png" (click)="goto('home')">
+    -->
+
+    <!--
+    <div class="search_input_container">
+        <div class="col-12" style="padding:0;">
+            <input type="text" [(ngModel)]="search_input" class="search_input" placeholder="Search..." (ngModelChange)="getSuggestions()" (keyup.enter)="searchQuery()">
+            <span><i class="fa fa-search search_icon"></i></span>
+            <span *ngIf="search_input"><i class="fa fa-remove remove_search_icon" (click)="clearQuery()"></i></span>
+            <div class="btn btn-deafult go_button" (click)="searchQuery()">GO</div>
+
+            <div *ngIf="search_suggestions.length > 0" class="suggestions_container">
+                <ul style="list-style: none;">
+                    <li *ngFor="let x of search_suggestions" (click)="searchSuggestion(x)">{{x}}</li>
+                </ul>
+            </div>
+
+            
+            <div *ngIf="search_menu_visible == true" [ngClass]="{'slideout_animation': slide_menu_out == true, 'sliding_animation': slide_menu_out != true}" 
+                class="advanced_search_menu" (click)="advancedSearchMenuClick();">
+                <button class="btn btn-deafult close_filters_button" (click)="closeMenu()">Close Advanced Filters</button>
+                <img src="../../../assets/images/dialog_arrow.png" class="advanced_search_menu_arrow">
+            
+            </div>
+       
+        </div>
+    </div>
+    -->
+
+    <div class="navbar_contents">
+        <div class="collapse navbar-collapse auto navbar_content" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-right">
+                <!-- d-block d-lg-none -->
+                <div *ngIf="user">
+                    
+                    <li *ngIf="user.role == 'admin'" class="nav-item" (click)="goto('admin')">
+                        <i class="fa fa-user-cog navbar_item_icon"></i>
+                        <a class="nav-link">Admin</a>
+                    </li>
+                    <li class="nav-item" (click)="goto('saved-items')">
+                        <i class="fa fa-heart navbar_item_icon"></i>
+                        <a class="nav-link">Saved</a>
+                    </li>
+                    <li class="nav-item" (click)="goto('inbox')" style="position:relative">
+                        <i class="fa fa-inbox navbar_item_icon"></i>
+                        <div class="notification_alert" *ngIf="user_has_notifications == true"></div>
+                        <a class="nav-link">Inbox</a>
+                    </li>
+                    <li class="nav-item" (click)="goto('my-listings')">
+                        <i class="fa fa-tag navbar_item_icon"></i>
+                        <a class="nav-link">Selling</a>
+                    </li>
+                    <li class="nav-item" (click)="toggleUserMenu()" style="height: 95px;">
+                        <img src="{{user.image}}" class="user_profile_icon">
+                        <span><i class="fa fa-chevron-down user_profile_expand_icon"></i></span>
+                    </li>
+                    <div *ngIf="user_menu_visible == true" class="user_menu" (click)="userMenuClick();">
+                        <img src="../../../assets/images/dialog_arrow.png" class="dialog_arrow">
+                        <img src="{{user.image}}" class="user_profile_icon_menu">
+                        <strong style="padding-left: 15px;">{{user.name}}</strong>
+                        <ul class="user_profile_list">
+                            <li class="user_profile_list_item" (click)="goto('profile/' + user.id)">Profile</li>
+                            <li class="user_profile_list_item" (click)="goto('account')">Account Settings</li>
+                            <li *ngIf="user.has_shaper_account" class="user_profile_list_item" (click)="goto('/shaper-details/' + user.shaper_id)">Shaper Account</li>
+                            <li class="user_profile_list_item" (click)="goto('terms-of-service')">Terms of Service</li>
+                            <li class="user_profile_list_item" (click)="goto('privacy-policy')">Privacy Policy</li>
+                            <li class="user_profile_list_item" (click)="logout()">Log out</li>
+                        </ul>
+                    </div>
+                </div>
+                <li *ngIf="!user" class="nav-item" (click)="showLogin(1)">
+                    <a class="nav-link" style="padding-bottom: 30px;">Login</a>
+                </li>
+    
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+
+<nav *ngIf="show_bottom_navbar == true && search_menu_visible != true" class="navbar navbar_bottom d-block d-lg-none"> <!--d-xs-block d-lg-none-->
+    
+    <div class="bottom_menu_bar_content">
+        <div class="row">
+            <div class="bottom_menu_button" style="border-right: solid 1px white;" (click)="goHome()">
+                <i class="fa fa-home"></i>
+            </div>
+            <div class="bottom_menu_button" style="border-right: solid 1px white;" (click)="goto('saved-items')">
+                <i class="fa fa-heart"></i>
+            </div>
+            <div class="bottom_menu_button" style="border-right: solid 1px white;position:relative;" (click)="goto('inbox')">
+                <div class="notification_alert_bottom_menu" *ngIf="user_has_notifications == true"></div>
+                <i class="fa fa-inbox"></i>
+            </div>
+            <div class="bottom_menu_button" style="border-right: solid 1px white;" (click)="goto('my-listings')">
+                <i class="fa fa-tag"></i>
+            </div>
+            <div class="bottom_menu_button">
+                <i class="fa fa-user" (click)="goto('account')"></i>
+            </div>
+        </div>
+    </div>
+
+</nav>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" [hidden]=""
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body modal_body" style="min-height: 365px;">
+            <div class="text-right">
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+            <div *ngIf="login_modal_page == 1">
+                <h1 class="modal_title">Sign up / Log In</h1>
+                <!-- logo -->
+                <img class="logo_in_modal" src="../../../assets/images/Surfgenie_color.png">
+                
+                <button class="btn btn-default modal_primary_button" (click)="login_modal_page = 4">Sign up</button>
+                <button class="btn btn-default modal_secondary_button" (click)="login_modal_page = 2">Log in</button>
+            </div>
+            <div *ngIf="login_modal_page == 2">
+                <button class="btn btn-default modal_back_button" (click)="login_modal_page = 1;clearLoginAlerts();">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <h1 class="modal_title">Log in</h1>
+                <div class="form_container">
+                    <div class="formc">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" [(ngModel)]="email" class="form-control" (change)="formSubmitted = false;"
+                                (ngModelChange)="clearLoginAlerts()">
+                            <div *ngIf="invalid_email" class="alert_message">{{invalid_email}}</div>
+                        </div>
+                        <div class="form-group" *ngIf="forgot_password_active != true">
+                            <label>Password</label>
+                            <input type="password" [(ngModel)]="password" class="form-control" (change)="formSubmitted = false;"
+                                (ngModelChange)="clearLoginAlerts()">
+                            <div *ngIf="invalid_password" class="alert_message">{{invalid_password}}</div>
+                        </div>
+                        <div class="text-right" *ngIf="forgot_password_active != true">
+                            <h5 class="modal_forgot_password" style="cursor:pointer" (click)="login_modal_page = 3">Forgot Password?</h5>
+                        </div>
+                        <div class="form-group text-center" style="padding:30px 0;">
+                            <button type="submit" class="btn btn-default modal_primary_button"
+                                (click)="formSubmitted = true; loginUser()">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="login_modal_page == 3">
+                <button class="btn btn-default modal_back_button" (click)="login_modal_page = 2; clearLoginAlerts();">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <h1 class="modal_title">Reset your password</h1>
+                <p style="padding: 20px 25px 5px 25px;">Please enter your email address and we’ll send you a link to reset your password.</p>
+                <div class="form_container">
+                    <div class="formc">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" [(ngModel)]="email" class="form-control" (change)="formSubmitted = false;"
+                                (ngModelChange)="clearLoginAlerts()">
+                            <div *ngIf="invalid_email" class="alert_message">{{invalid_email}}</div>
+                        </div>
+                        
+                        <div class="form-group text-center" style="padding:30px 0;">
+                            <button type="submit" class="btn btn-default modal_primary_button"
+                                (click)="forgotPassword();">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="login_modal_page == 4">
+                <button class="btn btn-default modal_back_button" (click)="login_modal_page = 1;clearLoginAlerts();">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <h1 class="modal_title">Sign up</h1>
+                <div class="form_container">
+                    <div class="formc">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" [(ngModel)]="name" class="form-control" (change)="formSubmitted = false;"
+                                (ngModelChange)="clearLoginAlerts()">
+                            <div *ngIf="invalid_name" class="alert_message">{{invalid_name}}</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" [(ngModel)]="email" class="form-control" (change)="formSubmitted = false;"
+                                (ngModelChange)="clearLoginAlerts()">
+                            <div *ngIf="invalid_email" class="alert_message">{{invalid_email}}</div>
+                        </div>
+                        <div class="form-group" *ngIf="forgot_password_active != true">
+                            <label>Password</label>
+                            <input type="password" [(ngModel)]="password" class="form-control" (change)="formSubmitted = false;"
+                                (ngModelChange)="clearLoginAlerts()">
+                            <div *ngIf="invalid_password" class="alert_message">{{invalid_password}}</div>
+                        </div>
+                        
+                        <div class="form-group text-center" style="padding:30px 0;">
+                            <button type="submit" class="btn btn-default modal_primary_button"
+                                (click)="formSubmitted = true; signUpUser()">Sign up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="emailSentModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body" *ngIf="userx">
+                <img class="modal_image" src="../../../assets/images/SurfGenie_illustration.png">
+                <div class="text-center">
+                    We have sent you an email to <em>{{userx.email}}</em> with a link to reset your password.
+                </div>
+                
+                <div class="text-center" style="padding: 25px 0;">
+                    <button type="button" class="btn btn-default button_primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="pleaseRegisterModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <img class="modal_image" src="../../../assets/images/SurfGenie_illustration.png">
+                <div class="text-center">
+                    Please sign up or login to create a <em>Underground Shapers</em> account.
+                </div>
+                
+                <div class="text-center" style="padding: 25px 0;">
+                    <button type="button" class="btn btn-default button_primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

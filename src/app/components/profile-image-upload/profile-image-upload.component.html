@@ -1,0 +1,18 @@
+<div class="form-group" style="margin-bottom:0;">
+    <label class="btn btn-default button_secondary" [ngStyle]="{'visibility': (!imageChangedEvent ? 'visible':'hidden')}">
+        <i class="fa fa-image"></i>&nbsp;Upload image<input type="file" (change)="fileChangeEvent($event)" style="display: none;"  name="image">
+      </label>
+</div>
+
+<image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+    [aspectRatio]="ratio" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" class="image_cropper_container"></image-cropper>
+
+    <div *ngIf="!imageChangedEvent" class="image_container">
+    <img src="{{previewUrl}}" class="image_preview_on_edit"  [ngClass]="{ 'circular': shape =='circular'}">
+</div>
+
+<div *ngIf="imageChangedEvent" class="text-center" style="padding:40px 0;">
+    <button class="btn btn-default button_secondary" style="margin:0 5px" (click)="cancelImageOnAdd()">CANCEL</button>
+    <button class="btn btn-default button_primary" style="margin:0 5px" (click)="setImageOnAdd()">SAVE</button>
+</div>

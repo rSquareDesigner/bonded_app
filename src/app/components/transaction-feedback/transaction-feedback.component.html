@@ -1,0 +1,77 @@
+<div class="cc">
+    <div class="content_container" style="max-width:900px">
+        <div *ngIf="page == 1">
+        <h2 class="page_title" style="padding-left:0;">Rate your transaction</h2>
+        
+        <div class="buyer_feedback_content" *ngIf="seller">
+            <p>Please tell us about your experience with {{seller.name}}</p>
+            <img class="seller_user_image" src="{{seller.image}}">
+
+            <p class="rating_label" style="padding-top: 15px;">Overall experience</p>
+            <div class="stars_container">
+                <button class="btn btn-default star_button" [ngClass]="{'colored': overall_experience_stars >= 1}" (click)="overall_experience_stars=1">
+                    <i class="fa-star" [ngClass]="{'fas': overall_experience_stars >= 1, 'far': overall_experience_stars == 0}"></i>
+                </button>
+                <button class="btn btn-default star_button" [ngClass]="{'colored': overall_experience_stars >= 2}" (click)="overall_experience_stars=2">
+                    <i class="fa-star" [ngClass]="{'fas': overall_experience_stars >= 2, 'far': overall_experience_stars < 2}"></i>
+                </button>
+                <button class="btn btn-default star_button" [ngClass]="{'colored': overall_experience_stars >= 3}" (click)="overall_experience_stars=3">
+                    <i class="fa-star" [ngClass]="{'fas': overall_experience_stars >= 3, 'far': overall_experience_stars < 3}"></i>
+                </button>
+                <button class="btn btn-default star_button" [ngClass]="{'colored': overall_experience_stars >= 4}" (click)="overall_experience_stars=4">
+                    <i class="fa-star" [ngClass]="{'fas': overall_experience_stars >= 4, 'far': overall_experience_stars < 4}"></i>
+                </button>
+                <button class="btn btn-default star_button" [ngClass]="{'colored': overall_experience_stars >= 5}" (click)="overall_experience_stars=5">
+                    <i class="fa-star" [ngClass]="{'fas': overall_experience_stars >= 5, 'far': overall_experience_stars < 5}"></i>
+                </button>
+            </div>
+
+            <div class="complements_container">
+                <button class="btn btn-default complement_button" [ngClass]="{'selected': item_as_described == true}" (click)="toggle('item-as-described')">
+                    <i class="fal fa-thumbs-up"></i>
+                    <span class="selected_check" *ngIf="item_as_described == true">
+                        <i class="fal fa-check"></i>
+                    </span>
+                    <br>
+                    Item as described
+                </button>
+                <button class="btn btn-default complement_button" [ngClass]="{'selected': good_communication == true}" (click)="toggle('good-communication')">
+                    <i class="fal fa-comment-lines"></i>
+                    <span class="selected_check" *ngIf="good_communication == true">
+                        <i class="fal fa-check"></i>
+                    </span>
+                    <br>
+                    Good communication
+                </button>
+                <button class="btn btn-default complement_button" [ngClass]="{'selected': on_time == true}" (click)="toggle('on-time')">
+                    <i class="fal fa-clock"></i>
+                    <span class="selected_check" *ngIf="on_time == true">
+                        <i class="fal fa-check"></i>
+                    </span>
+                    <br>
+                    On time
+                </button>
+                <button class="btn btn-default complement_button" [ngClass]="{'selected': friendly == true}" (click)="toggle('friendly')">
+                    <i class="fal fa-smile"></i>
+                    <span class="selected_check" *ngIf="friendly == true">
+                        <i class="fal fa-check"></i>
+                    </span>
+                    <br>
+                    Friendly
+                </button>
+            </div>
+
+            <div class="text-center" style="padding: 25px 0;">
+                <button type="button" class="btn btn-default button_primary" style="min-width:150px" (click)="submitFeedback()">Submit</button>
+            </div>
+            
+        </div>
+    </div>
+    <div *ngIf="page == 2">
+        <h2 class="page_title" style="text-align:center;">Thank you for your feedback!</h2>
+        <div class="text-center" style="padding:40px 0">
+            <button class="btn btn-default button_primary" (click)="gotoHome()">Go to Home Page</button>
+        </div>
+    </div>
+</div>
+

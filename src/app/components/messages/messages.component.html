@@ -1,0 +1,50 @@
+<div class="cc ccx" >
+    <div class="content_container">
+        <button class="btn btn-default" (click)="goto('inbox')">Back to inbox</button>
+        <div class="row" style="margin:0" *ngIf="chat">
+            <div class="col-12 col-md-8" style="padding:0">
+                <div class="chat_header">
+                    <img class="header_image" src="{{chat.user_image}}">
+                    <h2 class="header_user_name">{{chat.user_name}}</h2>
+                    <div class="d-block d-md-none listing_image_container_header" *ngIf="listing" (click)="goto('item-details/'+listing.id)">
+                        <img class="listing_image_header" src="{{listing.image}}">
+                        <p class="listing_text_header">{{listing.type}}</p>
+                    </div>
+                </div>
+                <div class="messages_container" id="messages_container">
+                    <div *ngFor="let x of messages">
+                        <div class="my_messages text-right" *ngIf="x.user_id == user.id">
+                            <p class="date_time_label">{{x.date_time}}</p>
+                            <div class="message_style_one">
+                                {{x.text}}
+                            </div>
+                            <br>
+                        </div>
+                        <div class="not_my_messages text-left" *ngIf="x.user_id != user.id">
+                            <p class="date_time_label">{{x.date_time}}</p>
+                            <div class="message_style_two">
+                                {{x.text}}
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_container">
+                    <input class="form-control message_input" type="text" [(ngModel)]="user_message" placeholder="Message..."  (keyup.enter)="sendMessage()">
+                    <button class="btn btn-default send_button" [ngClass]="{'button_primary': user_message, 'button_secondary': !user_message}" (click)="sendMessage()">Send</button>
+                </div>
+            </div>
+            <div class="d-none d-md-block col-md-4" *ngIf="listing">
+                <img class="listing_image" src="{{listing.image}}">
+                <div class="images_thumbnail_container">
+                    <img class="thumbnail_image" *ngFor="let x of listing.images_urls" src="{{x}}" (click)="showImage(x)">
+                </div>
+                <strong>{{listing.type}}</strong>
+                <h2>${{listing.price}}</h2>
+                <div class="text-center">
+                    <button class="btn btn-default button_secondary" (click)="goto('item-details/' + listing.id)">See Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

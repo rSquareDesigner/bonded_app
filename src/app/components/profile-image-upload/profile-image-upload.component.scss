@@ -1,0 +1,22 @@
+@import '../../../globals.scss';
+
+
+.image_cropper_container{
+    width:250px;
+    margin:auto;
+}
+
+.image_preview_on_edit {
+    height: 125px;
+    width: 125px;
+    display: block;
+    margin: auto;
+    object-fit: cover;
+    object-position: center;
+    border: solid 1px lightgrey;
+    border-radius: 50%;
+}
+
+.image_container {
+    padding: 20px 0;
+}

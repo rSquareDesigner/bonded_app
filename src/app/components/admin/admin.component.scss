@@ -1,0 +1,24 @@
+@import '../../../globals.scss';
+
+.sidemenu {
+    background-color: $color-one;
+    height: 100vh;
+    padding-top: 35px;
+    color: white;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.sidemenu_item {
+    cursor: pointer;
+}
+
+.logo {
+    height: 60px;
+    cursor: pointer;
+}
+
+.contents {
+    max-height: 100vh;
+    overflow: auto;
+}
