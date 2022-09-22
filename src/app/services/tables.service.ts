@@ -92,7 +92,7 @@ export class TablesService {
 
   // ADD object to database
   AddItem(table:string, obj:any): Observable<any> {
-    return this.http.post<any>(this.baseurl+'/'+table + '/add', obj, this.httpOptions)
+    return this.http.post<any>(this.baseurl+'/'+ table + '/add', obj, this.httpOptions)
     .pipe(
       retry(0),
       catchError(this.errorHandl),

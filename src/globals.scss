@@ -13,7 +13,7 @@ $color-four: #e1e5f2;
 .cc {
   overflow: auto;
   height: 100vh;
-  padding-top: 100px;
+  padding: 100px 20px;
   background-size: cover;
   background-position:center;
   position:fixed;
@@ -38,6 +38,7 @@ $color-four: #e1e5f2;
   padding: 0 20px;
   color: $color-one;
   margin: 20px 0;
+  font-size: 36px;
 }
 
 /******* BUTTONS *******/
@@ -86,17 +87,34 @@ $color-four: #e1e5f2;
 
 /******* MODALS *******/
 
+.modal_body {
+  padding: 60px 40px 40px 40px;
+  max-height: calc(100vh - 66px);
+  overflow: auto;
+    /*min-height:200px;*/
+}
+
+.modal_close_button{
+  color: $color-two;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.modal_close_icon{
+  font-size: 24px;
+}
+
+.modal_close_button:hover{
+  border: none;
+  outline: none;
+  color: $color-one;
+}
+
 .modal_header {
     background-color: $color-one;
     color: white;
     height:54px;
-}
-
-.modal_body {
-    padding: 20px 40px;
-    max-height: calc(100vh - 66px);
-    overflow: auto;
-    /*min-height:200px;*/
 }
 
 .modal_footer {
@@ -106,12 +124,6 @@ $color-four: #e1e5f2;
 .modal_title {
   font-size: 30px;
   text-align: center;
-}
-
-.modal_close_button {
-  color: white;
-  opacity: 1;
-  padding: 12px 15px;
 }
 
 .modal_success_text {
@@ -133,6 +145,11 @@ $color-four: #e1e5f2;
     font-style:italic;
     font-size: 15px;
     text-align: right;
+}
+
+.form_title{
+  color: grey;
+  font-size: 32px;
 }
 
 .form_label{

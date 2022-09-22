@@ -1,0 +1,65 @@
+<div class="cc">
+    <div class="form_container">
+        
+        <h1 class="form_title" *ngIf="itemx.id">Edit auction</h1>
+        <h1 class="form_title" *ngIf="!itemx.id">Create auction</h1>
+        
+        <label class="labelf">Title:</label>
+        <input type="text" class="form-control" [(ngModel)]="itemx.name" (ngModelChange)="evalEdit(itemx)">
+
+        <label class="labelf">Product Details:</label>
+        <textarea class="form-control" rows="5" [(ngModel)]="itemx.description" (ngModelChange)="evalEdit(itemx)"></textarea>
+
+        <label class="labelf">Images</label><br>
+        <div class="images_container">
+            <div class="imagex" *ngFor="let x of itemx.images_urls; index as i">
+                <img class="image_preview" src="{{x}}">
+                <span class="delete_image_button" (click)="deleteImage(i)">
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
+        </div>
+        <div class="image_input_container">
+            <div class="text-left" style="padding: 10px 0;">
+                <button class="btn btn-default button_secondary" (click)="uploadImage()">Upload Image</button>
+            </div>
+        </div>
+
+        <label class="labelf">Buy Now Price:</label>
+        <input type="text" class="form-control" [(ngModel)]="itemx.price" (ngModelChange)="evalEdit(itemx)">
+
+        <label class="labelf">Auction end time:</label>
+        <i class="fa fa-calendar" (click)="show_calendar_popup = true;"></i>
+        <input type="text" class="form-control" [(ngModel)]="selected_date">
+        <div *ngIf="show_calendar_popup == true" class="calendar_popup">
+            <dl-date-time-picker startView="day" maxView="day" minView="hour" [(ngModel)]="selected_date" (ngModelChange)="dateSelected()">
+            </dl-date-time-picker>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body" *ngIf="itemx" style="min-height: 712px;">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal"
+                    (click)="closeModal('addImageModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                <h1 class="modal_title" style="padding: 0 0 20px 0;">Add image</h1>
+                <div class="btn btn-default add_image_button" *ngIf="show_image_upload != true"
+                    (click)="show_image_upload = true;">
+                    <i class="fa fa-plus"></i>
+                    Add Photo
+                </div>
+                <div *ngIf="show_image_upload == true">
+                    <app-image-upload (imageLoadedEvent)='photoSelected($event)' (imageCancelEvent)="uploadCancelled()">
+                    </app-image-upload>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

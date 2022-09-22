@@ -1,0 +1,55 @@
+@import '../../../globals.scss';
+
+.form_container{
+    width: 95%;
+    max-width: 600px;
+    margin:auto;
+}
+
+.add_image_button {
+    border: solid 1px lightgrey;
+}
+
+.image_preview{
+    width: 160px;
+    height: 100px;
+    display: inline-block;
+    object-fit: contain;
+}
+
+.confirm_delete_image {
+    height: 300px;
+    margin:auto;
+    display: block;
+    max-width: 95%;
+}
+
+.confirm_delete_title {
+    text-align: center;
+    font-size: 26px;
+    margin: 20px 0;
+}
+
+.modal_image {
+    width: 85%;
+    margin: 0 auto 20px auto;
+    display: block;
+}
+
+
+.delete_image_button {
+    border-radius: 50%;
+    position: absolute;
+    background-color: white;
+    right: 3px;
+    top: -9px;
+    padding: 1px 7px;
+    color: grey;
+    border: solid 1px lightgrey;
+    cursor: pointer;
+}
+
+.imagex{
+    display: inline-block;
+    position: relative;
+}

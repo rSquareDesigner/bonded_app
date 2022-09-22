@@ -3,22 +3,21 @@
         <img class="logo" src="../../../assets/images/Surfgenie_white.png" (click)="goHome('home')">
         <ul style="list-style-type: none;padding-top:60px;">
             <li class="sidemenu_item" (click)="goto('users')">Users</li>
-            <li class="sidemenu_item" (click)="goto('listings')">Listings</li>
+            <li class="sidemenu_item" (click)="goto('auctions')">Auctions</li>
             <li class="sidemenu_item" (click)="goto('transactions')">Transactions</li>
-            <li class="sidemenu_item" (click)="goto('newsletter')">Newsletter</li>
-            <li class="sidemenu_item" (click)="goto('shapers')">Shapers</li>
-            <li class="sidemenu_item" (click)="goto('reports')">Reports</li>
+            <li class="sidemenu_item" (click)="goto('accounts-manager')">Accounts</li>
+            <li class="sidemenu_item" (click)="goto('resolution-center')">Resolution Center</li>
+            <li class="sidemenu_item" (click)="goto('database')">Database</li>
             <li class="sidemenu_item" (click)="goto('system')">System</li>
         </ul>
     </div>
     <div class="col-10 contents">
         <app-users *ngIf="view == 'users'"></app-users>
-        <app-listings *ngIf="view == 'listings'"></app-listings>
+        <app-auctions *ngIf="view == 'auctions'"></app-auctions>
         <app-transactions *ngIf="view == 'transactions'"></app-transactions>
-        <app-newsletter *ngIf="view == 'newsletter'"></app-newsletter>
-        <app-shapers *ngIf="view == 'shapers'"></app-shapers>
+        <app-accounts-manager *ngIf="view == 'accounts-manager'"></app-accounts-manager>
+        <app-resolution-center *ngIf="view == 'resolution-center'"></app-resolution-center>
+        <app-database *ngIf="view == 'database'"></app-database>
         <app-system *ngIf="view == 'system'"></app-system>
-        <app-reports *ngIf="view == 'reports'"></app-reports>
-        <app-shaper-details *ngIf="view == 'shaper-details'" [shaper_id]="shaper_id" [is_component]="true"></app-shaper-details>
     </div>
 </div>

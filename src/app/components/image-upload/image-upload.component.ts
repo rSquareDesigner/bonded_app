@@ -10,7 +10,7 @@ import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 export class ImageUploadComponent implements OnChanges {
 
   @Input() ratio: any;
-  @Input() shape: string;
+  @Input() shape: string = '';
   
   @Output() imageLoadedEvent = new EventEmitter();
   @Output() imageCancelEvent = new EventEmitter();
@@ -23,10 +23,10 @@ export class ImageUploadComponent implements OnChanges {
   previewUrlo: any;
   previewUrl: any;
 
-  image_width: number;
-  image_height: number;
+  image_width: number = 0;
+  image_height: number = 0;
 
-  image_uploaded: boolean;
+  image_uploaded: boolean = false;
   
   image_orientation_memory:number = 1;
   
@@ -48,7 +48,7 @@ export class ImageUploadComponent implements OnChanges {
     reader.onload = function(e){
 
       // convert image file to base64 string
-      (<HTMLImageElement>document.getElementsByClassName('image_preview')[0]).src = reader.result.toString();
+      (<HTMLImageElement>document.getElementsByClassName('image_preview')[0]).src = reader.result ? reader.result.toString():'';
 
     };
 
@@ -127,10 +127,12 @@ export class ImageUploadComponent implements OnChanges {
 
     console.log('_srcOrientation', this.image_orientation_memory, canvas.width, canvas.height);
     //ctx.drawImage(img, 0, 0);
-    ctx.translate(canvas.width, 0);
-    ctx.rotate(90 * (Math.PI / 180));
-    //ctx.drawImage(img, 0, 0);
-    ctx.drawImage(img, 0, 0, width, height);
+    if (ctx) {
+      ctx.translate(canvas.width, 0);
+      ctx.rotate(90 * (Math.PI / 180));
+      //ctx.drawImage(img, 0, 0);
+      ctx.drawImage(img, 0, 0, width, height);
+    }
 
 
 
@@ -159,7 +161,7 @@ export class ImageUploadComponent implements OnChanges {
     //ctx.translate(canvas.width, 0);
     //ctx.rotate(90 * (Math.PI / 180));
     //ctx.drawImage(img, 0, 0);
-    ctx.drawImage(img, 0, 0, width, height);
+    if (ctx) ctx.drawImage(img, 0, 0, width, height);
 
 
 

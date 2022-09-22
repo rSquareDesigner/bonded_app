@@ -360,4 +360,9 @@ export class NavbarComponent implements OnInit {
     this.redirectTo(['local-shapers'],{ queryParams: queryParams});
   }
 
+  closeModal(name:string){
+    $('#' + name).modal('hide');
+  }
+  
+
 }

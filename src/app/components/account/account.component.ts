@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from './../../services/user.service';
 import { TablesService } from './../../services/tables.service';
 import { VerificationsService } from './../../services/verifications.service';
 import { MailingService } from './../../services/mailing.service';
-import { TwilioService } from './../../services/twilio.service';
+//import { TwilioService } from './../../services/twilio.service';
 import { ApisService } from './../../services/apis.service';
 import { CommonService } from './../../services/common.service';
 import { MyblobService } from './../../services/myblob.service';
 import { NavigationService } from '../../services/navigation.service';
+import { DOCUMENT } from '@angular/common';
 import * as sha512 from 'js-sha512';
+declare var $: any;
 
 @Component({
   selector: 'app-account',
@@ -19,35 +21,35 @@ export class AccountComponent implements OnInit {
 
   user:any;
 
-  user_name: string;
-  user_email: string;
-  user_zipcode: string;
-  user_phone: string;
-  password_current: string;
-  password_new: string;
-  password_new_confirm: string;
+  user_name: string = '';
+  user_email: string = '';
+  user_zipcode: string = '';
+  user_phone: string = '';
+  password_current: string = '';
+  password_new: string = '';
+  password_new_confirm: string = '';
 
-  invalid_user_name: string;
-  invalid_user_email: string;
-  invalid_user_phone: string;
-  invalid_user_zipcode: string;
+  invalid_user_name: string = '';
+  invalid_user_email: string = '';
+  invalid_user_phone: string = '';
+  invalid_user_zipcode: string = '';
 
-  invalid_password_current: string;
-  invalid_password_new: string;
-  invalid_password_new_confirm: string;
+  invalid_password_current: string = '';
+  invalid_password_new: string = '';
+  invalid_password_new_confirm: string = '';
 
-  email_change_step: number;
-  phone_change_step: number;
+  email_change_step: number = 0;
+  phone_change_step: number = 0;
 
-  digit_1: string;
-  digit_2: string;
-  digit_3: string;
-  digit_4: string;
-  digit_5: string;
-  digit_6: string;
+  digit_1: string = '';
+  digit_2: string = '';
+  digit_3: string = '';
+  digit_4: string = '';
+  digit_5: string = '';
+  digit_6: string = '';
 
   location: any = {};
-  profile_image_filename: string;
+  profile_image_filename: string = '';
   cropper_active: boolean = false;
 
   constructor(
@@ -55,11 +57,12 @@ export class AccountComponent implements OnInit {
     public tablesService: TablesService,
     public verificationsService: VerificationsService,
     public mailingService: MailingService,
-    public twilioService: TwilioService,
+    //public twilioService: TwilioService,
     public apisService: ApisService,
     public commonService: CommonService,
     public myblobService: MyblobService,
     public navigationService: NavigationService,
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   ngOnInit() {
@@ -124,14 +127,14 @@ export class AccountComponent implements OnInit {
   }
 
   clearAlerts(){
-    this.invalid_user_name = undefined;
-    this.invalid_user_email = undefined;
-    this.invalid_user_phone = undefined;
-    this.invalid_user_zipcode = undefined;
+    this.invalid_user_name = '';
+    this.invalid_user_email = '';
+    this.invalid_user_phone = '';
+    this.invalid_user_zipcode = '';
 
-    this.invalid_password_current = undefined;
-    this.invalid_password_new = undefined;
-    this.invalid_password_new_confirm = undefined;
+    this.invalid_password_current = '';
+    this.invalid_password_new = '';
+    this.invalid_password_new_confirm = '';
   }
 
   saveUserObjectInMemory(){
@@ -152,23 +155,38 @@ export class AccountComponent implements OnInit {
     this.email_change_step = 2;
   }
 
-  evalAccessCode(digit){
+  evalAccessCode(digit:number){
     if (digit == 1){
-      if (this.digit_1.length == 1) document.getElementById("digit_2").focus();
+      if (this.digit_1.length == 1) {
+        var elem = this.document.getElementById("digit_2");
+        if (elem) elem.focus();
+      }
     }
-    if (digit == 2){
-      if (this.digit_2.length == 1) document.getElementById("digit_3").focus();
+    else if (digit == 2){
+      if (this.digit_2.length == 1) {
+        var elem = this.document.getElementById("digit_3");
+        if (elem) elem.focus();
+      }
     }
-    if (digit == 3){
-      if (this.digit_3.length == 1) document.getElementById("digit_4").focus();
+    else if (digit == 3){
+      if (this.digit_3.length == 1) {
+        var elem = this.document.getElementById("digit_4");
+        if (elem) elem.focus();
+      }
     }
-    if (digit == 4){
-      if (this.digit_4.length == 1) document.getElementById("digit_5").focus();
+    else if (digit == 4){
+      if (this.digit_4.length == 1) {
+        var elem = this.document.getElementById("digit_5");
+        if (elem) elem.focus();
+      }
     }
-    if (digit == 5){
-      if (this.digit_5.length == 1) document.getElementById("digit_6").focus();
+    else if (digit == 5){
+      if (this.digit_5.length == 1) {
+        var elem = this.document.getElementById("digit_6");
+        if (elem) elem.focus();
+      }
     }
-    if (digit == 6){
+    else if (digit == 6){
       //if (this.digit_6.length == 1) document.getElementById("digit_2").focus();
     }
   }
@@ -215,7 +233,7 @@ export class AccountComponent implements OnInit {
 
     if (this.invalid_user_phone) return;
 
-    this.twilioService.confirmPhoneNumber(this.user.id, this.user_phone);
+    //this.twilioService.confirmPhoneNumber(this.user.id, this.user_phone);
     this.phone_change_step = 2;
   }
 
@@ -329,7 +347,7 @@ export class AccountComponent implements OnInit {
     $('#profileImageModal').modal('show');
   }
 
-  saveProfileImage(base64) {
+  saveProfileImage(base64:Event) {
     this.profile_image_filename = this.commonService.generateImageName() + '.jpeg';
     //this.myblobService.setContainer('users');
     this.myblobService.uploadProfileImageBlob(base64, this.user.id + '/' + this.profile_image_filename);
@@ -345,17 +363,17 @@ export class AccountComponent implements OnInit {
     });
   }
 
-  setCropperActive(value){
+  setCropperActive(value:any){
     this.cropper_active = value;
   }
 
   clearDigits(){
-    this.digit_1 = undefined;
-    this.digit_2 = undefined;
-    this.digit_3 = undefined;
-    this.digit_4 = undefined;
-    this.digit_5 = undefined;
-    this.digit_6 = undefined;
+    this.digit_1 = '';
+    this.digit_2 = '';
+    this.digit_3 = '';
+    this.digit_4 = '';
+    this.digit_5 = '';
+    this.digit_6 = '';
   }
 
   goBack(){

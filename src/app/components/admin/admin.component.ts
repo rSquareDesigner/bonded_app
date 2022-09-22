@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-admin',
@@ -16,8 +17,7 @@ export class AdminComponent implements OnInit {
     private route: ActivatedRoute,
   ) { 
     this.route.params.subscribe( params => {
-      this.view = params['view']; 
-      this.shaper_id = params['shaper_id']; 
+      this.view = params['view'];
     });
   }
 
@@ -44,17 +44,17 @@ export class AdminComponent implements OnInit {
     */
   }
 
-  goHome(route){
+  goHome(route:string){
     $(".navbar-collapse").collapse('hide');
     
     this.router.navigate([route]);
   }
 
-  goto(view){
+  goto(view:string){
     this.redirectTo(['admin/'+ view],{});
   }
 
-  redirectTo(route,params){
+  redirectTo(route:string[],params:any){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate(route, params));
  }

@@ -43,20 +43,14 @@ export class UserService {
     this._getUser.next(this.user);
     if (this.user) {
       //pull from database most updated record for the user
-      /*
+      
       this.tablesService.GetFiltered('users', 'id', this.user.id).subscribe((data: any) => {
         this.user = data[0];
         
-        if (this.user) {
-          this.tablesService.GetFiltered('saves', 'user_id', this.user.id).subscribe((data2: any) => {
-            this.user.saves = data2;
-            localStorage.setItem('user', JSON.stringify(this.user));
-            this._getUser.next(this.user);
-          });
-        }
-
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this._getUser.next(this.user);
       })
-      */
+      
     }
     
   }
@@ -85,8 +79,8 @@ export class UserService {
 
         this.user = data;
 
-        this.tablesService.GetFiltered('saves', 'user_id', this.user.id).subscribe((data: any) => {
-          this.user.saves = data;
+        //this.tablesService.GetFiltered('saves', 'user_id', this.user.id).subscribe((data: any) => {
+          //this.user.saves = data;
           localStorage.setItem('user', JSON.stringify(this.user));
           this._getUser.next(this.user);
 
@@ -97,7 +91,7 @@ export class UserService {
           //else this.router.navigate(['/admin/profile/' + this.user.id]);
           else this.router.navigate(['home']);
 
-        });
+        //});
 
       }
     });
