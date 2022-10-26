@@ -355,7 +355,7 @@ export class AccountComponent implements OnInit {
 
     var user_object = {
       id: this.user.id,
-      image:  'https://surfgenie.blob.core.windows.net/users/' + this.user.id +'/' + this.profile_image_filename
+      image:  'https://seelbach.blob.core.windows.net/users/' + this.user.id +'/' + this.profile_image_filename
     }
 
     this.tablesService.UpdateItem('users', user_object).subscribe((data: any) => {

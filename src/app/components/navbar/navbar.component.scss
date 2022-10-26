@@ -1,12 +1,13 @@
 @import '../../../globals.scss';
 
 .navbar {
-    background-color: $color-one;
-    color: black;
-    height: 100px;
+    background-color: white;
+    color: $color-two;
+    height: 60px;
     margin: 0;
     padding: 0 20px 0 0;
     position: fixed;
+    top: 0;
     width: 100vw;
     z-index: 100;
     border-bottom: solid 1px white;
@@ -16,7 +17,6 @@
 
 .navbar_contents {
     width: 100%;
-    max-width: 1200px;
     margin:auto;
 }
 
@@ -25,18 +25,19 @@
 }
 
 .nav-item {
-    color: white;
-    font-size: 18px;
+    color: $color-two !important;
+    font-size: 16px;
     text-align: center;
     cursor:pointer;
     display: inline-block;
-    padding: 20px 10px 0 10px;
+    padding: 0px 10px 0 10px;
     vertical-align: middle;
 }
 
 .nav-item:hover {
     //text-decoration: underline;
-    background-color: $color-one-hover
+    /*background-color: $color-two-hover*/
+    text-decoration: underline;
 }
 
 .navbtn {

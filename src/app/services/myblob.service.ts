@@ -19,7 +19,7 @@ export class MyblobService {
   blobConfig: any;
   sas: string;
 
-  container_name: string = 'listings';
+  container_name: string = 'auctions';
 
   blobServiceClient: any;
 
@@ -33,15 +33,15 @@ export class MyblobService {
     private http: HttpClient,
   ) {
 
-    this.sas = '?sv=2020-08-04&ss=bfqt&srt=co&sp=rwdlacutfx&se=2026-10-03T00:11:03Z&st=2022-03-18T16:11:03Z&spr=https,http&sig=r0gMYnDTESvmyzf%2Fq71H7cBENcTitoE8e7NhafRbYNo%3D';
+    this.sas = '?sv=2021-06-08&ss=bf&srt=c&sp=rwdlaciytfx&se=2027-10-01T05:19:52Z&st=2022-09-30T21:19:52Z&spr=https,http&sig=xqsYMTckUTMv5nPDrOiv2QGoO1ccPQiKBtrqA1%2FTMQ0%3D';
     /*
     this.blobParams = {
       sas: '?sv=2020-08-04&ss=bfqt&srt=co&sp=rwdlacutfx&se=2026-10-03T00:11:03Z&st=2022-03-18T16:11:03Z&spr=https,http&sig=r0gMYnDTESvmyzf%2Fq71H7cBENcTitoE8e7NhafRbYNo%3D',
-      storageAccount: 'surfgenie',
-      containerName: 'listings'
+      storageAccount: 'seelbach',
+      containerName: 'auctions'
     };
     */
-    this.blobServiceClient = new BlobServiceClient('https://surfgenie.blob.core.windows.net' + this.sas);
+    this.blobServiceClient = new BlobServiceClient('https://seelbach.blob.core.windows.net' + this.sas);
 
   }
 
@@ -73,19 +73,6 @@ export class MyblobService {
   }
 
 
-  /*
-  private uploadFile(blockBlobClient: BlockBlobClient, file: File) {
-    return new Observable<number>(observer => {
-      blockBlobClient
-        .upload(file, 1024 * 64)
-        .then(
-          //this.onUploadComplete(observer, file),
-          //this.onUploadError(observer)
-        );
-    });//.pipe(distinctUntilChanged());
-  }
-  */
-
   uploadBlob(data:any, filename:any) {
     //console.log('upload new blob');
     var file = this.dataURItoBlob(data);
@@ -93,7 +80,7 @@ export class MyblobService {
 
       // Create a unique name for the blob
       const blobName = filename;
-      const containerClient = this.blobServiceClient.getContainerClient('listings');
+      const containerClient = this.blobServiceClient.getContainerClient('auctions');
 
       // Get a block blob client
       const blockBlobClient = containerClient.getBlockBlobClient(blobName);
@@ -102,41 +89,12 @@ export class MyblobService {
       blockBlobClient.upload(file, 1024 * 64).then((result: any) => {
         this._imageUploaded.next(true);
         //optimize image for thumbnail width 150px
-        this.krakenService.optimizeImage(filename, 'listings', 300).subscribe(data => { });
+        this.krakenService.optimizeImage(filename, 'auctions', 300).subscribe(data => { });
         //optimize image for website width 800 px
         //setTimeout(() => {
-        this.krakenService.optimizeImage(filename, 'listings', 800).subscribe(data => { });
+        this.krakenService.optimizeImage(filename, 'auctions', 800).subscribe(data => { });
         //},1000);
       });
-
-      /*
-          //console.log('Upload Image ',file.name, this.blob);
-          const baseUrl = this.blobServiceClient.generateBlobUrl(this.blobParams, filename);
-          //console.log('baseUrl', baseUrl);
-          this.blobConfig = {
-            baseUrl: baseUrl,
-            sasToken: this.blobParams.sas,
-            blockSize: 1024 * 64, // OPTIONAL, default value is 1024 * 32
-            file: file,
-            complete: () => {
-              this._imageUploaded.next(true);
-              //optimize image for thumbnail width 150px
-              this.krakenService.optimizeImage(filename, this.blobParams.containerName,300).subscribe(data => {});
-              //optimize image for website width 800 px
-              //setTimeout(() => {
-              this.krakenService.optimizeImage(filename, this.blobParams.containerName,800).subscribe(data => {});
-              //},1000);
-              
-            },
-            error: (err) => {
-              //console.log('Error:', err);
-            },
-            progress: (percent) => {
-              //this.percent = percent;
-            }
-          };
-          this.blobService.upload(this.blobConfig);
-        */
     }
 
   }
@@ -157,73 +115,6 @@ export class MyblobService {
         //optimize image for thumbnail width 150px
         this.krakenService.optimizeImage(filename, 'users', 150).subscribe(data => { });
       });
-      /*
-      //console.log('Upload Image ',file.name, this.blob);
-      const baseUrl = this.blobService.generateBlobUrl(this.blobParams, filename);
-      //console.log('baseUrl', baseUrl);
-      this.blobConfig = {
-        baseUrl: baseUrl,
-        sasToken: this.blobParams.sas,
-        blockSize: 1024 * 64, // OPTIONAL, default value is 1024 * 32
-        file: file,
-        complete: () => {
-          this._profileImageUploaded.next(true);
-          //optimize image for thumbnail width 150px
-          this.krakenService.optimizeImage(filename, this.blobParams.containerName,150).subscribe(data => {});
-        },
-        error: (err) => {
-          //console.log('Error:', err);
-        },
-        progress: (percent) => {
-          //this.percent = percent;
-        }
-      };
-      this.blobService.upload(this.blobConfig);
-      */
-    }
-  }
-
-  uploadShapersImageBlob(data:any, filename:any) {
-    var file = this.dataURItoBlob(data);
-    if (file !== null) {
-
-      // Create a unique name for the blob
-      const blobName = filename;
-      const containerClient = this.blobServiceClient.getContainerClient('shapers');
-
-      // Get a block blob client
-      const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-
-      // Upload data to the blob
-      blockBlobClient.upload(file, 1024 * 64).then((result: any) => {
-        this._profileImageUploaded.next(true);
-        //optimize image for thumbnail width 150px
-        this.krakenService.optimizeImage(filename, 'shapers', 3000).subscribe(data => { });
-      });
-
-      /*
-      //console.log('Upload Image ',file.name, this.blob);
-      const baseUrl = this.blobService.generateBlobUrl(this.blobParams, filename);
-      //console.log('baseUrl', baseUrl);
-      this.blobConfig = {
-        baseUrl: baseUrl,
-        sasToken: this.blobParams.sas,
-        blockSize: 1024 * 64, // OPTIONAL, default value is 1024 * 32
-        file: file,
-        complete: () => {
-          this._profileImageUploaded.next(true);
-          //optimize image for thumbnail width 150px
-          this.krakenService.optimizeImage(filename, this.blobParams.containerName,3000).subscribe(data => {});
-        },
-        error: (err) => {
-          //console.log('Error:', err);
-        },
-        progress: (percent) => {
-          //this.percent = percent;
-        }
-      };
-      this.blobService.upload(this.blobConfig);
-      */
     }
   }
 
@@ -236,13 +127,6 @@ export class MyblobService {
 
   getFiles(item_id:number): Observable<any> {
     return this.http.get<any>( environment.baseurl + '/blob/getFiles/' + item_id, this.httpOptions).pipe(
-      retry(1),
-      catchError(this.errorHandl),
-    )
-  }
-
-  getShaperFiles(item_id:number): Observable<any> {
-    return this.http.get<any>( environment.baseurl + '/blob/getShaperFiles/' + item_id, this.httpOptions).pipe(
       retry(1),
       catchError(this.errorHandl),
     )

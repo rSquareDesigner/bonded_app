@@ -1,12 +1,6 @@
 <nav class="navbar navbar-expand-lg"> <!--d-xs-block d-lg-none-->
 
-   
-    <img class="logo d-none d-md-block" src="../../../assets/images/Surfgenie_white.png" (click)="redirectTo(['home'],{})">
-    
-    <div class="d-block d-md-none logo_container">
-        <img class="navbar_logo" src="../../../assets/images/SurfGenie_illustration.png" (click)="redirectTo(['home'],{})">
-    </div>
-    <!--
+   <!--
     <img class="logo_small d-block d-md-none" src="../../../assets/images/logo_white_no_background.png" (click)="goto('home')">
     -->
 
@@ -43,26 +37,37 @@
                 <div *ngIf="user">
                     
                     <li *ngIf="user.role == 'admin'" class="nav-item" (click)="goto('admin')">
-                        <i class="fa fa-user-cog navbar_item_icon"></i>
-                        <a class="nav-link">Admin</a>
+                        <a >ADMIN</a>
                     </li>
                     <li class="nav-item" (click)="goto('saved-items')">
-                        <i class="fa fa-heart navbar_item_icon"></i>
-                        <a class="nav-link">Saved</a>
+                        <a >SELL</a>
                     </li>
                     <li class="nav-item" (click)="goto('inbox')" style="position:relative">
-                        <i class="fa fa-inbox navbar_item_icon"></i>
                         <div class="notification_alert" *ngIf="user_has_notifications == true"></div>
-                        <a class="nav-link">Inbox</a>
+                        <a >WATCHLIST</a>
                     </li>
                     <li class="nav-item" (click)="goto('my-listings')">
-                        <i class="fa fa-tag navbar_item_icon"></i>
-                        <a class="nav-link">Selling</a>
+                        <a >NOTIFICATIONS</a>
                     </li>
+                    <li class="nav-item" (click)="goto('my-listings')">
+                        <a >HELP</a>
+                    </li>
+                    <li class="nav-item" (click)="goto('my-listings')">
+                        <a >
+                            <button class="btn btn-default button_primary">LOGIN</button>
+                        </a>
+                    </li>
+                    <li class="nav-item" (click)="goto('my-listings')">
+                        <a >
+                            <button class="btn btn-default button_secondary">REGISTER</button>
+                        </a>
+                    </li>
+                    <!--
                     <li class="nav-item" (click)="toggleUserMenu()" style="height: 95px;">
                         <img src="{{user.image}}" class="user_profile_icon">
                         <span><i class="fa fa-chevron-down user_profile_expand_icon"></i></span>
                     </li>
+                    -->
                     <div *ngIf="user_menu_visible == true" class="user_menu" (click)="userMenuClick();">
                         <img src="../../../assets/images/dialog_arrow.png" class="dialog_arrow">
                         <img src="{{user.image}}" class="user_profile_icon_menu">

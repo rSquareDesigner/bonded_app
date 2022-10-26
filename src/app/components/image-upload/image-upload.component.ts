@@ -38,6 +38,8 @@ export class ImageUploadComponent implements OnChanges {
   }
 
   fileChangeEvent(event: any): void {
+
+    console.log('fileChangeEvent', event);
     this.imageChangedEvent = event;
 
     const reader = new FileReader();
@@ -46,19 +48,22 @@ export class ImageUploadComponent implements OnChanges {
 
     
     reader.onload = function(e){
-
+      console.log('bbbb');
       // convert image file to base64 string
       (<HTMLImageElement>document.getElementsByClassName('image_preview')[0]).src = reader.result ? reader.result.toString():'';
 
     };
 
     if (event) {
+      console.log('aaaa');
       reader.readAsDataURL(event.target.files[0]);
       
       //get dimensions of original file
       var image = new Image();
-      image.src = window.URL.createObjectURL(event.target.files[0])
+      image.src = window.URL.createObjectURL(event.target.files[0]);
+      console.log('image.src', image.src);
       image.onload = () => {
+        console.log('cccc');
         this.image_width = image.width;
         this.image_height = image.height;
         setTimeout(() => {
@@ -151,6 +156,8 @@ export class ImageUploadComponent implements OnChanges {
     var height = this.image_height;
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext("2d");
+
+    console.log('ctx', ctx);
 
 
     canvas.width = width;

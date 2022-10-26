@@ -1,19 +1,17 @@
 
 // theme color serials
-$color-one: #C0C0C0;
-$color-one-hover: #303030;
-$color-two: #696969;
-$color-two-hover: #A8A8A8;
-$color-three: #C0C0C0;
+$color-one: #2b3d55;
+$color-one-hover: #446288;
+$color-two: #9c8454;
+$color-two-hover: #c1af8b;
+$color-three: #383436;
+$color-four: #f5f7ec; 
 
-
-//background-colors
-$color-four: #e1e5f2;
 
 .cc {
   overflow: auto;
   height: 100vh;
-  padding: 100px 20px;
+  padding: 80px 20px;
   background-size: cover;
   background-position:center;
   position:fixed;
@@ -41,30 +39,45 @@ $color-four: #e1e5f2;
   font-size: 36px;
 }
 
+/****** FONTS ********/
+.mw-l {
+  font-family: 'merriweather-light';
+}
+.mw-r {
+  font-family: 'merriweather-regular';
+}
+.ws-300 {
+  font-family: 'worksans-300';
+}
+.ws-700 {
+  font-family: 'worksans-700';
+}
+
 /******* BUTTONS *******/
 
 .button_primary {
     color: white;
-    background-color: $color-one;
-    border-radius: 35px;
+    background-color: $color-two;
+    border-radius: 0;
+    
     min-width: 150px;
 }
 
 .button_primary:hover {
-    background-color: $color-one-hover;
+    background-color: $color-two-hover;
 }
 
 .button_secondary {
-    color: $color-one;
+    color: $color-two;
     background-color: white;
-    border-color: $color-one;
-    border-radius: 35px;
+    border-color: $color-two;
+    border-radius: 0;
+    
     min-width: 150px;
 }
 
 .button_secondary:hover {
-    color: white;
-    background-color: $color-one;
+    background-color: lightgrey;
 }
 
 .button_default {

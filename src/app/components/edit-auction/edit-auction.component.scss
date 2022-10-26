@@ -10,7 +10,7 @@
     border: solid 1px lightgrey;
 }
 
-.image_preview{
+.image_preview_form{
     width: 160px;
     height: 100px;
     display: inline-block;
@@ -52,4 +52,10 @@
 .imagex{
     display: inline-block;
     position: relative;
+}
+
+.calendar_popup{
+    width: 275px;
+    padding: 20px 0;
+    margin: auto;
 }

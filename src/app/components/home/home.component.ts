@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from './../../services/common.service';
+import { TablesService } from './../../services/tables.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home2.component.html',
+  styleUrls: ['./home2.component.scss']
 })
 export class HomeComponent implements OnInit {
 
@@ -34,40 +35,29 @@ export class HomeComponent implements OnInit {
     this.auctions = [
       {
         id:0,
-        title: 'Title 1',
+        title: 'Auction 1',
         image: this.slider_images[0],
-        price: '$20,000'
+        description: 'Lorem ipsum dolor sit amet. Lorem, ipsum dolor.'
       },
       {
         id:1,
-        title: 'Title 2',
+        title: 'Auction 2',
         image: this.slider_images[1],
-        price: '$17,500'
+        description: 'Lorem ipsum dolor sit amet. Lorem, ipsum dolor.'
       },
       {
         id:2,
-        title: 'Title 3',
+        title: 'Auction 3',
         image: this.slider_images[2],
-        price: '$2,000'
+        description: 'Lorem ipsum dolor sit amet. Lorem, ipsum dolor.'
       },
       {
         id:3,
-        title: 'Title 4',
+        title: 'Auction 4',
         image: this.slider_images[3],
-        price: '$60,000'
-      },
-      {
-        id:4,
-        title: 'Title 5',
-        image: this.slider_images[0],
-        price: '$7,000'
-      },
-      {
-        id:5,
-        title: 'Title 6',
-        image: this.slider_images[1],
-        price: '$12,000'
+        description: 'Lorem ipsum dolor sit amet. Lorem, ipsum dolor.'
       }
+  
     ];
 
     this.trending_auctions = this.commonService.shuffle(this.auctions);

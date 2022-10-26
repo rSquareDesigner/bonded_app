@@ -1,0 +1,463 @@
+
+<app-navbar></app-navbar>
+
+<section id="hero">
+    <img class="logo_stamp" src="../../../assets/images/White_Transparent.png">
+</section>
+
+<!--* ================= S T A R T   W H I T E  B A N N E R  C O M P O N E N T ================= -->
+<section id="white-banner" class="py-5">
+    <div class="container">
+        <h2 class="text-center mx-auto mw-r">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus tempora numquam omnis et atque
+            quam consectetur
+        </h2>
+    </div>
+</section>
+<!--* ================= E N D   W H I T E  B A N N E R  C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 order-0">
+                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Image.jpg')">
+                    <h2 class="h1 ws-700">
+                        Premium Auctions
+                    </h2>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1">
+                <div class="section-items">
+                    <div class="items-container">
+                        <div class="row">
+                            <div class="col-md-6" *ngFor="let x of auctions">
+                                <div class="item">
+                                    <img src="{{x.image}}" alt="">
+                                    <h4 class="ws-700">
+                                        <a href="">{{x.title}}</a>
+                                    </h4>
+                                    <p class="mw-r">{{x.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        <a href="#">
+                            View All Auctions
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+
+<!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+<section id="brown-banner" class="py-5">
+    <div class="container text-center">
+        <h3 class="mx-auto mb-4 text-white mw-r">
+            Join to access our Premium Auctions
+        </h3>
+        <button type="button" class="btn btn-light px-5 py-3 rounded-0 fw-bold fs-6 mw-l">
+            Enroll Today
+        </button>
+    </div>
+</section>
+<!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 order-1 order-lg-0">
+                <div class="section-items">
+                    <div class="items-container py-3">
+                        <div class="row">
+                            <div class="col-md-6" *ngFor="let x of auctions">
+                                <div class="item">
+                                    <img src="{{x.image}}" alt="">
+                                    <h4 class="ws-700">
+                                        <a href="">{{x.title}}</a>
+                                    </h4>
+                                    <p class="mw-r">{{x.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        <a href="#">
+                            View All Auctions
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 order-0 order-lg-1">
+                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Image.jpg')">
+                    <h2 class="h1 ws-700">
+                        Open Market Auctions
+                    </h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--* ================= E N D   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+<section id="brown-banner" class="py-5">
+    <div class="container text-center">
+        <h3 class="mx-auto mb-4 text-white mw-r">
+            Register today to bit and sell on our open market
+        </h3>
+        <button type="button" class="btn btn-light px-5 py-3 rounded-0 fw-bold fs-6 mw-l">
+            Register Today
+        </button>
+    </div>
+</section>
+<!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T   F E A T U R E   A C T I O N   S L I D E R   C O M P O N E N T ================= -->
+<section id="feature-action-slider">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="item">
+                    <div class="box">
+                        <h2 class="h1 mb-4">Featured Action 1</h2>
+                        <p class=" d-flex flex-column mb-5">
+                            <span>Lorem ipsum dolor sit amet,</span>
+                            <span>Lorem ipsum dolor sit amet,</span>
+                        </p>
+                        <div class="btns d-flex align-items-center flex-column flex-lg-row">
+                            <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
+                            <button type="button">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="item">
+                    <div class="box">
+                        <h2 class="h1 mb-4">Featured Action 3</h2>
+                        <p class=" d-flex flex-column mb-5">
+                            <span>Lorem ipsum dolor sit amet,</span>
+                            <span>Lorem ipsum dolor sit amet,</span>
+                        </p>
+                        <div class="btns d-flex align-items-center flex-column flex-lg-row">
+                            <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
+                            <button type="button">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="item">
+                    <div class="box">
+                        <h2 class="h1 mb-4">Featured Action 2</h2>
+                        <p class=" d-flex flex-column mb-5">
+                            <span>Lorem ipsum dolor sit amet,</span>
+                            <span>Lorem ipsum dolor sit amet,</span>
+                        </p>
+                        <div class="btns d-flex align-items-center flex-column flex-lg-row">
+                            <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
+                            <button type="button">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+<!--* ================= E N D   F E A T U R E   A C T I O N   S L I D E R   C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+<section id="brown-banner" class="py-5">
+    <div class="container text-center">
+        <h3 class="mx-auto mb-4 text-white mw-r">
+            Would you like your auction to be featured?
+        </h3>
+        <button type="button" class="btn btn-light px-5 py-2 rounded-0 fw-bold fs-6 mw-l">
+            Request Today
+        </button>
+    </div>
+</section>
+<!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 order-0">
+                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
+                    <h2 class="h1 ws-700">
+                        Bourbon Auctions
+                    </h2>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1">
+                <div class="section-items">
+                    <div class="items-container py-3">
+                        <div class="row">
+                            <div class="col-md-6" *ngFor="let x of auctions">
+                                <div class="item">
+                                    <img src="{{x.image}}" alt="">
+                                    <h4 class="ws-700">
+                                        <a href="">{{x.title}}</a>
+                                    </h4>
+                                    <p class="mw-r">{{x.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        <a href="#">
+                            View All Auctions
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 order-1 order-lg-0">
+                <div class="section-items">
+                    <div class="items-container py-3">
+                        <div class="row">
+                            <div class="col-md-6" *ngFor="let x of auctions">
+                                <div class="item">
+                                    <img src="{{x.image}}" alt="">
+                                    <h4 class="ws-700">
+                                        <a href="">{{x.title}}</a>
+                                    </h4>
+                                    <p class="mw-r">{{x.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        <a href="#">
+                            View All Auctions
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 order-0 order-lg-1">
+                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
+                    <h2 class="h1 ws-700">
+                        Rye Auctions
+                    </h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--* ================= E N D   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 order-0">
+                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
+                    <h2 class="h1 ws-700">
+                        Malt Whiskey Auctions
+                    </h2>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1">
+                <div class="section-items">
+                    <div class="items-container py-3">
+                        <div class="row">
+                            <div class="col-md-6" *ngFor="let x of auctions">
+                                <div class="item">
+                                    <img src="{{x.image}}" alt="">
+                                    <h4 class="ws-700">
+                                        <a href="">{{x.title}}</a>
+                                    </h4>
+                                    <p class="mw-r">{{x.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        <a href="#">
+                            View All Auctions
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 order-1 order-lg-0">
+                <div class="section-items">
+                    <div class="items-container py-3">
+                        <div class="row">
+                            <div class="col-md-6" *ngFor="let x of auctions">
+                                <div class="item">
+                                    <img src="{{x.image}}" alt="">
+                                    <h4 class="ws-700">
+                                        <a href="">{{x.title}}</a>
+                                    </h4>
+                                    <p class="mw-r">{{x.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        <a href="#">
+                            View All Auctions
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 order-0 order-lg-1">
+                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
+                    <h2 class="h1 ws-700">
+                        Other Spirit Auctions
+                    </h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--* ================= E N D   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T  S U B S C R I B E  B O X  C O M P O N E N T ================= -->
+<section id="subscribe-box" class="text-white text-center py-5">
+    <div class="container">
+        <h2>Subscribe</h2>
+        <p class="mb-3">To receive updates on upcoming actions</p>
+        <form>
+            <input type="text" placeholder="Email Address" class="py-1 px-4">
+        </form>
+    </div>
+</section>
+<!--* ================= E N D   S U B S C R I B E  B O X  C O M P O N E N T ================= -->
+
+
+<!--* ================= S T A R T  F O O T E R  C O M P O N E N T ================= -->
+<footer id="footer" class="pt-5">
+
+    <!--* logos & links & copyrights -->
+    <div class="container">
+        <div class="row">
+            <!--* footer logo columns -->
+            <div class="col-md-4">
+                <div class="footer-logo">
+                    <img src="../../../assets/images/Color_Transparent.png" class=" img-fluid rounded-circle" alt="">
+                </div>
+            </div>
+            <!--* footer links columns -->
+            <div class="col-md-8">
+                <div class="footer-links w-100">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="footer-link-col">
+                                <h5>About us</h5>
+                                <div class="links">
+                                    <a href="#">FAQs</a>
+                                    <a href="#">Resolution</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="footer-link-col">
+                                <h5>Resolution Center</h5>
+                                <div class="links">
+                                    <a href="#">FAQs</a>
+                                    <a href="#">Resolution</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="footer-link-col">
+                                <h5>Policies</h5>
+                                <div class="links">
+                                    <a href="#">Sellers</a>
+                                    <a href="#">Purchasers</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="footer-link-col">
+                                <h5>Help</h5>
+                                <div class="links">
+                                    <a href="#">FAQs</a>
+                                    <a href="#">Resolution</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--* footer copyrights columns -->
+            <div class="col-md-12">
+                <div
+                    class="footer-copyright d-flex justify-content-between align-items-center flex-column flex-lg-row text-center py-3 px-1" style="font-size:14px;">
+                    <p class="fw-bold mb-0 order-1 order-lg-0">© Bonded.co 2022. All rights reserved.</p>
+
+                    <div class="links order-0 order-lg-1 d-flex flex-column flex-md-row flex-wrap ">
+                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Accessibility</a>
+                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Terms of Use</a>
+                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Privacy</a>
+                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Cookies</a>
+                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Do not sell my information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>

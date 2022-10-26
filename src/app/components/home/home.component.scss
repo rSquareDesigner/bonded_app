@@ -1,10 +1,9 @@
 @import '../../../globals.scss';
 
 .hero_images_slider {
-    width: 95%;
-    max-width: 1264px;
-    height: 440px;
-    margin: 40px auto;
+    width: calc(100% + 40px);
+    height: 640px;
+    margin: 0px -20px;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -18,7 +17,7 @@
     border-radius: 50%;
     position:absolute;
     left: 20px;
-    top: 190px;
+    top: 290px;
     padding: 10px 14px;
 }
 
@@ -30,12 +29,19 @@
     border-radius: 50%;
     position:absolute;
     right: 20px;
-    top: 190px;
+    top: 290px;
     padding: 10px 14px;
 }
 
 .slider_navigation_icon{
     font-size: 20px;
+}
+
+.logo_stamp{
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    width: 110px;
 }
 
 .auctions_group {
