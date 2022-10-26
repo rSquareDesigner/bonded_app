@@ -34,11 +34,12 @@
         <div class="collapse navbar-collapse auto navbar_content" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right">
                 <!-- d-block d-lg-none -->
-                <div *ngIf="user">
-                    
+                <div>
+                    <!--
                     <li *ngIf="user.role == 'admin'" class="nav-item" (click)="goto('admin')">
                         <a >ADMIN</a>
                     </li>
+                    -->
                     <li class="nav-item" (click)="goto('saved-items')">
                         <a >SELL</a>
                     </li>
@@ -82,9 +83,11 @@
                         </ul>
                     </div>
                 </div>
+                <!--
                 <li *ngIf="!user" class="nav-item" (click)="showLogin(1)">
                     <a class="nav-link" style="padding-bottom: 30px;">Login</a>
                 </li>
+                -->
     
             </ul>
         </div>
