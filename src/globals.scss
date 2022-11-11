@@ -5,7 +5,8 @@ $color-one-hover: #446288;
 $color-two: #9c8454;
 $color-two-hover: #c1af8b;
 $color-three: #383436;
-$color-four: #f5f7ec; 
+$color-four: #f5f7ec;
+$color-five: #383436; 
 
 
 .cc {
@@ -39,6 +40,121 @@ $color-four: #f5f7ec;
   font-size: 36px;
 }
 
+.hero_section{
+  background-image: url('./assets/images/Hero\ Image.jpg');
+  background-size: cover;
+  background-position: center center;
+  position:relative;
+  height: calc(100vh - 80px);
+  margin-top: 60px;
+}
+
+.sub_navbar{
+  background-color: $color-four;
+  position: relative;
+  min-height: 150px;
+  margin-top: 60px;
+}
+
+.logo_stamp{
+  position: absolute;
+  top: 20px;
+  left: 80px;
+  width: 110px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.auctions_options_container{
+  background-color: $color-four;
+  padding: 20px 0;
+  position: absolute;
+  z-index: 10;
+}
+
+.auction_option{
+  padding: 7px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: "merriweather-light";
+}
+
+.auction_option:hover{
+  background-color: $color-two;
+  color: $color-four;
+}
+
+.white-banner {
+  background-color: $color-four;
+  padding: 70px 0;
+}
+.white-banner h2 {
+  color: $color-one;
+  font-size: 36px;
+  font-family: 'merriweather-regular';
+}
+
+.brown-banner {
+  background-color: $color-two;
+}
+
+.brown_banner_button{
+  color: $color-one;
+  background-color: $color-four;
+  font-family: 'merriweather-regular';
+  font-size: 28px;
+  border-radius: 0;
+  width: 360px;
+  padding: 20px 0;
+}
+
+.hero_banner {
+  background-color: white;
+  position: absolute;
+  width: 60%;
+  top: calc(50vh - 180px);
+  left: 20%;
+  padding: 50px 0;
+  text-align: center;
+  opacity: 0.85;
+  border: solid 5px $color-two;
+}
+
+.hero_banner h2 {
+  color: $color-one;
+  font-family: 'worksans-700';
+  font-size: 52px;
+}
+
+.hero_banner p{
+  font-size: 32px;
+  font-family: 'merriweather-bold';
+  margin: 30px 0 0 0;
+  color: $color-one;
+}
+
+.hero_buttons_container{
+  position: absolute;
+  top: 50px;
+  left: 210px;
+}
+
+.hero_button{
+  border:none;
+  background-color: none;
+  color: white;
+  font-family: 'worksans-300';
+  font-size: 18px;
+}
+
+.hero_button_blue{
+  border:none;
+  background-color: none;
+  color: $color-one;
+  font-family: 'worksans-300';
+  font-size: 18px;
+}
+
 /****** FONTS ********/
 .mw-l {
   font-family: 'merriweather-light';
@@ -69,7 +185,7 @@ $color-four: #f5f7ec;
 
 .button_secondary {
     color: $color-two;
-    background-color: white;
+    background-color: transparent;
     border-color: $color-two;
     border-radius: 0;
     
@@ -150,7 +266,9 @@ $color-four: #f5f7ec;
 /****** FORMS ******/
 
 .labelf {
-    margin: 12px 0 5px 0;
+  font-size: 18px;
+  font-family: 'merriweather-regular';
+  margin: 12px 0 5px 0;
 }
 
 .alert_message {
@@ -168,6 +286,17 @@ $color-four: #f5f7ec;
 .form_label{
   margin:10px 0 0 0;
   width:200px;
+}
+
+.padding_for_dollar_sign {
+  padding-left: 28px;
+}
+
+.money_icon {
+  position: absolute;
+  top: 57px;
+  left: 28px;
+  color: grey;
 }
 
 /*Search input*/

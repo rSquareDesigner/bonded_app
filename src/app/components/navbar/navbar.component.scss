@@ -1,7 +1,7 @@
 @import '../../../globals.scss';
 
 .navbar {
-    background-color: white;
+    background-color: $color-four;
     color: $color-two;
     height: 60px;
     margin: 0;
@@ -10,7 +10,6 @@
     top: 0;
     width: 100vw;
     z-index: 100;
-    border-bottom: solid 1px white;
     background-size: cover;
     background-position:center;
 }

@@ -1,47 +1,173 @@
-<div class="cc">
-    <div class="form_container">
-        
-        <h1 class="form_title" *ngIf="itemx.id">Edit auction</h1>
-        <h1 class="form_title" *ngIf="!itemx.id">Create auction</h1>
-        
-        <label class="labelf">Title:</label>
-        <input type="text" class="form-control" [(ngModel)]="itemx.name" (ngModelChange)="evalEdit(itemx)">
+<app-navbar></app-navbar>
 
-        <label class="labelf">Product Details:</label>
-        <textarea class="form-control" rows="5" [(ngModel)]="itemx.description" (ngModelChange)="evalEdit(itemx)"></textarea>
-
-        <label class="labelf">Images</label><br>
-        <div class="images_container">
-            <div class="imagex" *ngFor="let x of itemx.images_urls; index as i">
-                <img class="image_preview_form" src="{{x}}">
-                <span class="delete_image_button" (click)="deleteImage(i)">
-                    <i class="fa fa-times"></i>
-                </span>
-            </div>
-        </div>
-        <div class="image_input_container">
-            <div class="text-left" style="padding: 10px 0;">
-                <button class="btn btn-default button_secondary" (click)="uploadImage()">Upload Image</button>
-            </div>
-        </div>
-
-        <label class="labelf">Buy Now Price:</label>
-        <input type="text" class="form-control" [(ngModel)]="itemx.price" (ngModelChange)="evalEdit(itemx)">
-
-        <label class="labelf">Auction end time:&nbsp;&nbsp;</label>
-        <i class="fa fa-calendar" (click)="show_calendar_popup = true;"></i>
-        <input type="text" class="form-control" [(ngModel)]="selected_date">
-        <div *ngIf="show_calendar_popup == true" class="calendar_popup">
-            <dl-date-time-picker startView="day" maxView="day" minView="hour" [(ngModel)]="selected_date" (ngModelChange)="dateSelected()">
-            </dl-date-time-picker>
-        </div>
-
-        <div class="text-center" style="padding:30px 0;">
-            <button class="btn btn-default button_primary" (click)="saveListing()">SAVE</button>
-        </div>
-
+<section class="sub_navbar">
+    <img class="logo_stamp" src="../../../assets/images/Color_Transparent.png" (click)="goto('/')">
+    <div class="hero_buttons_container">
+        <button class="btn btn-default hero_button_blue ">BROWSE AUCTIONS
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <button class="btn btn-default hero_button_blue">START A LISTING</button>
     </div>
-</div>
+</section>
+<section class="form_section">
+    <div class="row" style="margin:0;">
+        <div class="col-8">
+            <div class="form_container">
+    
+                <label class="golden_label">Title:</label>
+                <input type="text" class="form-control" [(ngModel)]="itemx.name" (ngModelChange)="evalEdit(itemx)">
+                
+                <label class="golden_label">Item Category</label>
+                <div class="dropdown">
+                    <select class="btn btn-default dropdown-toggle"
+                        style="border: 1px solid #ced4da;width:280px;background-color:white;margin:auto" [(ngModel)]="itemx.category"
+                        (ngModelChange)="evalEdit(itemx)">
+                        <option class="dropdown_option" *ngFor="let y of categories" [value]="y">
+                            {{ y }}
+                        </option>
+                    </select>
+                </div>
+                <label class="golden_label">Item Specifics</label><br>
+
+                <label class="labelf">Distillery:</label>
+                <input type="text" class="form-control" [(ngModel)]="itemx.distillery" (ngModelChange)="evalEdit(itemx)">
+
+                <label class="labelf">Barrel Number:</label>
+                <input type="text" class="form-control" [(ngModel)]="itemx.barrel" (ngModelChange)="evalEdit(itemx)">
+
+                <label class="labelf">Internal Spirit:</label>
+                <input type="text" class="form-control" [(ngModel)]="itemx.internal_spirit" (ngModelChange)="evalEdit(itemx)">
+
+                <label class="labelf">Last Fill Date:&nbsp;&nbsp;</label>
+                <i class="fa fa-calendar" (click)="show_calendar_popup = true;"></i>
+                <input type="text" class="form-control" [(ngModel)]="itemx.last_fill_date">
+                <div *ngIf="show_calendar_popup == true" class="calendar_popup">
+                    <dl-date-time-picker startView="day" maxView="day" minView="day" [(ngModel)]="itemx.last_fill_date_raw"
+                        (ngModelChange)="dateSelected()">
+                    </dl-date-time-picker>
+                </div>
+                
+                <!--
+                <input type="text" class="form-control" [(ngModel)]="itemx.last_fill_date" (ngModelChange)="evalEdit(itemx)">
+                -->
+
+                <label class="labelf">Total Age of Spirits:</label>
+                <input type="text" class="form-control" [(ngModel)]="itemx.total_age_of_spirits" (ngModelChange)="evalEdit(itemx)">
+
+                <label class="labelf">Lot Identification Number:</label>
+                <input type="text" class="form-control" [(ngModel)]="itemx.lot_id" (ngModelChange)="evalEdit(itemx)">
+
+                <label class="labelf">Description:</label>
+                <textarea class="form-control" rows="5" [(ngModel)]="itemx.description" (ngModelChange)="evalEdit(itemx)"></textarea>
+
+                <label class="labelf">Starting Bid:</label>
+                <!--
+                <input type="text" class="form-control" [(ngModel)]="itemx.starting_bid" (ngModelChange)="evalEdit(itemx)">
+                -->
+                <div style="position:relative">
+                    <input type="text" class="form-control padding_for_dollar_sign" [(ngModel)]="itemx.starting_bid"
+                        (ngModelChange)="evalEdit(itemx)">
+                    <span><i class="fas fa-dollar-sign money_icon" style="top: 12px;left: 15px;"></i></span>
+                </div>
+
+                <label class="labelf">Auction Duration</label>
+                <div class="dropdown">
+                    <select class="btn btn-default dropdown-toggle"
+                        style="border: 1px solid #ced4da;width:280px;background-color:white;margin:auto" [(ngModel)]="itemx.auction_duration"
+                        (ngModelChange)="evalEdit(itemx)">
+                        <option class="dropdown_option" *ngFor="let y of duration_options" [value]="y">
+                            {{ y }}
+                        </option>
+                    </select>
+                </div>
+
+                <label class="labelf">Allow Offers</label>
+                <div class="dropdown">
+                    <select class="btn btn-default dropdown-toggle"
+                        style="border: 1px solid #ced4da;width:280px;background-color:white;margin:auto" [(ngModel)]="itemx.allow_offers"
+                        (ngModelChange)="evalEdit(itemx)">
+                        <option class="dropdown_option" *ngFor="let y of ['Yes','No']" [value]="y">
+                            {{ y }}
+                        </option>
+                    </select>
+                </div>
+
+
+                <label class="labelf">Reserve Price:</label>
+                <div style="position:relative">
+                    <input type="text" class="form-control padding_for_dollar_sign" [(ngModel)]="itemx.reserve_price"
+                        (ngModelChange)="evalEdit(itemx)">
+                    <span><i class="fas fa-dollar-sign money_icon" style="top: 12px;left: 15px;"></i></span>
+                </div>
+
+                <label class="labelf">Buy Now Price (if not offered leave blank)</label>
+                <div style="position:relative">
+                    <input type="text" class="form-control padding_for_dollar_sign" [(ngModel)]="itemx.buy_now_price"
+                        (ngModelChange)="evalEdit(itemx)">
+                    <span><i class="fas fa-dollar-sign money_icon" style="top: 12px;left: 15px;"></i></span>
+                </div>
+
+                <label class="labelf">Schedule</label>
+                <div class="dropdown">
+                    <select class="btn btn-default dropdown-toggle"
+                        style="border: 1px solid #ced4da;width:280px;background-color:white;margin:auto" [(ngModel)]="itemx.allow_offers"
+                        (ngModelChange)="evalEdit(itemx)">
+                        <option class="dropdown_option" *ngFor="let y of ['Yes','No']" [value]="y">
+                            {{ y }}
+                        </option>
+                    </select>
+                </div>
+
+                <button class="btn btn-default button_secondary button_secondaryx" style="margin-top:60px">Review and Sign Agreement</button>
+                <button class="btn btn-default button_secondary button_secondaryx">Escrow Deposit</button>
+                <button class="btn btn-default button_primary button_primaryx" (click)="saveListing()">List Item</button>
+                <button class="btn btn-default button_primary button_primaryx" style="margin-bottom:100px" (click)="saveListing()">Save for Later</button>
+
+                
+                <!--
+                <label class="labelf">Images</label><br>
+                <div class="images_container">
+                    <div class="imagex" *ngFor="let x of itemx.images_urls; index as i">
+                        <img class="image_preview_form" src="{{x}}">
+                        <span class="delete_image_button" (click)="deleteImage(i)">
+                            <i class="fa fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+                -->
+
+                <!--
+                <div class="image_input_container">
+                    <div class="text-left" style="padding: 10px 0;">
+                        <button class="btn btn-default button_secondary" (click)="uploadImage()">Upload Image</button>
+                    </div>
+                </div>
+                
+                <label class="labelf">Buy Now Price:</label>
+                <input type="text" class="form-control" [(ngModel)]="itemx.price" (ngModelChange)="evalEdit(itemx)">
+    
+                <label class="labelf">Auction end time:&nbsp;&nbsp;</label>
+                <i class="fa fa-calendar" (click)="show_calendar_popup = true;"></i>
+                <input type="text" class="form-control" [(ngModel)]="selected_date">
+                <div *ngIf="show_calendar_popup == true" class="calendar_popup">
+                    <dl-date-time-picker startView="day" maxView="day" minView="hour" [(ngModel)]="selected_date"
+                        (ngModelChange)="dateSelected()">
+                    </dl-date-time-picker>
+                </div>
+    
+                <div class="text-center" style="padding:30px 0;">
+                    <button class="btn btn-default button_primary" (click)="saveListing()">SAVE</button>
+                </div>
+                -->
+
+            </div>
+        </div>
+        <div class="col-4">
+            <img class="logo_image" src="../../../assets/images/defaultimage.png">
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
 
 <div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
     aria-hidden="true">

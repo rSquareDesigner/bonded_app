@@ -14,6 +14,8 @@ import { AccountsManagerComponent } from './components/accounts-manager/accounts
 import { ResolutionCenterComponent } from './components/resolution-center/resolution-center.component';
 import { DatabaseComponent } from './components/database/database.component';
 import { SystemComponent } from './components/system/system.component';
+import { ResultCardComponent } from './components/result-card/result-card.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -29,7 +31,9 @@ import { SystemComponent } from './components/system/system.component';
     AccountsManagerComponent,
     ResolutionCenterComponent,
     DatabaseComponent,
-    SystemComponent
+    SystemComponent,
+    ResultCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

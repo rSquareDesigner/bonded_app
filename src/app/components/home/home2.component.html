@@ -1,12 +1,29 @@
 
 <app-navbar></app-navbar>
 
-<section id="hero">
+<section class="hero_section">
     <img class="logo_stamp" src="../../../assets/images/White_Transparent.png">
+    <div class="hero_buttons_container">
+            <button class="btn btn-default hero_button" (click)="toogleShowAuctions()">BROWSE AUCTIONS
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="auctions_options_container" *ngIf="show_auction_options == true">
+                <div class="auction_option" (click)="gotoAuctions('premium-auctions')">Premium Auctions</div>
+                <div class="auction_option" (click)="gotoAuctions('rye')">Rye</div>
+                <div class="auction_option" (click)="gotoAuctions('bourbon')">Bourbon</div>
+                <div class="auction_option" (click)="gotoAuctions('malt-whiskey')">Malt Whiskey</div>
+                <div class="auction_option" (click)="gotoAuctions('other-spirits')">Other Spirits</div>
+            </div>
+            <button class="btn btn-default hero_button" (click)="goto('edit-auction/0')">START A LISTING</button>
+    </div>
+    <div class="hero_banner">
+        <h2>Welcome to Bonded.co</h2>
+        <p>The Modern Way To Buy Barrels</p>
+    </div>
 </section>
 
 <!--* ================= S T A R T   W H I T E  B A N N E R  C O M P O N E N T ================= -->
-<section id="white-banner" class="py-5">
+<section class="white-banner">
     <div class="container">
         <h2 class="text-center mx-auto mw-r">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus tempora numquam omnis et atque
@@ -33,23 +50,13 @@
                     <div class="items-container">
                         <div class="row">
                             <div class="col-md-6" *ngFor="let x of auctions">
-                                <div class="item">
-                                    <img src="{{x.image}}" alt="">
-                                    <h4 class="ws-700">
-                                        <a href="">{{x.title}}</a>
-                                    </h4>
-                                    <p class="mw-r">{{x.description}}</p>
-                                </div>
+                                <app-result-card [listing]="x"></app-result-card>
                             </div>
                         </div>
 
                     </div>
 
-                    <p>
-                        <a href="#">
-                            View All Auctions
-                        </a>
-                    </p>
+                    <p class="view_all_auctions_button">View All Auctions</p>
                 </div>
             </div>
         </div>
@@ -58,12 +65,12 @@
 <!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
 
 <!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
-<section id="brown-banner" class="py-5">
+<section class="brown-banner py-5">
     <div class="container text-center">
         <h3 class="mx-auto mb-4 text-white mw-r">
             Join to access our Premium Auctions
         </h3>
-        <button type="button" class="btn btn-light px-5 py-3 rounded-0 fw-bold fs-6 mw-l">
+        <button type="button" class="btn btn-deafult brown_banner_button">
             Enroll Today
         </button>
     </div>
@@ -80,23 +87,13 @@
                     <div class="items-container py-3">
                         <div class="row">
                             <div class="col-md-6" *ngFor="let x of auctions">
-                                <div class="item">
-                                    <img src="{{x.image}}" alt="">
-                                    <h4 class="ws-700">
-                                        <a href="">{{x.title}}</a>
-                                    </h4>
-                                    <p class="mw-r">{{x.description}}</p>
-                                </div>
+                                <app-result-card [listing]="x"></app-result-card>
                             </div>
                         </div>
 
                     </div>
 
-                    <p>
-                        <a href="#">
-                            View All Auctions
-                        </a>
-                    </p>
+                    <p class="view_all_auctions_button">View All Auctions</p>
                 </div>
             </div>
             <div class="col-lg-6 order-0 order-lg-1">
@@ -114,12 +111,12 @@
 
 
 <!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
-<section id="brown-banner" class="py-5">
+<section class="brown-banner py-5">
     <div class="container text-center">
         <h3 class="mx-auto mb-4 text-white mw-r">
-            Register today to bit and sell on our open market
+            Register today to bid and sell on our open market
         </h3>
-        <button type="button" class="btn btn-light px-5 py-3 rounded-0 fw-bold fs-6 mw-l">
+        <button type="button" class="btn btn-deafult brown_banner_button">
             Register Today
         </button>
     </div>
@@ -196,12 +193,12 @@
 
 
 <!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
-<section id="brown-banner" class="py-5">
+<section class="brown-banner py-5">
     <div class="container text-center">
         <h3 class="mx-auto mb-4 text-white mw-r">
             Would you like your auction to be featured?
         </h3>
-        <button type="button" class="btn btn-light px-5 py-2 rounded-0 fw-bold fs-6 mw-l">
+        <button type="button" class="btn btn-deafult brown_banner_button">
             Request Today
         </button>
     </div>
@@ -225,23 +222,13 @@
                     <div class="items-container py-3">
                         <div class="row">
                             <div class="col-md-6" *ngFor="let x of auctions">
-                                <div class="item">
-                                    <img src="{{x.image}}" alt="">
-                                    <h4 class="ws-700">
-                                        <a href="">{{x.title}}</a>
-                                    </h4>
-                                    <p class="mw-r">{{x.description}}</p>
-                                </div>
+                                <app-result-card [listing]="x"></app-result-card>
                             </div>
                         </div>
 
                     </div>
 
-                    <p>
-                        <a href="#">
-                            View All Auctions
-                        </a>
-                    </p>
+                    <p class="view_all_auctions_button">View All Auctions</p>
                 </div>
             </div>
         </div>
@@ -259,22 +246,12 @@
                     <div class="items-container py-3">
                         <div class="row">
                             <div class="col-md-6" *ngFor="let x of auctions">
-                                <div class="item">
-                                    <img src="{{x.image}}" alt="">
-                                    <h4 class="ws-700">
-                                        <a href="">{{x.title}}</a>
-                                    </h4>
-                                    <p class="mw-r">{{x.description}}</p>
-                                </div>
+                                <app-result-card [listing]="x"></app-result-card>
                             </div>
                         </div>
                     </div>
 
-                    <p>
-                        <a href="#">
-                            View All Auctions
-                        </a>
-                    </p>
+                    <p class="view_all_auctions_button">View All Auctions</p>
                 </div>
             </div>
             <div class="col-lg-6 order-0 order-lg-1">
@@ -307,23 +284,13 @@
                     <div class="items-container py-3">
                         <div class="row">
                             <div class="col-md-6" *ngFor="let x of auctions">
-                                <div class="item">
-                                    <img src="{{x.image}}" alt="">
-                                    <h4 class="ws-700">
-                                        <a href="">{{x.title}}</a>
-                                    </h4>
-                                    <p class="mw-r">{{x.description}}</p>
-                                </div>
+                                <app-result-card [listing]="x"></app-result-card>
                             </div>
                         </div>
 
                     </div>
 
-                    <p>
-                        <a href="#">
-                            View All Auctions
-                        </a>
-                    </p>
+                    <p class="view_all_auctions_button">View All Auctions</p>
                 </div>
             </div>
         </div>
@@ -341,22 +308,12 @@
                     <div class="items-container py-3">
                         <div class="row">
                             <div class="col-md-6" *ngFor="let x of auctions">
-                                <div class="item">
-                                    <img src="{{x.image}}" alt="">
-                                    <h4 class="ws-700">
-                                        <a href="">{{x.title}}</a>
-                                    </h4>
-                                    <p class="mw-r">{{x.description}}</p>
-                                </div>
+                                <app-result-card [listing]="x"></app-result-card>
                             </div>
                         </div>
                     </div>
 
-                    <p>
-                        <a href="#">
-                            View All Auctions
-                        </a>
-                    </p>
+                    <p class="view_all_auctions_button">View All Auctions</p>
                 </div>
             </div>
             <div class="col-lg-6 order-0 order-lg-1">
@@ -370,94 +327,5 @@
         </div>
     </div>
 </section>
-<!--* ================= E N D   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
 
-
-<!--* ================= S T A R T  S U B S C R I B E  B O X  C O M P O N E N T ================= -->
-<section id="subscribe-box" class="text-white text-center py-5">
-    <div class="container">
-        <h2>Subscribe</h2>
-        <p class="mb-3">To receive updates on upcoming actions</p>
-        <form>
-            <input type="text" placeholder="Email Address" class="py-1 px-4">
-        </form>
-    </div>
-</section>
-<!--* ================= E N D   S U B S C R I B E  B O X  C O M P O N E N T ================= -->
-
-
-<!--* ================= S T A R T  F O O T E R  C O M P O N E N T ================= -->
-<footer id="footer" class="pt-5">
-
-    <!--* logos & links & copyrights -->
-    <div class="container">
-        <div class="row">
-            <!--* footer logo columns -->
-            <div class="col-md-4">
-                <div class="footer-logo">
-                    <img src="../../../assets/images/Color_Transparent.png" class=" img-fluid rounded-circle" alt="">
-                </div>
-            </div>
-            <!--* footer links columns -->
-            <div class="col-md-8">
-                <div class="footer-links w-100">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="footer-link-col">
-                                <h5>About us</h5>
-                                <div class="links">
-                                    <a href="#">FAQs</a>
-                                    <a href="#">Resolution</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="footer-link-col">
-                                <h5>Resolution Center</h5>
-                                <div class="links">
-                                    <a href="#">FAQs</a>
-                                    <a href="#">Resolution</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="footer-link-col">
-                                <h5>Policies</h5>
-                                <div class="links">
-                                    <a href="#">Sellers</a>
-                                    <a href="#">Purchasers</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="footer-link-col">
-                                <h5>Help</h5>
-                                <div class="links">
-                                    <a href="#">FAQs</a>
-                                    <a href="#">Resolution</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--* footer copyrights columns -->
-            <div class="col-md-12">
-                <div
-                    class="footer-copyright d-flex justify-content-between align-items-center flex-column flex-lg-row text-center py-3 px-1" style="font-size:14px;">
-                    <p class="fw-bold mb-0 order-1 order-lg-0">© Bonded.co 2022. All rights reserved.</p>
-
-                    <div class="links order-0 order-lg-1 d-flex flex-column flex-md-row flex-wrap ">
-                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Accessibility</a>
-                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Terms of Use</a>
-                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Privacy</a>
-                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Cookies</a>
-                        <a href="#" class=" text-decoration-none mb-2 mb-md-0">Do not sell my information</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</footer>
+<app-footer></app-footer>

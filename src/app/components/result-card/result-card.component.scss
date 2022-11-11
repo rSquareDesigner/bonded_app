@@ -1,26 +1,31 @@
 @import '../../../globals.scss';
 
+.result_card {
+    padding: 30px 0;
+}
+
 .result_image {
-    max-width: 100%;
-    height: 180px;
-    object-fit:cover;
-    object-position: center;
-    background-color: lightgrey;
-    border: solid 4px white;
+    height: 170px;
+    max-width: 265px;
+    margin: 0 auto 10px auto;
     display: block;
+}
+
+.result_title {
+    text-align: center;
+    color: $color-two;
+    font-size: 32px;
+    font-family: 'worksans-700';
+    margin-bottom: 0;
+}
+
+.result_text {
+    text-align: center;
+    color: $color-five;
+    font-size: 18px;
+    font-family: 'merriweather-light';
+    max-width: 250px;
     margin: auto;
+    display: block;
 }
 
-.result_image:hover {
-    border: none;
-}
-
-.is_promoted {
-    background-color: gold;
-    color: black;
-    opacity: 0.8;
-    position: absolute;
-    top: 13px;
-    right: 5px;
-    padding: 0 10px;
-}

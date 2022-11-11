@@ -1,0 +1,90 @@
+@import '../../../globals.scss';
+
+
+.subscribe_title {
+    font-size: 42px;
+    font-family: 'worksans-700';
+    text-align: center;
+}
+
+.subscribe_text {
+    font-size: 24px;
+    font-family: 'merriweather-regular';
+    text-align: center;
+}
+
+#subscribe-box {
+    background-color: $color-two;
+}
+
+#subscribe-box form input {
+    width: 80%;
+    max-width: 90%;
+    border: 1px px solid transparent !important;
+    outline: none;
+    height: 60px;
+    font-size: 18px;
+    font-family: 'merriweather-regular';
+}
+
+#subscribe-box form input:focus {
+    -webkit-box-shadow: 0px 0px 5px rgba(56, 169, 240, 0.75);
+    -moz-box-shadow: 0px 0px 5px rgba(56, 169, 240, 0.75);
+    box-shadow: 0px 0px 5px rgba(56, 169, 240, 0.75);
+}
+
+
+#footer .footer-links .footer-link-col {
+    margin-bottom: 24px;
+}
+
+#footer .footer-links .footer-link-col h5 {
+    color: $color-one;
+}
+
+#footer .footer-links .footer-link-col .links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#footer .footer-links .footer-link-col .links a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 6px;
+    color: $color-two;
+    transition: 0.25s;
+}
+
+#footer .footer-links .footer-link-col .links a:hover {
+    color: $color-three;
+}
+
+#footer .footer-links .footer-link-col .links a:last-child {
+    margin-bottom: 0px;
+}
+
+#footer .footer-copyright p {
+    color: $color-three;
+}
+
+#footer .footer-copyright .links a {
+    margin-inline-end: 14px;
+    color: $color-three;
+    transition: 0.25s;
+}
+
+#footer .footer-copyright .links a:hover {
+    color: $color-two;
+}
+
+#footer .footer-copyright .links a:last-child {
+    margin-inline-end: 0px;
+}
+
+.footer-logo {
+    margin: auto;
+    display: block;
+    width: 100px;
+}

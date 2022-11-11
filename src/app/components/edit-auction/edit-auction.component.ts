@@ -25,6 +25,8 @@ export class EditAuctionComponent implements OnInit {
   //date selector
   selected_date: any = undefined;
   show_calendar_popup: boolean = false;
+  categories: string[] = ['Rye','Bourbon','Malt Whiskey','Other Spirits'];
+  duration_options: string[] = ['1 week','2 weeks','1 month'];
 
   //Subscriptions
   userServiceSubscription: Subscription = this.userService._getUser.subscribe((currentUser) => {
@@ -58,7 +60,11 @@ export class EditAuctionComponent implements OnInit {
   }
 
   dateSelected(){
-    if (this.selected_date) this.show_calendar_popup = false;
+    if (this.itemx.last_fill_date_raw) {
+      console.log('this.itemx.last_fill_date',this.itemx.last_fill_date_raw);
+      this.show_calendar_popup = false;
+      this.itemx.last_fill_date = JSON.stringify(this.itemx.last_fill_date_raw).slice(1,11);
+    }
   }
 
   uploadImage(){
@@ -90,10 +96,22 @@ export class EditAuctionComponent implements OnInit {
     
     var listing_object = {
       id: this.itemx.id ? this.itemx.id: null,
+      title: this.itemx.title,
       category: this.itemx.category,
+      distillery: this.itemx.distillery,
+      barrel_number: this.itemx.barrel_number,
+      internal_spirit: this.itemx.internal_spirit,
+      last_fill_date: this.itemx.last_fill_date,
+      total_age_of_spirits: this.itemx.total_age_of_spirits,
+      lot_id: this.itemx.lot_id,
       description: this.itemx.description,
-      end_time: Date.parse(this.selected_date),
-      price: this.itemx.price,
+      starting_bid: this.itemx.starting_bid,
+      auction_duration: this.itemx.auction_duration,
+      allow_offers: this.itemx.allow_offers,
+      reserve_price: this.itemx.reserve_price,
+      buy_now_price: this.itemx.buy_now_price,
+      //end_time: Date.parse(this.selected_date),
+      //price: this.itemx.price,
       timestamp: Date.now(),
       static_page_needs_update: true
     }
@@ -102,18 +120,18 @@ export class EditAuctionComponent implements OnInit {
       this.tablesService.AddItem('auctions',listing_object).subscribe((data:any) => {
         listing_object.id = data.id;
         
-        this.processImages(listing_object.id);
-        this.router.navigate(['auctions']);
+        //this.processImages(listing_object.id);
+        this.router.navigate(['']);
         
       });
     }
 
     else {
       this.tablesService.UpdateItem('auctions',listing_object).subscribe((data:any) => {
-        this.processImages(this.itemx.id);
+        //this.processImages(this.itemx.id);
         
         Object.assign(this.itemx, listing_object);
-        this.router.navigate(['auctions']);
+        this.router.navigate(['']);
       });
     }
   }
@@ -168,6 +186,10 @@ export class EditAuctionComponent implements OnInit {
       this.router.navigate(['auctions']);
     });
     
+  }
+
+  goto(route:any){
+    this.router.navigate([route]);
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from './../../services/common.service';
 import { TablesService } from './../../services/tables.service';
+import { AgreementsService } from './../../services/agreements.service';
 
 @Component({
   selector: 'app-home',
@@ -19,13 +20,19 @@ export class HomeComponent implements OnInit {
   premium_auctions: any[] = [];
   trending_auctions: any[] = [];
 
+  show_auction_options: boolean = false;
+
   constructor(
     public commonService: CommonService,
+    public agreementsService: AgreementsService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
 
+    
+    //this.agreementsService.createAgreement().subscribe();
+    
     this.setHeroImagesSlider();
     this.getAuctions();
   }
@@ -102,4 +109,19 @@ export class HomeComponent implements OnInit {
     console.log('go to', route_name);
     this.router.navigate([route_name]); 
   }
+
+  toogleShowAuctions(){
+    if (this.show_auction_options != true) this.show_auction_options = true;
+    else this.show_auction_options = false;
+  }
+
+  gotoAuctions(auctions_type:string){
+    this.show_auction_options = false;
+    this.redirectTo(['auctions/' + auctions_type],{});
+  }
+
+  redirectTo(route:any[],params:any){
+    this.router.navigateByUrl('/no-page', {skipLocationChange: true}).then(()=>
+    this.router.navigate(route, params));
+ }
 }

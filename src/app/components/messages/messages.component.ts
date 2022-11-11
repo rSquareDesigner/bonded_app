@@ -106,17 +106,17 @@ export class MessagesComponent implements OnInit, OnDestroy {
             this.listing.images = JSON.parse(this.listing.images);
             this.listing.images_urls = this.listing.images.map(n => {
               if (this.listing.image_optimization_complete == true)
-                return 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + n.replace('.jpeg','_sm.jpeg');
+                return 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + n.replace('.jpeg','_sm.jpeg');
               else
-                return 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + n;;
+                return 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + n;;
             });
-            this.listing.image = 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0].replace('.jpeg','_lg.jpeg');
+            this.listing.image = 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0].replace('.jpeg','_lg.jpeg');
           }
 
           if (this.listing.image_optimization_complete == true)
-            this.listing.image = 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0].replace('.jpeg', '_lg.jpeg');
+            this.listing.image = 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0].replace('.jpeg', '_lg.jpeg');
           else {
-            this.listing.image = 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0];
+            this.listing.image = 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0];
             this.krakenService.optimizeListingImages(this.listing.id).subscribe();
           }
 

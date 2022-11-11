@@ -16,25 +16,27 @@ export class ResultCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.listing) this.unwrapImages();
+    //if (this.listing) this.unwrapImages();
   }
 
   unwrapImages(){
     //unwrap image
+    /*
     if (this.listing.images) {
       
       this.listing.images_urls = JSON.parse(this.listing.images).map(n => {return 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + n});
       if (this.listing.image_optimization_complete == true) this.listing.imagex = this.listing.images_urls[0].replace('.jpeg','_sm.jpeg');
       else this.listing.imagex = this.listing.images_urls[0];
-    } 
+    }
+    */ 
   }
 
-  gotoItem(item){
+  gotoItem(item:any){
     var queryParams = {};
     this.redirectTo(['item-details/'+item.id], { queryParams: queryParams });
   }
 
-  redirectTo(route,params){
+  redirectTo(route:any,params:any){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate(route, params));
  }

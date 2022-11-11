@@ -1,5 +1,9 @@
 @import '../../../globals.scss';
 
+.form_section {
+    background-color: $color-four;
+}
+
 .form_container{
     width: 95%;
     max-width: 600px;
@@ -36,7 +40,6 @@
     display: block;
 }
 
-
 .delete_image_button {
     border-radius: 50%;
     position: absolute;
@@ -55,7 +58,43 @@
 }
 
 .calendar_popup{
-    width: 275px;
-    padding: 20px 0;
+    width: 320px;
+    padding: 20px;
     margin: auto;
+    background-color: white;
+    position: absolute;
+    border: solid 5px $color-two;
+}
+
+.button_secondaryx{
+    background-color: white;
+    border: solid 5px $color-two;
+    border-radius:0;
+    font-size: 18px;
+    font-family: 'merriweather-light';
+    width: 328px;
+    margin: 30px auto;
+    display: block;
+}
+
+.button_primaryx{
+    border-radius:0;
+    font-size: 24px;
+    font-family: 'merriweather-regular';
+    width: 328px;
+    margin: 30px auto;
+    display: block;
+}
+
+.logo_image{
+    width: 292px;
+    height: 292px;
+    object-fit: cover;
+}
+
+.golden_label{
+    font-size: 26px;
+    font-family: "worksans-700";
+    margin: 20px 0 10px 0;
+    color: $color-two;
 }
