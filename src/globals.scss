@@ -156,6 +156,44 @@ $color-five: #383436;
 }
 
 /****** FONTS ********/
+.golden_label{
+  font-size: 26px;
+  font-family: "worksans-700";
+  margin: 20px 0 10px 0;
+  color: $color-two;
+}
+
+.golden_label_large{
+  font-size: 36px;
+  font-family: "worksans-700";
+  margin: 20px 0 10px 0;
+  color: $color-two;
+}
+
+.golden_light{
+  font-size: 22px;
+  font-family: 'worksans-300';
+  color: $color-two;
+}
+
+.bold_blue{
+  font-size: 32px;
+  font-family: 'worksans-700';
+  color: $color-one;
+}
+
+.blue_regular{
+  font-size:18px;
+  font-family: 'merriweather-regular';
+  color: $color-one;
+}
+
+.golden_discrete{
+  font-size:12px;
+  color: $color-two;
+  font-family: 'merriweather-regular';
+}
+
 .mw-l {
   font-family: 'merriweather-light';
 }
@@ -269,6 +307,7 @@ $color-five: #383436;
   font-size: 18px;
   font-family: 'merriweather-regular';
   margin: 12px 0 5px 0;
+  color: $color-one;
 }
 
 .alert_message {

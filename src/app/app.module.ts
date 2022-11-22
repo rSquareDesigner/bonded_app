@@ -16,6 +16,15 @@ import { DatabaseComponent } from './components/database/database.component';
 import { SystemComponent } from './components/system/system.component';
 import { ResultCardComponent } from './components/result-card/result-card.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RecentlyViewedComponent } from './components/recently-viewed/recently-viewed.component';
+import { BidsAndOffersComponent } from './components/bids-and-offers/bids-and-offers.component';
+import { PurchasesComponent } from './components/purchases/purchases.component';
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { SellingComponent } from './components/selling/selling.component';
+import { AccountDetailsComponent } from './components/account-details/account-details.component';
+import { AccountComponent } from './components/account/account.component';
+import { InboxComponent } from './components/inbox/inbox.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 
 
@@ -33,7 +42,16 @@ import { FooterComponent } from './components/footer/footer.component';
     DatabaseComponent,
     SystemComponent,
     ResultCardComponent,
-    FooterComponent
+    FooterComponent,
+    RecentlyViewedComponent,
+    BidsAndOffersComponent,
+    PurchasesComponent,
+    WatchlistComponent,
+    SellingComponent,
+    AccountDetailsComponent,
+    AccountComponent,
+    InboxComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

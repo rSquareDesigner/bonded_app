@@ -1,303 +1,42 @@
-
-<div class="cc ccx">
-    <div class="content_container" *ngIf="user" style="max-width:450px;">
-        <button class="btn btn-default back_button d-block d-md-none" (click)="goBack()">
-            <i class="fa fa-chevron-left"></i>
+<app-navbar></app-navbar>
+<section class="sub_navbar">
+    <img class="logo_stamp" src="../../../assets/images/Color_Transparent.png" (click)="goto('/')">
+    <div class="hero_buttons_container">
+        <button class="btn btn-default hero_button_blue ">BROWSE AUCTIONS
+            <i class="fa fa-caret-down"></i>
         </button>
-        <div class="col-12 text-center" style="padding-top: 30px;">
-                <img class="profile_image" src="{{user.image}}">
-                <i class="fa fa-pencil edit_image_icon" (click)="editProfileImage()"></i>
-                <div class="profile_name_container">
-                    <strong style="font-size: 20px;">{{user.name}}</strong><br>
-                    Member since {{user.sign_up_date_humanized}}
-                </div>
-        </div>
-        <div class="settings_container">
-            <h2 class="page_title">Settings</h2>
-            <ul style="list-style-type: none;max-width: 400px;">
-                <li class="list_itemx">{{user.name}}
-                    <span>
-                        <button class="btn btn-default settings_edit_button" (click)="showEditName()">Edit</button>
-                    </span>
-                </li>
-                <li class="list_itemx">{{user.email}}
-                    &nbsp;
-                    <span *ngIf="user.email_has_been_verified == true">
-                        <i class="fa fa-check verified_icon"></i>
-                    </span>
-                    <span *ngIf="user.email_has_been_verified != true">
-                        <i class="fa fa-minus not_verified_icon"></i>
-                    </span>
-                    <span>
-                        <button class="btn btn-default settings_edit_button" (click)="showEditEmail()">Edit</button>
-                    </span>
-                </li>
-                <li class="list_itemx">Phone Number
-                    &nbsp;
-                    <span *ngIf="user.phone_has_been_verified == true">
-                        <i class="fa fa-check verified_icon"></i>
-                    </span>
-                    <span *ngIf="user.phone_has_been_verified != true">
-                        <i class="fa fa-minus not_verified_icon"></i>
-                    </span>
-                    <span>
-                        <button class="btn btn-default settings_edit_button" (click)="showEditPhone()">Edit</button>
-                    </span>
-                </li>
-                <li class="list_itemx">Set location
-                    <span>
-                        <button class="btn btn-default settings_edit_button" (click)="showEditLocation()">Edit</button>
-                    </span>
-                </li>
-                <li class="list_itemx">Password
-                    <span>
-                        <button class="btn btn-default settings_edit_button" (click)="showEditPassword()">Edit</button>
-                    </span>
-                </li>
-                <li class="list_itemx" (click)="logout()">Logout
-                    
-                </li>
-            </ul>
-        </div>
-        
+        <button class="btn btn-default hero_button_blue">START A LISTING</button>
     </div>
-</div>
-
-<div class="modal fade" id="editNameModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-                <h1 class="modal_title">Edit Name</h1>
-                <div style="padding:30px 0 10px 0">
-                    <input type="text" [(ngModel)]="user_name" class="form-control" (ngModelChange)="clearAlerts()">
-                </div>
-                <div *ngIf="invalid_user_name" class="alert_message">{{invalid_user_name}}</div>
-                
-                <div class="text-center" style="padding: 25px 0;">
-                    <button type="button" class="btn btn-default button_primary" (click)="saveName()">SAVE</button>
-                </div>
+</section>
+<section class="form_section">
+    <div class="content_container">
+        <h1 class="golden_label_large">My Account</h1>
+        <div class="text-start" style="padding: 30px 0;">
+            <button class="btn btn-default menu_one" (click)="top_selection = 'activity'">Activity</button>
+            <button class="btn btn-default menu_one" (click)="top_selection = 'messages'">Messages</button>
+            <button class="btn btn-default menu_one" (click)="top_selection = 'account'">Account</button>
+        </div>
+        <div *ngIf="top_selection == 'activity'">
+            <div class="text-start">
+                <button class="btn btn-default menu_two" (click)="bottom_selection = 'recently viewed'">Recently Viewed</button>
+                <button class="btn btn-default menu_two" (click)="bottom_selection = 'bids & offers'">Bids & Offers</button>
+                <button class="btn btn-default menu_two" (click)="bottom_selection = 'purchases'">Purchases</button>
+                <button class="btn btn-default menu_two" (click)="bottom_selection = 'watchlist'">Watchlist</button>
+                <button class="btn btn-default menu_two" (click)="bottom_selection = 'selling'">Selling</button>
             </div>
+            <app-recently-viewed *ngIf="bottom_selection == 'recently viewed'"></app-recently-viewed>
+            <app-bids-and-offers *ngIf="bottom_selection == 'bids & offers'"></app-bids-and-offers>
+            <app-purchases *ngIf="bottom_selection == 'purchases'"></app-purchases>
+            <app-watchlist *ngIf="bottom_selection == 'watchlist'"></app-watchlist>
+            <app-selling *ngIf="bottom_selection == 'selling'"></app-selling>
         </div>
-    </div>
-</div>
-
-<div class="modal fade" id="editEmailModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-                
-                <div *ngIf="email_change_step == 1" class="form-group col-12">
-                    <h1 class="modal_title">Edit Email</h1>
-                    <div style="padding:30px 0">
-                        <input type="text" [(ngModel)]="user_email" class="form-control" (ngModelChange)="clearAlerts()">
-                    </div>
-                    <div *ngIf="invalid_user_email" class="alert_message">{{invalid_user_email}}</div>
-                    <p style="padding-left: 10px; color:grey;"><i class="fa fa-lock"></i>&nbsp;Editing will require verification</p>
-                </div>
-                <div *ngIf="email_change_step == 2" class="form-group col-12" style="padding-top: 30px;">
-                    <p>Please enter the verification code that was sent to <em>{{user.email}}</em></p>
-                    <div class="text-center">
-                        <input id="digit_1" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_1" (ngModelChange)="evalAccessCode(1)">
-                        <input id="digit_2" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_2" (ngModelChange)="evalAccessCode(2)">
-                        <input id="digit_3" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_3" (ngModelChange)="evalAccessCode(3)">
-                        <input id="digit_4" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_4" (ngModelChange)="evalAccessCode(4)">
-                        <input id="digit_5" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_5" (ngModelChange)="evalAccessCode(5)">
-                        <input id="digit_6" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_6" (ngModelChange)="evalAccessCode(6)">
-                    </div>
-                </div>
-
-                <div class="text-center" style="padding: 25px 0;">
-                    <button *ngIf="email_change_step == 1" type="button" class="btn btn-default button_primary" (click)="verifyEmail()">VERIFY</button>
-                    <button *ngIf="email_change_step == 2" type="button" class="btn btn-default button_primary" (click)="submitEmailVerificationCode()">SUBMIT</button>
-                </div>
-            </div>
+        <div *ngIf="top_selection == 'messages'">
+            <app-inbox></app-inbox>
         </div>
-    </div>
-</div>
-
-<div class="modal fade" id="editPhoneModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-
-                <div *ngIf="phone_change_step == 1" class="form-group col-12">
-                
-                    <h1 class="modal_title">Phone Verification</h1>
-                    <p>Add a phone number to your account to create listings and to message other users.
-                    </p>
-                    <div style="padding:30px 0">
-                        <label>Mobile number</label><br>
-                        <input type="text" [(ngModel)]="user_phone" class="form-control" (ngModelChange)="clearAlerts()">
-                        <div *ngIf="invalid_user_phone" class="alert_message">{{invalid_user_phone}}</div>
-                    </div>
-                
-                </div>
-
-                <div *ngIf="phone_change_step == 2" class="form-group col-12" style="padding-top: 30px;">
-                    <p>Please enter the verification code that was sent to <em>{{user_phone}}</em></p>
-                    <div class="text-center">
-                        <input id="digit_1" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_1" (ngModelChange)="evalAccessCode(1)">
-                        <input id="digit_2" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_2" (ngModelChange)="evalAccessCode(2)">
-                        <input id="digit_3" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_3" (ngModelChange)="evalAccessCode(3)">
-                        <input id="digit_4" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_4" (ngModelChange)="evalAccessCode(4)">
-                        <input id="digit_5" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_5" (ngModelChange)="evalAccessCode(5)">
-                        <input id="digit_6" type="text" class="form-control digit_input" maxlength="1" [(ngModel)]="digit_6" (ngModelChange)="evalAccessCode(6)">
-                    </div>
-                </div>
-                
-                
-                <div class="text-center" style="padding: 25px 0;">
-                    <button type="button" class="btn btn-default button_secondary" style="margin: 0 7px" data-dismiss="modal">CANCEL</button>
-                    <button *ngIf="phone_change_step == 1" type="button" class="btn btn-default button_primary" style="min-width:150px" (click)="sendPhoneCode()">SEND CODE</button>
-                    <button *ngIf="phone_change_step == 2" type="button" class="btn btn-default button_primary" style="min-width:150px" (click)="confirmPhoneCode()">CONFIRM</button>
-                </div>
-            </div>
+        <div *ngIf="top_selection == 'account'">
+            <app-account-details></app-account-details>
         </div>
+
     </div>
-</div>
-
-<div class="modal fade" id="editLocationModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-                <h1 class="modal_title">Set Location</h1>
-                <p>Set your location so we can calculate distance to items</p>
-                <div style="padding:30px 0;max-width:225px;margin: auto;">
-                    <label>Zip Code</label><br>
-                    <input type="text" style="text-align: center;" [(ngModel)]="user_zipcode" class="form-control" (ngModelChange)="evalZipCode(); clearAlerts();">
-                    <div *ngIf="invalid_user_zipcode" class="alert_message">{{invalid_user_zipcode}}</div>
-                    <p class="location_text">{{location.city}}, {{location.state}}</p>
-                </div>
-                
-                <div class="text-center" style="padding: 25px 0;">
-                    <button type="button" class="btn btn-default button_primary" style="min-width:150px" (click)="saveZipCode()">SAVE</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="editPasswordModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-                <h1 class="modal_title">Reset Password</h1>
-                <div style="padding-top:30px;">
-                    <label>Current Password</label><br>
-                    <input type="password" [(ngModel)]="password_current" class="form-control" (ngModelChange)="clearAlerts()">
-                </div>
-                <div *ngIf="invalid_password_current" class="alert_message">{{invalid_password_current}}</div>
-                <div style="padding:30px 0;">
-                    <label>New Password</label><br>
-                    <input type="password" [(ngModel)]="password_new" class="form-control" (ngModelChange)="clearAlerts()">
-                    <div *ngIf="invalid_password_new" class="alert_message">{{invalid_password_new}}</div>
-
-                    <label>Confirm Password</label><br>
-                    <input type="password" [(ngModel)]="password_new_confirm" class="form-control" (ngModelChange)="clearAlerts()">
-                    <div *ngIf="invalid_password_new_confirm" class="alert_message">{{invalid_password_new_confirm}}</div>
-                </div>
-                
-                <div class="text-center" style="padding: 25px 0;">
-                    <button type="button" class="btn btn-default button_primary" style="min-width:150px" (click)="savePassword()">SUBMIT</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="emailVerificationSuccessModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-                <p style="padding-top:40px;text-align:center;">Thank you! Your email has been verified successfully.</p>
-                
-                <div class="text-center" style="padding: 25px 0;">
-                    <button type="button" class="btn btn-default button_primary" style="min-width:150px" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="phoneVerificationSuccessModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-                <p style="padding-top:40px;text-align:center;">Thank you! Your phone has been verified successfully.</p>
-                
-                <div class="text-center" style="padding: 25px 0;">
-                    <button type="button" class="btn btn-default button_primary" style="min-width:150px" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="changePasswordSuccessModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-                <p style="padding-top:40px;text-align:center;">Your password has been changed.</p>
-                
-                <div class="text-center" style="padding: 25px 0;">
-                    <button type="button" class="btn btn-default button_primary" style="min-width:150px" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="profileImageModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal_body" *ngIf="user">
-                <div class="text-right">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-                <app-profile-image-upload [previewUrl]="user.image" [ratio]="1/1" [shape]="'rectangular'"
-                    (imageLoadedEvent)='saveProfileImage($event)' (cropperActiveEvent)="setCropperActive($event)">
-                </app-profile-image-upload>
-                
-                
-                <div class="text-center" style="padding: 25px 0;" *ngIf="cropper_active != true;">
-                    <button type="button" class="btn btn-default button_primary" style="min-width:150px" data-dismiss="modal">OK</button>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
+</section>
+<app-footer></app-footer>

@@ -145,12 +145,14 @@ export class NavbarComponent implements OnInit {
     $(".navbar-collapse").collapse('hide');
     this.user_menu_visible = false;
 
+    /*
     if (!this.user){
       if (route == 'saved-items' || route == 'inbox' || route == 'my-listings' || route == 'account'){
         $('#loginModal').modal('show');
         return;
       }
     }
+    */
 
     this.router.navigate([route]);
   }

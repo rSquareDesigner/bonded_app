@@ -1,0 +1,9 @@
+<div class="cards_container">
+    <div class="items-container">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let x of recently_viewed_auctions">
+                <app-result-card [listing]="x"></app-result-card>
+            </div>
+        </div>
+    </div>
+</div>

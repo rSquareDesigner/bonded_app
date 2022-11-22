@@ -1,13 +1,55 @@
 <app-navbar></app-navbar>
 
 <section class="sub_navbar">
-    <img class="logo_stamp" src="../../../assets/images/Color_Transparent.png">
+    <img class="logo_stamp" src="../../../assets/images/Color_Transparent.png" (click)="goto('/')">
     <div class="hero_buttons_container">
         <button class="btn btn-default hero_button_blue ">BROWSE AUCTIONS
             <i class="fa fa-caret-down"></i>
         </button>
-        <button class="btn btn-default hero_button_blue">START A LISTING</button>
+        <button class="btn btn-default hero_button_blue" (click)="goto('edit-auction/0')">START A LISTING</button>
     </div>
+</section>
+
+<section class="content_section">
+<div class="row content_container" style="max-width: 1100px">
+    <div class="col-6" style="padding-right: 60px;">
+        <img class="main_image" src="https://images.unsplash.com/photo-1627125288918-35254117cf92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80">
+    </div>
+    <div class="col-6">
+        <label class="golden_label" style="margin-top:0;">{{listing.title}}</label><br>
+        <label class="golden_light">Description</label><br>
+        <p style="padding: 20px 0;">
+            {{listing.description}}
+        </p>
+        <label class="golden_light">Details</label><br>
+        <label class="labelf">Distillery</label>&nbsp;&nbsp;<span>{{listing.distillery}}</span><br>
+        <label class="labelf">Barrel Number</label>&nbsp;&nbsp;<span>{{listing.barrel_number}}</span><br>
+        <label class="labelf">Internal Spirit</label>&nbsp;&nbsp;<span>{{listing.internal_spirit}}</span><br>
+        <label class="labelf">Last Fill Date</label>&nbsp;&nbsp;<span>{{listing.last_fill_date}}</span><br>
+        <label class="labelf">Total Age of Spirits</label>&nbsp;&nbsp;<span>{{listing.total_age_of_spirits}}</span><br>
+        <label class="labelf">Lot Identification Number</label>&nbsp;&nbsp;<span>{{listing.lot_id}}</span><br>
+        <div class="row" style="padding:50px 0;">
+            <div class="col-5">
+                <div class="golden_label" style="margin-top:0;">Current Bid:</div>
+            </div>
+            <div class="col-7" style="padding-left: 0;">
+                <div class="bold_blue">${{listing.current_bid}}</div>
+                <div style="padding:10px 0;">
+                    <input type="text" class="form-control bid_input" placeholder="Bid Amount">
+                    <button class="btn btn-default button_primary bid_button">Bid Now</button>
+                </div>
+                <div style="padding:10px 0;">
+                    <h2 class="bold_blue buy_now_price">${{listing.buy_now_price}}</h2>
+                    <button class="btn btn-default button_primary buy_now_button">Buy Now</button>
+                </div>
+                <div style="padding:10px 0;">
+                    <h4 class="blue_regular winning_bid_label">Winning Bid:</h4>
+                    <h4 class="blue_regular winning_bid_user_name">johndoe67</h4>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
 </section>
 
 <app-footer></app-footer>

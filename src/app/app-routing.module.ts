@@ -7,13 +7,17 @@ import { AccountComponent } from './components/account/account.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuctionsComponent } from './components/auctions/auctions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'auctions/:type', component: AuctionsComponent },
-  {path: 'auction-details/:auction_id', component: ListingDetailsComponent },
+  {path: 'listing-details/:listing_id', component: ListingDetailsComponent },
   {path: 'edit-auction/:auction_id', component: EditAuctionComponent },
   {path: 'account', component: AccountComponent },
+  {path: 'login', component: LoginComponent },
+  {path: 'register', component: RegisterComponent },
   {path: 'admin', component: AdminComponent },
   {path: 'admin/:view', component: AdminComponent },
   {path: '**', component: NotFoundComponent}
@@ -31,5 +35,7 @@ export const routingComponents = [
   AccountComponent,
   AdminComponent,
   NotFoundComponent,
-  AuctionsComponent
+  AuctionsComponent,
+  LoginComponent,
+  RegisterComponent
 ];

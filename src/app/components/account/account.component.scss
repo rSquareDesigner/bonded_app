@@ -1,90 +1,35 @@
 @import '../../../globals.scss';
 
-.profile_image {
-    width: 125px;
-    height: 125px;
-    border: solid 1px lightgrey;
-    border-radius: 50%;
+.form_section {
+    background-color: $color-four;
+    min-height: 800px;
 }
 
-.stats_button {
-    width: 100px;
-    font-size: 18px;
-}
-
-.ccx {
-    padding-top:100px;
-}
-
-.no_items_image {
-    width: 275px;
+.content_container{
+    width: 100%;
+    max-width: 1100px;
     margin: auto;
     display: block;
 }
 
-.no_items_label {
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    padding: 30px 0;
+.menu_one{
+    border:none;
+    font-size: 28px;
+    font-family: 'merriweather-light';
+    color: $color-five;
 }
 
-.profile_name_container {
-    display: block;
-    padding: 15px 0;
+.menu_one:hover{
+    text-decoration: underline;
 }
 
-.list_itemx {
-    border-bottom: solid 1px lightgrey;
-    padding: 15px 0;
+.menu_two{
+    border:none;
+    font-size: 28px;
+    font-family: 'merriweather-bold';
+    color: $color-five;
 }
 
-.settings_edit_button {
-    float: right;
-    color: $color-one;
-}
-
-.digit_input {
-    width: 35px;
-    display: inline-block;
-    margin: 0 3px;
-}
-
-.location_text {
-    text-align: center;
-    padding: 5px;
-    margin: 0;
-    font-style: italic;
-    color: grey;
-}
-
-.edit_image_icon {
-    position: absolute;
-    border: solid 1px lightgrey;
-    border-radius: 50%;
-    padding: 7px;
-    color: grey;
-    background-color: white;
-    right: calc(50% - 70px);
-    cursor:pointer;
-}
-
-.verified_icon {
-    color: white;
-    background-color: $color-one;
-    padding: 6px 6px;
-    border-radius: 50%;
-}
-
-.not_verified_icon {
-    color: white;
-    background-color: lightgrey;
-    padding: 6px 6px;
-    border-radius: 50%;
-}
-
-@media only screen and (max-width: 768px) {
-    .ccx {
-        padding-top: 0;
-    }
+.menu_two:hover{
+    text-decoration: underline;
 }

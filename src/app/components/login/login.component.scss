@@ -1,0 +1,39 @@
+@import '../../../globals.scss';
+
+.form_section {
+    background-color: $color-four;
+    padding: 70px 0;
+}
+
+.form_container {
+    text-align:center;
+    width: 95%;
+    max-width: 754px;
+    margin: auto;
+    display: block;
+}
+
+.auth_option_logo{
+    font-size: 40px;
+    color: $color-two;
+    border-radius: 50%;
+    border: solid 1px $color-two;
+    padding:20px;
+    margin: 0 15px;
+    cursor:pointer;
+}
+
+.auth_option_logo:hover{
+    color:white;
+    background-color: $color-two;
+}
+
+.form_input_container{
+    padding: 10px 3px;
+}
+
+.continue_button{
+    font-size: 20px;
+    font-family: 'worksans-700';
+    width: 300px;
+}

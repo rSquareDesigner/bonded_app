@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+
+<section class="sub_navbar">
+    <img class="logo_stamp" src="../../../assets/images/Color_Transparent.png" (click)="goto('/')">
+    <div class="hero_buttons_container">
+        <button class="btn btn-default hero_button_blue ">BROWSE AUCTIONS
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <button class="btn btn-default hero_button_blue" (click)="goto('edit-auction/0')">START A LISTING</button>
+    </div>
+</section>
+<section class="form_section">
+    <div class="form_container">
+    <h1 class="golden_label_large" style="margin-bottom:30px">Create an Account</h1>
+    <div class="row">
+        <div class="col-5 form_input_container">
+            <input type="text" class="form-control" placeholder="First Name">
+        </div>
+        <div class="col-7 form_input_container">
+            <input type="text" class="form-control" placeholder="Last Name">
+        </div>
+        <div class="col-12 form_input_container">
+            <input type="text" class="form-control" placeholder="Email">
+        </div>
+        <div class="col-12 form_input_container">
+            <input type="password" class="form-control" placeholder="Password">
+        </div>
+        <div class="col-12 form_input_container">
+            <input type="password" class="form-control" placeholder="Confirm Password">
+        </div>
+    </div>
+    <div class="text-center golden_discrete" style="padding:70px 0;">
+        By creating an account you agree to our<br>
+        Terms of Service and Privacy Policy
+    </div>
+    <div class="text-center">
+        <button class="btn btn-default button_primary continue_button">CONTINUE</button>
+    </div>
+    <div class="text-center" style="padding:70px 0;">
+        <i class="fa fa-facebook auth_option_logo" style="padding: 20px 27px;"></i>
+        <i class="fa fa-apple auth_option_logo" style="padding: 20px 23px;"></i>
+        <i class="fa fa-google auth_option_logo"></i>
+    </div>
+    <div class="text-center golden_discrete">
+        Already have an account?
+    </div>
+</div>
+</section>
+<app-footer></app-footer>

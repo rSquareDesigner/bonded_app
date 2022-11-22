@@ -1,0 +1,68 @@
+
+    <p>Inbox works</p>
+    <div class="content_container" style="max-width:1285px" *ngIf="chats">
+        <h2 class="page_title">Inbox</h2>
+        <div class="text-center" *ngIf="chats.length == 0">
+            <img class="surfboard_image" src="../../../assets/images/palm_tree.png">
+            <h3 class="page_headline">Inbox is empty</h3>
+            <p><em>You currently dont have any messages</em></p>
+            <!--
+            <button class="btn btn-default button_primary" style="margin-top: 20px;" (click)="openListing(undefined)">Post</button>
+            -->
+        </div>
+
+        <div class="tablex text-left" style="padding: 20px 0;">
+            <button class="btn btn-default" [ngClass]="{'selected': selection == 'messages'}" (click)="changeSelection('messages')">Messages</button>
+            <button class="btn btn-default" [ngClass]="{'selected': selection == 'notifications'}" (click)="changeSelection('notifications')">Notifications</button>
+        </div>
+        
+        <div *ngIf="selection == 'messages'">
+            <div *ngIf="chats.length > 0">
+        
+                <table class="table table-hover tablex" *ngIf="selection == 'messages'">
+                    <tbody>
+                        <tr *ngFor="let x of chats" style="cursor:pointer;" (click)="gotoChat(x)">
+                            <td style="width: 100px;">
+                                <img class="image_table" style="border-radius:50%" src="{{x.user_image}}">
+                            </td>
+                            <td style="vertical-align: middle;">
+                                <strong [ngClass]="{'disabled_color': x.user_is_disabled == true}">{{x.user_name}}</strong><br>
+                                <span [ngClass]="{'bold_text': x.message_unread == true}">{{x.last_message}}</span><br>
+                                <span class="when_text">{{x.when}}</span>
+                            </td>
+                            <td style="vertical-align: middle; width: 100px;">
+                                <img class="image_table" src="{{x.listing_image}}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="selection == 'messages' && chats.length == 0">
+                <p style="padding:30px 0;text-align:center;"><em>You don't have any messages</em></p>
+            </div>
+        </div>
+
+        <div *ngIf="selection == 'notifications'">
+            <div *ngIf="notifications.length > 0">
+        
+                <table class="table table-hover tablex" *ngIf="selection == 'notifications'">
+                    <tbody>
+                        <tr *ngFor="let x of notifications" style="cursor:pointer;" (click)="gotoTransactionFeedback(x)">
+                            <td style="vertical-align: middle;">
+                                <span [ngClass]="{'bold_text': x.has_been_read == true}">{{x.text}}</span><br>
+                                <span class="when_text">{{x.when}}</span>
+                            </td>
+                            <td style="vertical-align: middle; width: 100px;">
+                                <img class="image_table" src="{{x.image}}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="selection == 'notifications' && notifications.length == 0">
+                <p style="padding:30px 0;text-align:center;"><em>You don't have any notifications</em></p>
+            </div>
+        </div>
+    </div>
+
+

@@ -1,4 +1,5 @@
-<div class="cc ccx" >
+
+    <p>Messages works</p>
     <div class="content_container">
         <button class="btn btn-default" (click)="goto('inbox')">Back to inbox</button>
         <div class="row" style="margin:0" *ngIf="chat">
@@ -11,7 +12,8 @@
                         <p class="listing_text_header">{{listing.type}}</p>
                     </div>
                 </div>
-                <div class="messages_container" id="messages_container">
+                <div class="messages_container" id="messages_container" 
+                    [ngStyle]="{'border-bottom': chat.user_is_disabled == true ? 'solid 1px lightgrey': 'none'}">
                     <div *ngFor="let x of messages">
                         <div class="my_messages text-right" *ngIf="x.user_id == user.id">
                             <p class="date_time_label">{{x.date_time}}</p>
@@ -29,9 +31,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="input_container">
-                    <input class="form-control message_input" type="text" [(ngModel)]="user_message" placeholder="Message..."  (keyup.enter)="sendMessage()">
-                    <button class="btn btn-default send_button" [ngClass]="{'button_primary': user_message, 'button_secondary': !user_message}" (click)="sendMessage()">Send</button>
+                <div class="input_container" [ngClass]="{'message_disabled': chat.user_is_disabled == true}">
+                        <input class="form-control message_input" type="text" [(ngModel)]="user_message" placeholder="Message..."
+                            (keyup.enter)="sendMessage()">
+                        <button class="btn btn-default send_button"
+                            [ngClass]="{'button_primary': user_message, 'button_secondary': !user_message}"
+                            (click)="sendMessage()">Send</button>
                 </div>
             </div>
             <div class="d-none d-md-block col-md-4" *ngIf="listing">
@@ -47,4 +52,3 @@
             </div>
         </div>
     </div>
-</div>

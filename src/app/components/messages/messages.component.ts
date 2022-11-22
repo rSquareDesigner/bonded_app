@@ -5,6 +5,7 @@ import { CommonService } from '../../services/common.service';
 import { UserService } from '../../services/user.service';
 import { KrakenService } from '../../services/kraken.service';
 import { MailingService } from '../../services/mailing.service';
+//import { TwilioService } from '../../services/twilio.service';
 import { NavigationService } from '../../services/navigation.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   listing: any;
   user: any;
 
-  user_message: string;
+  user_message: string | undefined;
 
   messages: any[] = [];
   messages_interval: any;
@@ -30,6 +31,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     public userService: UserService,
     public krakenService: KrakenService,
     public mailingService: MailingService,
+    //public twilioService: TwilioService,
     public navigationService: NavigationService,
     private route: ActivatedRoute,
     private router: Router
@@ -71,7 +73,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
       if (this.messages.length == data.length) return;
 
-      this.messages = data.sort((a,b) => {return a.timestmp - b.timestmp});
+      this.messages = data.sort((a:any,b:any) => {return a.timestmp - b.timestmp});
       
       this.messages.forEach(x => {
         x.date_time = this.commonService.getDateTime(x.timestmp);
@@ -102,22 +104,24 @@ export class MessagesComponent implements OnInit, OnDestroy {
         this.tablesService.GetFiltered('listings', 'id', this.chat.listing_id).subscribe((res: any) => {
           this.listing = res[0];
           
-          if (this.listing.images) {
-            this.listing.images = JSON.parse(this.listing.images);
-            this.listing.images_urls = this.listing.images.map(n => {
-              if (this.listing.image_optimization_complete == true)
-                return 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + n.replace('.jpeg','_sm.jpeg');
-              else
-                return 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + n;;
-            });
-            this.listing.image = 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0].replace('.jpeg','_lg.jpeg');
-          }
+          if (this.listing) {
+            if (this.listing.images) {
+              this.listing.images = JSON.parse(this.listing.images);
+              this.listing.images_urls = this.listing.images.map((n:any) => {
+                if (this.listing.image_optimization_complete == true)
+                  return 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + n.replace('.jpeg', '_sm.jpeg');
+                else
+                  return 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + n;;
+              });
+              this.listing.image = 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0].replace('.jpeg', '_lg.jpeg');
+            }
 
-          if (this.listing.image_optimization_complete == true)
-            this.listing.image = 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0].replace('.jpeg', '_lg.jpeg');
-          else {
-            this.listing.image = 'https://seelbach.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0];
-            this.krakenService.optimizeListingImages(this.listing.id).subscribe();
+            if (this.listing.image_optimization_complete == true)
+              this.listing.image = 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0].replace('.jpeg', '_lg.jpeg');
+            else {
+              this.listing.image = 'https://surfgenie.blob.core.windows.net/listings/' + this.listing.id + '/' + this.listing.images[0];
+              this.krakenService.optimizeListingImages(this.listing.id).subscribe();
+            }
           }
 
         });
@@ -128,10 +132,18 @@ export class MessagesComponent implements OnInit, OnDestroy {
         else if (this.chat.user2_id == this.user.id) user_id = this.chat.user_id;
 
         if (user_id){
-          this.tablesService.GetFiltered('users','id',user_id).subscribe((res:any) => {
+          this.tablesService.GetFilteredX('users','id',user_id,'id,name,image,sign_up_date,number_of_reviews').subscribe((res:any) => {
             var user_record = res[0];
-            this.chat.user_image = user_record.image;
-            this.chat.user_name = user_record.name;
+            if (user_record){
+              this.chat.user_image = user_record.image;
+              this.chat.user_name = user_record.name;
+            }
+            else {
+              this.chat.user_image = '../../../assets/images/noimage.png';
+              this.chat.user_name = 'User';
+              this.chat.user_is_disabled = true;
+            }
+            
           });
         }
 
@@ -165,6 +177,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   sendMessage(){
+
+    //ignore if message is blank
+    if (!this.user_message || this.user_message.length == 0 || this.user_message.replace(/\s/g,'').length == 0) return;
+
     var message_object = {
       chat_id: this.chat.id,
       text: this.user_message,
@@ -181,7 +197,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     });
 
     //update chat's last message
-    var chat_object = {
+    var chat_object:any = {
       id: this.chat.id,
       last_message: this.user_message,
     }
@@ -200,6 +216,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
       this.listing.type + ', $' + this.listing.price,
       this.listing.image.replace('_lg.jpeg','_sm.jpeg'),
       this.listing.description);
+
+      /*
+    this.twilioService.messageNotification({
+      user_id: this.chat.user_id == this.user.id ? this.chat.user2_id:this.chat.user_id,
+      chat_id: this.chat.id
+    });
+    */
 
   }
 
@@ -225,11 +248,11 @@ export class MessagesComponent implements OnInit, OnDestroy {
     }, 200);
   }
 
-  goto(routename){
+  goto(routename:string){
     this.router.navigate([routename]); 
   }
 
-  showImage(image){
+  showImage(image:string){
     this.listing.image = image.replace('_sm.jpeg','_lg.jpeg');
   }
 

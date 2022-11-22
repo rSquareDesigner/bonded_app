@@ -1,1 +1,45 @@
 @import '../../../globals.scss';
+
+.content_section {
+    background-color: $color-four;
+}
+
+.main_image {
+    width: 100%;
+}
+
+.bid_input{
+    width: calc(100% - 150px);
+    display: inline-block;
+    border-radius: 0;
+}
+
+.bid_button{
+    width: 130px;
+    min-width: auto;
+    vertical-align: baseline;
+    margin-left: 20px;
+}
+
+.buy_now_price{
+    width: calc(100% - 150px);
+    display: inline-block; 
+}
+
+.buy_now_button{
+    width: 130px;
+    min-width: auto;
+    vertical-align: baseline;
+    margin-left: 20px;
+}
+
+.winning_bid_user_name{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.winning_bid_label{
+    width: calc(100% - 150px);
+    display: inline-block;
+}
+
