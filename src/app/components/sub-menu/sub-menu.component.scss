@@ -1,0 +1,43 @@
+@import '../../../globals.scss';
+
+.logo_stamp{
+    width: 110px;
+    cursor: pointer;
+    margin-right: 50px;
+  }
+  
+  .auctions_options_container{
+    background-color: $color-four;
+    padding: 20px 0;
+    position: absolute;
+    z-index: 10;
+    left: 160px;
+    top: 80px;
+    border: solid 1px $color-two;
+  }
+  
+  .auction_option{
+    padding: 7px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: "merriweather-light";
+  }
+  
+  .auction_option:hover{
+    background-color: $color-two;
+    color: $color-four;
+  }
+
+  .sub_menu_container{
+    position: relative;
+    top: 50px;
+    left: 210px;
+    width: fit-content;
+  }
+  
+  .hero_button{
+    border:none;
+    background-color: none;
+    font-family: 'worksans-300';
+    font-size: 18px;
+  }

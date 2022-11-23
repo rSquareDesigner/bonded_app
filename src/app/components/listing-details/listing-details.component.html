@@ -1,13 +1,7 @@
 <app-navbar></app-navbar>
 
 <section class="sub_navbar">
-    <img class="logo_stamp" src="../../../assets/images/Color_Transparent.png" (click)="goto('/')">
-    <div class="hero_buttons_container">
-        <button class="btn btn-default hero_button_blue ">BROWSE AUCTIONS
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <button class="btn btn-default hero_button_blue" (click)="goto('edit-auction/0')">START A LISTING</button>
-    </div>
+    <app-sub-menu [color]="'blue'"></app-sub-menu>
 </section>
 
 <section class="content_section">

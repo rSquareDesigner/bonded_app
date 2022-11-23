@@ -7,7 +7,7 @@
 
 .content_container{
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
     display: block;
 }
@@ -31,5 +31,9 @@
 }
 
 .menu_two:hover{
+    text-decoration: underline;
+}
+
+.selected {
     text-decoration: underline;
 }

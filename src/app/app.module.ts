@@ -25,6 +25,7 @@ import { AccountDetailsComponent } from './components/account-details/account-de
 import { AccountComponent } from './components/account/account.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
 
 
 
@@ -51,7 +52,8 @@ import { MessagesComponent } from './components/messages/messages.component';
     AccountDetailsComponent,
     AccountComponent,
     InboxComponent,
-    MessagesComponent
+    MessagesComponent,
+    SubMenuComponent
   ],
   imports: [
     BrowserModule,

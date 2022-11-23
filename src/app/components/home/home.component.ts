@@ -109,19 +109,4 @@ export class HomeComponent implements OnInit {
     console.log('go to', route_name);
     this.router.navigate([route_name]); 
   }
-
-  toogleShowAuctions(){
-    if (this.show_auction_options != true) this.show_auction_options = true;
-    else this.show_auction_options = false;
-  }
-
-  gotoAuctions(auctions_type:string){
-    this.show_auction_options = false;
-    this.redirectTo(['auctions/' + auctions_type],{});
-  }
-
-  redirectTo(route:any[],params:any){
-    this.router.navigateByUrl('/no-page', {skipLocationChange: true}).then(()=>
-    this.router.navigate(route, params));
- }
 }

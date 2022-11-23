@@ -1,28 +1,22 @@
 <app-navbar></app-navbar>
 <section class="sub_navbar">
-    <img class="logo_stamp" src="../../../assets/images/Color_Transparent.png" (click)="goto('/')">
-    <div class="hero_buttons_container">
-        <button class="btn btn-default hero_button_blue ">BROWSE AUCTIONS
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <button class="btn btn-default hero_button_blue">START A LISTING</button>
-    </div>
+    <app-sub-menu [color]="'blue'"></app-sub-menu>
 </section>
 <section class="form_section">
     <div class="content_container">
         <h1 class="golden_label_large">My Account</h1>
         <div class="text-start" style="padding: 30px 0;">
-            <button class="btn btn-default menu_one" (click)="top_selection = 'activity'">Activity</button>
-            <button class="btn btn-default menu_one" (click)="top_selection = 'messages'">Messages</button>
-            <button class="btn btn-default menu_one" (click)="top_selection = 'account'">Account</button>
+            <button class="btn btn-default menu_one" [ngClass]="{'selected': top_selection == 'activity'}" (click)="top_selection = 'activity'">Activity</button>
+            <button class="btn btn-default menu_one" [ngClass]="{'selected': top_selection == 'messages'}" (click)="top_selection = 'messages'">Messages</button>
+            <button class="btn btn-default menu_one" [ngClass]="{'selected': top_selection == 'account'}" (click)="top_selection = 'account'">Account</button>
         </div>
         <div *ngIf="top_selection == 'activity'">
             <div class="text-start">
-                <button class="btn btn-default menu_two" (click)="bottom_selection = 'recently viewed'">Recently Viewed</button>
-                <button class="btn btn-default menu_two" (click)="bottom_selection = 'bids & offers'">Bids & Offers</button>
-                <button class="btn btn-default menu_two" (click)="bottom_selection = 'purchases'">Purchases</button>
-                <button class="btn btn-default menu_two" (click)="bottom_selection = 'watchlist'">Watchlist</button>
-                <button class="btn btn-default menu_two" (click)="bottom_selection = 'selling'">Selling</button>
+                <button class="btn btn-default menu_two" [ngClass]="{'selected': bottom_selection == 'recently viewed'}" (click)="bottom_selection = 'recently viewed'">Recently Viewed</button>
+                <button class="btn btn-default menu_two" [ngClass]="{'selected': bottom_selection == 'bids & offers'}" (click)="bottom_selection = 'bids & offers'">Bids & Offers</button>
+                <button class="btn btn-default menu_two" [ngClass]="{'selected': bottom_selection == 'purchases'}" (click)="bottom_selection = 'purchases'">Purchases</button>
+                <button class="btn btn-default menu_two" [ngClass]="{'selected': bottom_selection == 'watchlist'}" (click)="bottom_selection = 'watchlist'">Watchlist</button>
+                <button class="btn btn-default menu_two" [ngClass]="{'selected': bottom_selection == 'selling'}" (click)="bottom_selection = 'selling'">Selling</button>
             </div>
             <app-recently-viewed *ngIf="bottom_selection == 'recently viewed'"></app-recently-viewed>
             <app-bids-and-offers *ngIf="bottom_selection == 'bids & offers'"></app-bids-and-offers>

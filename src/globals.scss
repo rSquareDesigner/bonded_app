@@ -56,34 +56,6 @@ $color-five: #383436;
   margin-top: 60px;
 }
 
-.logo_stamp{
-  position: absolute;
-  top: 20px;
-  left: 80px;
-  width: 110px;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.auctions_options_container{
-  background-color: $color-four;
-  padding: 20px 0;
-  position: absolute;
-  z-index: 10;
-}
-
-.auction_option{
-  padding: 7px 20px;
-  cursor: pointer;
-  font-size: 18px;
-  font-family: "merriweather-light";
-}
-
-.auction_option:hover{
-  background-color: $color-two;
-  color: $color-four;
-}
-
 .white-banner {
   background-color: $color-four;
   padding: 70px 0;
@@ -133,26 +105,19 @@ $color-five: #383436;
   color: $color-one;
 }
 
-.hero_buttons_container{
-  position: absolute;
-  top: 50px;
-  left: 210px;
+.white_button{
+  background-color: white;
+  color: $color-two;
+  border: solid 2px $color-two;
+  font-family: 'worksans-medium';
+  font-size: 22px;
+  border-radius: 0;
+  width: 320px;
+  margin: 30px 0;
 }
 
-.hero_button{
-  border:none;
-  background-color: none;
-  color: white;
-  font-family: 'worksans-300';
-  font-size: 18px;
-}
-
-.hero_button_blue{
-  border:none;
-  background-color: none;
-  color: $color-one;
-  font-family: 'worksans-300';
-  font-size: 18px;
+.white_button:hover{
+  background-color: lightgrey;
 }
 
 /****** FONTS ********/
@@ -192,6 +157,31 @@ $color-five: #383436;
   font-size:12px;
   color: $color-two;
   font-family: 'merriweather-regular';
+}
+
+.sub_section_title{
+  font-size: 28px;
+  font-family: 'merriweather-bold';
+  color: $color-five;
+  width:100%;
+  border-bottom: solid 2px $color-two;
+  padding: 5px 0;
+  margin: 30px 0 40px 0;
+}
+
+.field_text{
+  width: 200px;
+  display: inline-block;
+  font-size: 28px;
+  font-family: 'merriweather-light';
+  color: $color-five;
+}
+
+.data_text{
+  display: inline-block;
+  font-size: 28px;
+  font-family: 'merriweather-light';
+  color: $color-five;
 }
 
 .mw-l {

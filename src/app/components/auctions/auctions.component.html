@@ -1,20 +1,9 @@
 <app-navbar></app-navbar>
 
 <section class="hero_section" [ngStyle]="{'background-image':'url(' + hero_image +')'}">
-    <img class="logo_stamp" src="../../../assets/images/White_Transparent.png" (click)="goto('')">
-    <div class="hero_buttons_container">
-        <button class="btn btn-default hero_button" (click)="toogleShowAuctions()">BROWSE AUCTIONS
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="auctions_options_container" *ngIf="show_auction_options == true">
-            <div class="auction_option" (click)="gotoAuctions('premium-auctions')">Premium Auctions</div>
-            <div class="auction_option" (click)="gotoAuctions('rye')">Rye</div>
-            <div class="auction_option" (click)="gotoAuctions('bourbon')">Bourbon</div>
-            <div class="auction_option" (click)="gotoAuctions('malt-whiskey')">Malt Whiskey</div>
-            <div class="auction_option" (click)="gotoAuctions('other-spirits')">Other Spirits</div>
-        </div>
-        <button class="btn btn-default hero_button" (click)="goto('edit-auction/0')">START A LISTING</button>
-    </div>
+    
+    <app-sub-menu [color]="'white'"></app-sub-menu>
+
     <div class="hero_banner">
         <h2>{{type_label}}</h2>
     </div>

@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: merriweather-bold;
+    src: url(../src/assets/fonts/Merriweather-Bold.ttf) format("opentype");
+}
+
+@font-face {
     font-family: worksans-300;
     src: url(../src/assets/fonts/WorkSans300.ttf) format("opentype");
 }
@@ -21,4 +26,9 @@
 @font-face {
     font-family: worksans-700;
     src: url(../src/assets/fonts/WorkSans700.ttf) format("opentype");
+}
+
+@font-face {
+    font-family: worksans-medium;
+    src: url(../src/assets/fonts/WorkSans-Medium.ttf) format("opentype");
 }

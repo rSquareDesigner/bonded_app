@@ -1,0 +1,16 @@
+<div class="sub_menu_container">
+<img class="logo_stamp" 
+    src="{{ color == 'white' ? '../../../assets/images/White_Transparent.png' : '../../../assets/images/Color_Transparent.png'}}"
+    (click)="goto('')">
+<button class="btn btn-default hero_button" [ngStyle]="{'color': (color == 'white' ? '#ffffff': '#2b3d55')}" (click)="toogleShowAuctions()">BROWSE AUCTIONS
+    <i class="fa fa-caret-down"></i>
+</button>
+<div class="auctions_options_container" *ngIf="show_auction_options == true">
+    <div class="auction_option" (click)="gotoAuctions('premium-auctions')">Premium Auctions</div>
+    <div class="auction_option" (click)="gotoAuctions('rye')">Rye</div>
+    <div class="auction_option" (click)="gotoAuctions('bourbon')">Bourbon</div>
+    <div class="auction_option" (click)="gotoAuctions('malt-whiskey')">Malt Whiskey</div>
+    <div class="auction_option" (click)="gotoAuctions('other-spirits')">Other Spirits</div>
+</div>
+<button class="btn btn-default hero_button" [ngStyle]="{'color': (color == 'white' ? '#ffffff': '#2b3d55')}" (click)="goto('edit-auction/0')">START A LISTING</button>
+</div>
