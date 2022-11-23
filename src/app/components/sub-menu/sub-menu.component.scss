@@ -41,3 +41,41 @@
     font-family: 'worksans-300';
     font-size: 18px;
   }
+
+  .start_listing_button {
+    cursor:pointer;
+  }
+
+  .browse_button {
+    cursor:pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sub_menu_container{
+        left: 15px;
+    }
+    
+    .start_listing_button{
+        position: absolute;
+        top: 0;
+        left: 130px;
+        width: 200px;
+        top: 10px;
+    }
+
+    .browse_button{
+        position: absolute;
+        left: 130px;
+        width: 220px;
+        top: 60px;
+    }
+
+    .auctions_options_container{
+        left: 75px;
+        width: 220px;
+        top: 110px;
+    }
+  }
+  
+
+

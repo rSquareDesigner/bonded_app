@@ -82,14 +82,16 @@ $color-five: #383436;
 
 .hero_banner {
   background-color: white;
-  position: absolute;
-  width: 60%;
-  top: calc(50vh - 180px);
-  left: 20%;
-  padding: 50px 0;
-  text-align: center;
-  opacity: 0.85;
-  border: solid 5px $color-two;
+    margin: 200px auto;
+    position: relative;
+    width: 95%;
+    max-width: 885px;
+    /* top: calc(50vh - 180px); */
+    /* left: 20%; */
+    padding: 50px 0;
+    text-align: center;
+    opacity: 0.85;
+    border: solid 5px $color-two;
 }
 
 .hero_banner h2 {
@@ -580,5 +582,9 @@ $color-five: #383436;
 
   .remove_search_icon{
     top: 12px;
+  }
+
+  .hero_banner{
+    margin: 80px auto;
   }
 }
