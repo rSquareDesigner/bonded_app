@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import * as sha512 from 'js-sha512';
 import { environment } from './../../environments/environment';
+declare var $: any;
 
 @Injectable({
   providedIn: 'root'
@@ -64,14 +65,14 @@ export class UserService {
     
   }
 
-  loginUser(email:string, password:string) {
+  loginUser(_user:any) {
 
     this.redirectOnLogin = this.navigationService.getRedirectUrl();
     console.log('redirect url ', this.redirectOnLogin);
 
     var userObj = {
-      email: email.toLowerCase(),
-      password: sha512.sha512(password)
+      email: _user.email.toLowerCase(),
+      password: sha512.sha512(_user.password)
     }
 
     this.loginReq(userObj).subscribe((data: any) => {
@@ -89,7 +90,7 @@ export class UserService {
             this.router.navigate([this.redirectOnLogin]);
           }
           //else this.router.navigate(['/admin/profile/' + this.user.id]);
-          else this.router.navigate(['home']);
+          else this.router.navigate(['']);
 
         //});
 
@@ -97,17 +98,19 @@ export class UserService {
     });
   }
 
-  signUpUser(name:string, email:string, password:any){
+  signUpUser(_user:any){
     var user_object = {
-      name: name,
-      email: email.toLowerCase(),
-      password: sha512.sha512(password),
+      first_name: _user.first_name,
+      last_name: _user.last_name,
+      email: _user.email.toLowerCase(),
+      password: sha512.sha512(_user.password),
       sign_up_date: Date.now()
     }
 
     this.tablesService.AddItem('users', user_object).subscribe((data:any) => {
       //this.mailingService.sendRequestToVerifyEmail(data.id, user_object.name, user_object.email);
-      this.loginUser(user_object.email, password);
+      $('#registrationSuccessModal').appendTo('body').modal('show');
+      this.loginUser({ email: user_object.email, password: _user.password });
     });
 
   }
@@ -124,7 +127,7 @@ export class UserService {
     this.user = undefined;
     this._getUser.next(this.user);
     localStorage.removeItem('user');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
     console.log('user logged out');
   }
 

@@ -17,6 +17,11 @@
     font-size: 32px;
     font-family: 'worksans-700';
     margin: 30px 0;
+    cursor: pointer;
+  }
+
+  .view_all_auctions_button:hover{
+    text-decoration: underline;
   }
 
   #feature-action-slider {

@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { TablesService } from '../../services/tables.service';
 import { UserService } from '../../services/user.service';
 import * as sha512 from 'js-sha512';
+declare var $: any;
+
 
 @Component({
   selector: 'app-password-reset',
@@ -11,21 +13,21 @@ import * as sha512 from 'js-sha512';
 })
 export class PasswordResetComponent implements OnInit {
 
-  password:string;
-    passwordc:string;
-    user: any;
-    showAlert: boolean;
-    alertMsg: string;
+    password:string = '';
+    passwordc:string = '';
+    user: any = {};
+    showAlert: boolean = false;
+    alertMsg: string = '';
 
     //modal variables
-    msgTitle: string;
-    msgBody: string;
-    msgCallback: any;
-    msgObject: any;
+    msgTitle: string = '';
+    msgBody: string = '';
+    msgCallback: any = undefined;
+    msgObject: any = {};
 
     //alerts
-    invalid_password: string;
-    invalid_passwordc: string;
+    invalid_password: string = '';
+    invalid_passwordc: string = '';
 
   constructor(
     private router: Router,
@@ -57,8 +59,8 @@ export class PasswordResetComponent implements OnInit {
   }
 
   showPasswordDialog(){
-    this.invalid_password = undefined;
-    this.invalid_passwordc = undefined;
+    this.invalid_password = '';
+    this.invalid_passwordc = '';
     $('#passwordModal').modal('show');
   }
 
@@ -120,7 +122,7 @@ export class PasswordResetComponent implements OnInit {
 
   goLogin(){
     $('#passwordResetSuccessfulModal').modal('hide');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
 }

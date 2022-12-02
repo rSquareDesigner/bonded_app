@@ -5,6 +5,7 @@ import { Observable, of, pipe } from 'rxjs';
 import { map, debounceTime } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public userService: UserService
   ) { }
 
   httpOptions = {
@@ -30,6 +32,8 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    window.scrollTo(0,0);
     this.initializeForm();
 
     console.log('this.baseurl', this.baseurl);
@@ -74,27 +78,6 @@ export class RegisterComponent implements OnInit {
           );
       };
     }
-        /*
-        var ref;
-        
-        if (ref_num == 2 && field == 'name') ref = (thisx.contact2Form ? thisx.contact2Form.controls.name.value:null);
-        if (ref_num == 2 && field == 'email') ref = (thisx.contact2Form ? thisx.contact2Form.controls.email.value:null);
-        if (ref_num == 2 && field == 'phone') ref = (thisx.contact2Form ? thisx.contact2Form.controls.phone.value:null);
-        if (ref_num == 2 && field == 'address') ref = (thisx.contact2Form ? thisx.contact2Form.controls.address.value:null);
-        if (ref_num == 1 && field == 'name') ref = (thisx.contact1Form ? thisx.contact1Form.controls.name.value:null);
-        if (ref_num == 1 && field == 'email') ref = (thisx.contact1Form ? thisx.contact1Form.controls.email.value:null);
-        if (ref_num == 1 && field == 'phone') ref = (thisx.contact1Form ? thisx.contact1Form.controls.phone.value:null);
-        if (ref_num == 1 && field == 'address') ref = (thisx.contact1Form ? thisx.contact1Form.controls.address.value:null);
-
-        //console.log('isUnique', field, ref_num, ref, control.value, control.value == ref)
-
-        if (control.value != undefined && control.value != '' && control.value == ref) {
-              return { 'isUnique': true };
-          }
-          return null;
-        */
-     // };
-    //}
 
     var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
@@ -113,10 +96,22 @@ export class RegisterComponent implements OnInit {
     this.router.navigate([route]);
   }
 
+  registerUser({ value, valid }: { value: any, valid: boolean }) {
+    this.form_submitted = true;
+    console.log(value, valid);
+    if (valid){
+      this.userService.signUpUser(value);  
+    }
+  }
+  
+
+  /*
   registerUser(){
+    
     //TODO
     console.log('register user');
     this.form_submitted = true;
-  }
+    */
+  //}
 
 }

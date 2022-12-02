@@ -5,7 +5,7 @@
 </section>
 
 <section class="content_section">
-<div class="row content_container" style="max-width: 1100px">
+<div class="row content_container" style="max-width: 1100px;padding-top:100px;">
     <div class="col-6" style="padding-right: 60px;">
         <img class="main_image" src="https://images.unsplash.com/photo-1627125288918-35254117cf92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80">
     </div>
@@ -27,13 +27,13 @@
                 <div class="golden_label" style="margin-top:0;">Current Bid:</div>
             </div>
             <div class="col-7" style="padding-left: 0;">
-                <div class="bold_blue">${{listing.current_bid}}</div>
+                <div class="bold_blue">${{listing.current_bid_formatted}}</div>
                 <div style="padding:10px 0;">
                     <input type="text" class="form-control bid_input" placeholder="Bid Amount">
                     <button class="btn btn-default button_primary bid_button">Bid Now</button>
                 </div>
                 <div style="padding:10px 0;">
-                    <h2 class="bold_blue buy_now_price">${{listing.buy_now_price}}</h2>
+                    <h2 class="bold_blue buy_now_price">${{listing.buy_now_price_formatted}}</h2>
                     <button class="btn btn-default button_primary buy_now_button">Buy Now</button>
                 </div>
                 <div style="padding:10px 0;">

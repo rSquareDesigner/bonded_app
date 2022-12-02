@@ -31,13 +31,21 @@ export class ListingDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     if (this.listing_id) this.loadListing();
   }
 
   loadListing(){
+
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+
     this.tablesService.GetFiltered('auctions','id', this.listing_id).subscribe((data:any) => {
       this.listing = data[0];
-      console.log('this.listing', this.listing);
+      
+      this.listing.current_bid_formatted = dollarUSLocale.format(this.listing.current_bid);
+      this.listing.buy_now_price_formatted = dollarUSLocale.format(this.listing.buy_now_price);
+      
+      //console.log('this.listing', this.listing);
     })
   }
 

@@ -7,7 +7,7 @@
     <div>
         <h1 class="golden_label_large" style="margin-bottom:30px;text-align:center;">Create an Account</h1>
         <form id="registrationForm" class="form_container" [formGroup]="registration_form" validate
-            (ngSubmit)="registerUser()">
+            (ngSubmit)="registerUser(registration_form)">
             <div class="row">
                 <div class="col-5 form_input_container">
                     <input type="text" formControlName="first_name" class="form-control" placeholder="First Name">
@@ -31,7 +31,7 @@
                         class="invalid-feedback invalid_feedback" style="display:block;">
                         <div *ngIf="registration_form.controls['email'].errors['pattern']"><em>Invalid email</em></div>
                         <div *ngIf="registration_form.controls['email'].errors['required']"><em>Email is required</em></div>
-                        <div *ngIf="registration_form.controls['email'].errors['isUnique']"><em>Duplicated email </em></div>
+                        <div *ngIf="registration_form.controls['email'].errors['email_exists']"><em>Duplicated email </em></div>
                     </div>
                 </div>
                 <div class="col-12 form_input_container">
@@ -70,7 +70,7 @@
             <i class="fa fa-apple auth_option_logo" style="padding: 20px 23px;"></i>
             <i class="fa fa-google auth_option_logo"></i>
         </div>
-        <div class="text-center golden_discrete">
+        <div class="text-center golden_discrete" style="cursor:pointer" (click)="goto('login')">
             Already have an account?
         </div>
 

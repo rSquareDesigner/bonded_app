@@ -6,17 +6,26 @@
 <section class="form_section">
     <div class="form_container">
     <h1 class="golden_label_large" style="margin-bottom:30px">Login</h1>
-    <div class="row">
-        <div class="col-12 form_input_container">
-            <input type="text" class="form-control" placeholder="Email">
+    <form id="loginForm" class="form_container" [formGroup]="login_form" validate (ngSubmit)="loginUser(login_form)">
+        <div class="row">
+            <div class="col-12 form_input_container">
+                <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                <div *ngIf="form_submitted == true && login_form.controls['email'].errors" class="invalid-feedback invalid_feedback" style="display:block;">
+                    <div *ngIf="login_form.controls['email'].errors['required']"><em>Enter your email</em></div>
+                    <div *ngIf="login_form.controls['email'].errors['pattern']"><em>Enter a valid email</em></div>
+                </div>
+            </div>
+            <div class="col-12 form_input_container">
+                <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                <div *ngIf="form_submitted == true && login_form.controls['password'].errors" class="invalid-feedback invalid_feedback" style="display:block;">
+                    <div *ngIf="login_form.controls['password'].errors['required']"><em>Enter your password</em></div>
+                </div>
+            </div>
         </div>
-        <div class="col-12 form_input_container">
-            <input type="password" class="form-control" placeholder="Password">
+        <div class="text-center" style="padding:50px 0;">
+            <button type="submit" class="btn btn-default button_primary continue_button">CONTINUE</button>
         </div>
-    </div>
-    <div class="text-center" style="padding:50px 0;">
-        <button class="btn btn-default button_primary continue_button">CONTINUE</button>
-    </div>
+    </form>
     <div class="text-center">
         <i class="fa fa-facebook auth_option_logo" style="padding: 20px 27px;"></i>
         <i class="fa fa-apple auth_option_logo" style="padding: 20px 23px;"></i>

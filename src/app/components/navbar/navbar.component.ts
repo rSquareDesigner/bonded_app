@@ -127,6 +127,7 @@ export class NavbarComponent implements OnInit {
     $('#loginModal').modal('show');
   }
 
+  /*
   loginUser(){
     console.log('loginUser');
     if (!this.email || this.email.length == 0) this.invalid_email = 'Please enter your email';
@@ -136,6 +137,7 @@ export class NavbarComponent implements OnInit {
       this.userService.loginUser(this.email,this.password);
     }
   }
+  */
 
   logout(){
     this.userService.logoutUser();
@@ -161,6 +163,7 @@ export class NavbarComponent implements OnInit {
     this.navigationService.goHome();
   }
 
+  /*
   signUpUser(){
     
     if (!this.name || this.name.length == 0) this.invalid_name = 'Please enter a valid name';
@@ -185,6 +188,7 @@ export class NavbarComponent implements OnInit {
     //this.userService.signUpUser(this.name, this.email, this.password);
     
   }
+  */
 
   clearLoginAlerts(){
     this.invalid_name = '';

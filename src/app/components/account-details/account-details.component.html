@@ -8,26 +8,26 @@
             User Name
         </div>
         <div class="col-9">
-            <em>sabio1496</em>
+            <em>{{user.first_name}}</em>
         </div>
         <div class="col-3">
             Personal Info
         </div>
         <div class="col-9">
             Email address:<br>
-            <em>info@gmail.com</em><br><br>
+            <em>{{user.email}}</em><br><br>
             Phone:<br>
-            <em>123-123-1234</em><br><br>
+            <em>{{user.phone}}</em><br><br>
             Name & Address:<br>
-            <em>John Doe</em><br>
-            <em>1234 Main Street</em><br>
-            <em>Buffalo, NY 12345</em><br><br>
+            <em>{{user.first_name}}&nbsp;{{user.last_name}}</em><br>
+            <em>{{user.address}}</em><br>
+            <em>{{user.city}}, {{user.state}}&nbsp;{{user.zipcode}}</em><br><br>
             Date of Birth:<br>
-            <em>8/12/1975</em><br><br>
+            <em>{{user.date_of_birth}}</em><br><br>
             ID:<br>
-            <span class="sub_section_field">Type:</span><em>Drivers License</em><br>
-            <span class="sub_section_field">Number:</span><em>1234-1234-1234</em><br>
-            <span class="sub_section_field">Country:</span><em>United States</em><br>
+            <span class="sub_section_field">Type:</span><em>{{user.id_type}}</em><br>
+            <span class="sub_section_field">Number:</span><em>{{user.id_number}}</em><br>
+            <span class="sub_section_field">Country:</span><em>{{user.country}}</em><br>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
             User Name
         </div>
         <div class="col-9">
-            <em>sabio1496</em>
+            <em>{{user.first_name}}&nbsp;{{user.last_name}}</em>
         </div>
         <div class="col-3">
             Password
@@ -70,6 +70,8 @@
         <div class="col-9">
             <em>123*****</em><br>
             <button class="btn btn-default white_button">Request Banking Change</button>
+            <br><br>
+            <button class="btn btn-default white_button">Request to Close Account</button>
         </div>
     </div>
 </div>

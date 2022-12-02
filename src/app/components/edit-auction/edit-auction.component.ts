@@ -5,6 +5,7 @@ import { TablesService } from './../../services/tables.service';
 import {Router, ActivatedRoute} from "@angular/router";
 import { CommonService } from 'src/app/services/common.service';
 import { MyblobService } from '../../services/myblob.service';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, AsyncValidatorFn } from '@angular/forms';
 declare var $: any;
 
 @Component({
@@ -16,6 +17,7 @@ export class EditAuctionComponent implements OnInit {
 
   user: any;
   auction_id: Number = 0;
+  auction: any = {};
   itemx: any = {};
   show_image_upload: boolean = false;
 
@@ -27,6 +29,9 @@ export class EditAuctionComponent implements OnInit {
   show_calendar_popup: boolean = false;
   categories: string[] = ['Rye','Bourbon','Malt Whiskey','Other Spirits'];
   duration_options: string[] = ['1 week','2 weeks','1 month'];
+
+  auction_form: FormGroup;
+  form_submitted: boolean = false;
 
   //Subscriptions
   userServiceSubscription: Subscription = this.userService._getUser.subscribe((currentUser) => {
@@ -40,6 +45,7 @@ export class EditAuctionComponent implements OnInit {
     public myBlobService: MyblobService,
     private router: Router,
     private route: ActivatedRoute,
+    public formBuilder: FormBuilder
   ) { 
     this.route.params.subscribe( params => {
       this.auction_id = params['auction_id']; 
@@ -48,10 +54,62 @@ export class EditAuctionComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.initializeForm();
+
     //existing auction
     if (this.auction_id > 0){
       //load auction
+      this.tablesService.GetFiltered('auctions','id', this.auction_id).subscribe((data:any) => {
+        this.auction = data[0];
+        if (this.auction) this.loadForm();
+      })
     }
+    
+  }
+
+  initializeForm(){
+
+    this.auction_form = this.formBuilder.group({
+      title: ['',[Validators.required]],
+      category: ['',[Validators.required]],
+      distillery: ['',[Validators.required]],
+      barrel_number: ['',[Validators.required]],
+      internal_spirit: ['',[Validators.required]],
+      last_fill_date: ['',[Validators.required]],
+      total_age_of_spirits: ['',[Validators.required]],
+      lot_id: ['',[Validators.required]],
+      description: ['',[Validators.required]],
+      starting_bid: ['',[Validators.required]],
+      auction_duration: ['',[Validators.required]],
+      schedule: ['',[Validators.required]],
+      allow_offers: ['',[Validators.required]],
+      reserve_price: ['',[Validators.required]],
+      buy_now_price: ['',[Validators.required]],
+      
+    });
+
+    this.form_submitted = false;
+  }
+
+  loadForm(){
+    
+      this.auction_form.setValue({
+        title:    this.auction.title,
+        category: this.auction.category,
+        distillery: this.auction.distillery,
+        barrel_number: this.auction.barrel_number,
+        internal_spirit: this.auction.internal_spirit,
+        last_fill_date: this.auction.last_fill_date,
+        total_age_of_spirits: this.auction.total_age_of_spirits,
+        lot_id: this.auction.lot_id,
+        description: this.auction.description,
+        starting_bid: this.auction.starting_bid,
+        auction_duration: this.auction.auction_duration,
+        allow_offers: this.auction.allow_offers,
+        schedule: this.auction.schedule,
+        reserve_price: this.auction.reserve_price,
+        buy_now_price: this.auction.buy_now_price
+      });
     
   }
 
@@ -92,6 +150,36 @@ export class EditAuctionComponent implements OnInit {
     $('#' + name).modal('hide');
   }
 
+  saveAuction({ value, valid }: { value: any, valid: boolean }) {
+    this.form_submitted = true;
+    console.log(value, valid);
+    if (valid){
+      //this.userService.signUpUser(value);
+      var listing_object = value;
+      listing_object['timestmp'] = Date.now();
+      listing_object['static_page_needs_update'] = true;
+
+      if (this.auction_id == 0){
+        this.tablesService.AddItem('auctions',listing_object).subscribe((data:any) => {
+          listing_object.id = data.id;
+          
+          //this.processImages(listing_object.id);
+          this.router.navigate(['']);
+          
+        });
+      }
+      else {
+        this.tablesService.UpdateItem('auctions',listing_object).subscribe((data:any) => {
+          //this.processImages(this.itemx.id);
+          
+          Object.assign(this.itemx, listing_object);
+          this.router.navigate(['']);
+        });
+      }
+    }
+  }
+
+  /*
   saveListing(){
     
     var listing_object = {
@@ -135,6 +223,7 @@ export class EditAuctionComponent implements OnInit {
       });
     }
   }
+  */
 
   processImages(listing_id:number){
     

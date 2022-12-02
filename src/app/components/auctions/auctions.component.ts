@@ -28,6 +28,14 @@ export class AuctionsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    window.scrollTo(0,0);
+    /*
+    setTimeout(()=>{
+      //document.getElementsByClassName("cc")[0].scrollTo(0,0);
+      window.scrollTo(0,0);
+    },0);
+    */
+
     this.slider_images = [
       'https://images.unsplash.com/photo-1627125288918-35254117cf92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
       'https://images.unsplash.com/photo-1529264978834-666a0e99f884?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',

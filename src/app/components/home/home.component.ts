@@ -32,9 +32,19 @@ export class HomeComponent implements OnInit {
 
     
     //this.agreementsService.createAgreement().subscribe();
-    
+    window.scrollTo(0,0);
+
     this.setHeroImagesSlider();
     this.getAuctions();
+
+    
+    /*
+    setTimeout(()=>{
+      document.getElementsByClassName("cc")[0].scrollTo(0,0);
+      //window.scrollTo(0,0);
+    },50);
+    */
+    
   }
 
   getAuctions(){

@@ -28,7 +28,7 @@
             <app-inbox></app-inbox>
         </div>
         <div *ngIf="top_selection == 'account'">
-            <app-account-details></app-account-details>
+            <app-account-details [user]="user"></app-account-details>
         </div>
 
     </div>

@@ -247,9 +247,10 @@ $color-five: #383436;
 /******* MODALS *******/
 
 .modal_body {
-  padding: 60px 40px 40px 40px;
+  padding: 20px 40px 40px 40px;
   max-height: calc(100vh - 66px);
   overflow: auto;
+  background-color: $color-four;
     /*min-height:200px;*/
 }
 

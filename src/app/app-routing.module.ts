@@ -9,6 +9,7 @@ import { AuctionsComponent } from './components/auctions/auctions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
+  {path: 'password-reset', component: PasswordResetComponent },
   {path: 'admin', component: AdminComponent },
   {path: 'admin/:view', component: AdminComponent },
   {path: '**', component: NotFoundComponent}
@@ -37,5 +39,6 @@ export const routingComponents = [
   NotFoundComponent,
   AuctionsComponent,
   LoginComponent,
-  RegisterComponent
+  RegisterComponent,
+  PasswordResetComponent
 ];

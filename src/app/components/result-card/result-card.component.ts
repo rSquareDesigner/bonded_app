@@ -33,7 +33,8 @@ export class ResultCardComponent implements OnInit {
 
   gotoItem(item:any){
     var queryParams = {};
-    this.redirectTo(['item-details/'+item.id], { queryParams: queryParams });
+    //this.redirectTo(['item-details/'+item.id], { queryParams: queryParams });
+    this.redirectTo(['listing-details/4'], { queryParams: queryParams });
   }
 
   redirectTo(route:any,params:any){

@@ -40,28 +40,31 @@
                         <a >ADMIN</a>
                     </li>
                     -->
-                    <li class="nav-item" (click)="goto('saved-items')">
+                    <li *ngIf="user" class="nav-item" (click)="goto('saved-items')">
                         <a >SELL</a>
                     </li>
-                    <li class="nav-item" (click)="goto('inbox')" style="position:relative">
+                    <li *ngIf="user" class="nav-item" (click)="goto('inbox')" style="position:relative">
                         <div class="notification_alert" *ngIf="user_has_notifications == true"></div>
                         <a >WATCHLIST</a>
                     </li>
-                    <li class="nav-item" (click)="goto('my-listings')">
+                    <li *ngIf="user" class="nav-item" (click)="goto('my-listings')">
                         <a >NOTIFICATIONS</a>
                     </li>
-                    <li class="nav-item" (click)="goto('my-listings')">
+                    <li *ngIf="user" class="nav-item" (click)="goto('my-listings')">
                         <a >HELP</a>
                     </li>
-                    <li class="nav-item" (click)="goto('account')">
+                    <li *ngIf="user" class="nav-item" (click)="goto('account')">
                         <a >ACCOUNT</a>
                     </li>
-                    <li class="nav-item" (click)="goto('login')">
+                    <li *ngIf="user" class="nav-item" (click)="logout()">
+                        <a >LOG OUT</a>
+                    </li>
+                    <li *ngIf="!user" class="nav-item" (click)="goto('login')">
                         <a >
                             <button class="btn btn-default button_primary">LOGIN</button>
                         </a>
                     </li>
-                    <li class="nav-item" (click)="goto('register')">
+                    <li *ngIf="!user" class="nav-item" (click)="goto('register')">
                         <a >
                             <button class="btn btn-default button_secondary">REGISTER</button>
                         </a>
@@ -124,6 +127,7 @@
 
 </nav>
 
+<!--
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" [hidden]=""
 aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -136,7 +140,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
             <div *ngIf="login_modal_page == 1">
                 <h1 class="modal_title">Sign up / Log In</h1>
-                <!-- logo -->
+                
                 <img class="logo_in_modal" src="../../../assets/images/Color_Transparent.png">
                 
                 <button class="btn btn-default modal_primary_button" (click)="login_modal_page = 4">Sign up</button>
@@ -230,13 +234,14 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     </div>
 </div>
 </div>
+-->
 
 <div class="modal fade" id="emailSentModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body modal_body" *ngIf="userx">
-                <img class="modal_image" src="../../../assets/images/Color_Transparent.png">
+                <img class="modal_image" src="../../../assets/images/Color_Transparent_sm.png">
                 <div class="text-center">
                     We have sent you an email to <em>{{userx.email}}</em> with a link to reset your password.
                 </div>
@@ -254,9 +259,27 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body modal_body">
-                <img class="modal_image" src="../../../assets/images/Color_Transparent.png">
+                <img class="modal_image" src="../../../assets/images/Color_Transparent_sm.png">
                 <div class="text-center">
-                    Please sign up or login to create a <em>Underground Shapers</em> account.
+                    Please sign up or login to create a listing or bid on the auctions.
+                </div>
+                
+                <div class="text-center" style="padding: 25px 0;">
+                    <button type="button" class="btn btn-default button_primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="registrationSuccessModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <img class="modal_image" src="../../../assets/images/Color_Transparent_sm.png">
+                <div class="text-center">
+                    Your account has been created succesfully.
                 </div>
                 
                 <div class="text-center" style="padding: 25px 0;">
