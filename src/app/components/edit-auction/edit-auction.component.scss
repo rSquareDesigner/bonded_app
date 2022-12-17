@@ -73,7 +73,7 @@
     font-size: 18px;
     font-family: 'merriweather-light';
     width: 328px;
-    margin: 30px auto;
+    margin: 30px 0;
     display: block;
 }
 
@@ -82,7 +82,7 @@
     font-size: 24px;
     font-family: 'merriweather-regular';
     width: 328px;
-    margin: 30px auto;
+    margin: 30px 0;
     display: block;
 }
 
@@ -91,3 +91,15 @@
     height: 292px;
     object-fit: cover;
 }
+
+.input_wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+.pct_icon{
+    top: 12px;
+    right: 15px;
+    position: absolute;
+}
+

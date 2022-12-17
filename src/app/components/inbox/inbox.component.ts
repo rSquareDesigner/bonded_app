@@ -32,8 +32,8 @@ export class InboxComponent implements OnInit {
     this.userService._getUser.subscribe((currentUser) => {
       this.user = currentUser;
       if (this.user) {
-        this.getChats();
-        this.getNotifications();
+        //this.getChats();
+        //this.getNotifications();
         //this.userService.updateLastActivity();
       }
     });

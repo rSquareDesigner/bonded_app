@@ -28,10 +28,13 @@ export class EditAuctionComponent implements OnInit {
   selected_date: any = undefined;
   show_calendar_popup: boolean = false;
   categories: string[] = ['Rye','Bourbon','Malt Whiskey','Other Spirits'];
-  duration_options: string[] = ['1 week','2 weeks','1 month'];
+  duration_options: string[] = ['3 days','5 days','7 days'];
+  schedule_options: string[] = ['Today','Tomorrow','3 days','5 days','7 days'];
 
   auction_form: FormGroup;
   form_submitted: boolean = false;
+
+  mash_total: number = 0;
 
   //Subscriptions
   userServiceSubscription: Subscription = this.userService._getUser.subscribe((currentUser) => {
@@ -85,6 +88,10 @@ export class EditAuctionComponent implements OnInit {
       allow_offers: ['',[Validators.required]],
       reserve_price: ['',[Validators.required]],
       buy_now_price: ['',[Validators.required]],
+      mash_corn_pct: ['',[Validators.required]],
+      mash_wheat_pct: ['',[Validators.required]],
+      mash_rye_pct: ['',[Validators.required]],
+      mash_malt_pct: ['',[Validators.required]],
       
     });
 
@@ -108,12 +115,24 @@ export class EditAuctionComponent implements OnInit {
         allow_offers: this.auction.allow_offers,
         schedule: this.auction.schedule,
         reserve_price: this.auction.reserve_price,
-        buy_now_price: this.auction.buy_now_price
+        buy_now_price: this.auction.buy_now_price,
+        mash_corn_pct: this.auction.mash_corn_pct,
+        mash_wheat_pct: this.auction.mash_wheat_pct,
+        mash_rye_pct: this.auction.mash_rye_pct,
+        mash_malt_pct: this.auction.mash_malt_pct
       });
     
   }
 
   evalEdit(item:any){
+
+    console.log('this.auction_form', this.auction_form);
+
+    this.mash_total = 
+    (this.auction_form.value.mash_corn_pct ? (isNaN(this.auction_form.value.mash_corn_pct) == true ? 0:Number(this.auction_form.value.mash_corn_pct)):0) +
+    (this.auction_form.value.mash_wheat_pct ? (isNaN(this.auction_form.value.mash_wheat_pct) == true ? 0:Number(this.auction_form.value.mash_wheat_pct)):0) +
+    (this.auction_form.value.mash_rye_pct ? (isNaN(this.auction_form.value.mash_rye_pct) == true ? 0:Number(this.auction_form.value.mash_rye_pct)):0) + 
+    (this.auction_form.value.mash_malt_pct ? (isNaN(this.auction_form.value.mash_malt_pct) == true ? 0:Number(this.auction_form.value.mash_malt_pct)):0);
 
   }
 

@@ -5,7 +5,7 @@
 </section>
 <section class="form_section">
     <div class="row" style="margin:0;">
-        <div class="col-8">
+        <div class="col-12">
             <div class="form_container">
                 <form id="auctionForm" class="form_container" [formGroup]="auction_form" validate
                     (ngSubmit)="saveAuction(auction_form)">
@@ -34,7 +34,7 @@
 
                     <label class="golden_label">Item Specifics</label><br>
 
-                    <label class="labelf">Distillery:</label>
+                    <label class="labelf">Distillery/Origin:</label>
                     <input type="text" class="form-control" formControlName="distillery"
                         (ngModelChange)="evalEdit(itemx)">
                     <div *ngIf="form_submitted == true && auction_form.controls['distillery'].errors"
@@ -43,7 +43,7 @@
                                 required</em></div>
                     </div>
 
-                    <label class="labelf">Barrel Number:</label>
+                    <label class="labelf">Barrel/Lot Number:</label>
                     <input type="text" class="form-control" formControlName="barrel_number"
                         (ngModelChange)="evalEdit(itemx)">
                     <div *ngIf="form_submitted == true && auction_form.controls['barrel_number'].errors"
@@ -52,7 +52,7 @@
                                 required</em></div>
                     </div>
 
-                    <label class="labelf">Internal Spirit:</label>
+                    <label class="labelf">Spirit:</label>
                     <input type="text" class="form-control" formControlName="internal_spirit"
                         (ngModelChange)="evalEdit(itemx)">
                     <div *ngIf="form_submitted == true && auction_form.controls['internal_spirit'].errors"
@@ -61,7 +61,7 @@
                                 required</em></div>
                     </div>
 
-                    <label class="labelf">Last Fill Date:&nbsp;&nbsp;</label>
+                    <label class="labelf">Fill Date:&nbsp;&nbsp;</label>
                     <i class="fa fa-calendar" (click)="show_calendar_popup = true;"></i>
                     <input type="text" class="form-control" formControlName="last_fill_date">
                     <div *ngIf="show_calendar_popup == true" class="calendar_popup">
@@ -79,7 +79,7 @@
                 <input type="text" class="form-control" [(ngModel)]="itemx.last_fill_date" (ngModelChange)="evalEdit(itemx)">
                 -->
 
-                    <label class="labelf">Total Age of Spirits:</label>
+                    <label class="labelf">Age:</label>
                     <input type="text" class="form-control" formControlName="total_age_of_spirits"
                         (ngModelChange)="evalEdit(itemx)">
                     <div *ngIf="form_submitted == true && auction_form.controls['total_age_of_spirits'].errors"
@@ -88,6 +88,31 @@
                                 is required</em></div>
                     </div>
 
+                    <label class="labelf">Mash Bill:</label><br>
+                    <label class="labelf" style="width:150px" >Corn</label>
+                    <div class="input_wrapper">
+                        <input type="text" class="form-control" style="width:100px;display: inline-block;text-align:center;"
+                            formControlName="mash_corn_pct" (change)="evalEdit(itemx)">
+                        <span><i class="fas fa-percent pct_icon"></i></span>
+                    </div><br>
+                    <label class="labelf" style="width:150px">Wheat</label>
+                    <div class="input_wrapper">
+                    <input type="text" class="form-control" style="width:100px;display: inline-block;text-align:center;" formControlName="mash_wheat_pct" (change)="evalEdit(itemx)">
+                    <span><i class="fas fa-percent pct_icon"></i></span>
+                </div><br>
+                    <label class="labelf" style="width:150px">Rye</label>
+                    <div class="input_wrapper">
+                    <input type="text" class="form-control" style="width:100px;display: inline-block;text-align:center;" formControlName="mash_rye_pct" (change)="evalEdit(itemx)">
+                    <span><i class="fas fa-percent pct_icon"></i></span>
+                </div><br>
+                    <label class="labelf" style="width:150px">Malt Barley</label>
+                    <div class="input_wrapper">
+                    <input type="text" class="form-control" style="width:100px;display: inline-block;text-align:center;" formControlName="mash_malt_pct" (change)="evalEdit(itemx)">
+                    <span><i class="fas fa-percent pct_icon"></i></span>
+                </div><br>
+                    <label class="labelf" style="padding-left:182px;" [ngStyle]="{'color':(mash_total != 100 ? '#dc3545':'#2b3d55')}">{{mash_total}}%</label><br>
+
+                    <!--
                     <label class="labelf">Lot Identification Number:</label>
                     <input type="text" class="form-control" formControlName="lot_id" (ngModelChange)="evalEdit(itemx)">
                     <div *ngIf="form_submitted == true && auction_form.controls['lot_id'].errors"
@@ -95,8 +120,9 @@
                         <div *ngIf="auction_form.controls['lot_id'].errors['required']"><em>Lot identification is
                                 required</em></div>
                     </div>
+                    -->
 
-                    <label class="labelf">Description:</label>
+                    <label class="golden_label">Description:</label>
                     <textarea class="form-control" rows="5" formControlName="description"
                         (ngModelChange)="evalEdit(itemx)"></textarea>
                     <div *ngIf="form_submitted == true && auction_form.controls['description'].errors"
@@ -105,12 +131,13 @@
                                 description</em></div>
                     </div>
 
+                    <label class="golden_label">Pricing</label><br>
                     <label class="labelf">Starting Bid:</label>
                     <!--
                 <input type="text" class="form-control" [(ngModel)]="itemx.starting_bid" (ngModelChange)="evalEdit(itemx)">
                 -->
                     <div style="position:relative">
-                        <input type="text" class="form-control padding_for_dollar_sign" formControlName="starting_bid"
+                        <input type="text" class="form-control padding_for_dollar_sign" style="width:200px;" formControlName="starting_bid"
                             (ngModelChange)="evalEdit(itemx)">
                         <span><i class="fas fa-dollar-sign money_icon" style="top: 12px;left: 15px;"></i></span>
                     </div>
@@ -155,7 +182,7 @@
 
                     <label class="labelf">Reserve Price:</label>
                     <div style="position:relative">
-                        <input type="text" class="form-control padding_for_dollar_sign" formControlName="reserve_price"
+                        <input type="text" class="form-control padding_for_dollar_sign" style="width:200px;" formControlName="reserve_price"
                             (ngModelChange)="evalEdit(itemx)">
                         <span><i class="fas fa-dollar-sign money_icon" style="top: 12px;left: 15px;"></i></span>
                     </div>
@@ -167,7 +194,7 @@
 
                     <label class="labelf">Buy Now Price (if not offered leave blank)</label>
                     <div style="position:relative">
-                        <input type="text" class="form-control padding_for_dollar_sign" formControlName="buy_now_price"
+                        <input type="text" class="form-control padding_for_dollar_sign" style="width:200px;" formControlName="buy_now_price"
                             (ngModelChange)="evalEdit(itemx)">
                         <span><i class="fas fa-dollar-sign money_icon" style="top: 12px;left: 15px;"></i></span>
                     </div>
@@ -182,7 +209,7 @@
                         <select class="btn btn-default dropdown-toggle"
                             style="border: 1px solid #ced4da;width:280px;background-color:white;margin:auto"
                             formControlName="schedule" (ngModelChange)="evalEdit(itemx)">
-                            <option class="dropdown_option" *ngFor="let y of ['Yes','No']" [value]="y">
+                            <option class="dropdown_option" *ngFor="let y of schedule_options" [value]="y">
                                 {{ y }}
                             </option>
                         </select>
@@ -195,7 +222,10 @@
 
                     <button class="btn btn-default button_secondary button_secondaryx" style="margin-top:60px">Review
                         and Sign Agreement</button>
-                    <button class="btn btn-default button_secondary button_secondaryx">Escrow Deposit</button>
+                    <button class="btn btn-default button_secondary button_secondaryx" style="margin-bottom: 5px;">Upload Warehouse Agreement & Receipts</button>
+                    <em>Warehouse Agreement</em><br>
+                    <em>Receipt 1</em><br>
+                    <em>Receipt 2</em><br>
                     <button type="submit" class="btn btn-default button_primary button_primaryx">List Item</button>
                     <button class="btn btn-default button_primary button_primaryx" style="margin-bottom:100px">Save for Later</button>
                 </form>
@@ -238,9 +268,11 @@
 
             </div>
         </div>
+        <!--
         <div class="col-4">
             <img class="logo_image" src="../../../assets/images/defaultimage.png">
         </div>
+        -->
     </div>
 </section>
 <app-footer></app-footer>
