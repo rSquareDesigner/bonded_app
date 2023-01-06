@@ -40,6 +40,9 @@
                         <a >ADMIN</a>
                     </li>
                     -->
+                    <li *ngIf="user" class="nav-item" (click)="goto('admin')">
+                        <a >ADMIN</a>
+                    </li>
                     <li *ngIf="user" class="nav-item" (click)="goto('saved-items')">
                         <a >SELL</a>
                     </li>

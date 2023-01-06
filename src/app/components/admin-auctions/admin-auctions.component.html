@@ -1,0 +1,60 @@
+
+    
+    <div class="content_container" *ngIf="listings">
+        <h2 class="page_title">Auctions</h2>
+            <table class="table table-hover tablex">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Seller</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Distillery</th>
+                        <th>Internal Spirit</th>
+                        <th>Current Bid</th>
+                        <th>Reserve Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of listings" style="cursor:pointer;">
+                        <td>
+                            <img class="image_table" src="{{x.image}}" (click)="gotoListing(x)">
+                        </td>
+                        <td style="vertical-align: middle;" (click)="gotoUserProfile(x)">{{x.user_name}}</td>
+                        <td style="vertical-align: middle;">{{x.category}}</td>
+                        <td style="vertical-align: middle;">{{x.status}}</td>
+                        <td style="vertical-align: middle;">{{x.distillery}}</td>
+                        <td style="vertical-align: middle;">{{x.internal_spirit}}</td>
+                        <td style="vertical-align: middle;">{{x.current_bid}}</td>
+                        <td style="vertical-align: middle;">{{x.reserve_price}}</td>
+                        <td style="vertical-align: middle;">
+                            <button class="btn btn-default button_grey" (click)="confirmDelete(x)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body" *ngIf="itemx_delete">
+                <div class="text-right">
+                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+                <p style="padding-top:40px;text-align:center;">Please confirm you wish to delete this item.</p>
+                <h2 class="confirm_delete_title">{{itemx_delete.type}},{{itemx_delete.length_feet}}&nbsp;{{itemx_delete.length_inches}}</h2>
+                <img class="confirm_delete_image" src="{{itemx_delete.image}}">
+                <div class="text-center" style="padding: 25px 0;">
+                    <button type="button" class="btn btn-default button_primary" style="min-width:150px" (click)="deleteListing()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

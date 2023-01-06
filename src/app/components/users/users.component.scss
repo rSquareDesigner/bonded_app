@@ -1,0 +1,42 @@
+@import '../../../globals.scss';
+
+.group_buttons_container {
+    padding-left: 20px;
+}
+
+.active_check {
+    color: $color-one;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.role_dropdown {
+    background-color: white;
+    width: 100%;
+}
+
+.confirm_delete_user_image {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    display: block;
+    border: solid 1px lightgrey;
+    border-radius: 50%;
+}
+
+.confirm_delete_title {
+    text-align: center;
+    font-size: 26px;
+    margin: 20px 0;
+}
+
+.user_image_table {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.inputx {
+    border: solid 1px grey;
+    border-radius: 20px;
+}

@@ -19,6 +19,8 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
+  {path: 'admin', component: AdminComponent },
+  {path: 'admin/:view', component: AdminComponent },
   {path: 'password-reset', component: PasswordResetComponent },
   {path: 'admin', component: AdminComponent },
   {path: 'admin/:view', component: AdminComponent },

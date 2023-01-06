@@ -23,10 +23,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.shaper_id){
-      this.view = 'shaper-details';
-    }
-    else if (!this.view) this.view = 'users';
+    if (!this.view) this.view = 'users';
 
     /*
     const queryString = window.location.search;
@@ -44,10 +41,10 @@ export class AdminComponent implements OnInit {
     */
   }
 
-  goHome(route:string){
+  goHome(){
     $(".navbar-collapse").collapse('hide');
     
-    this.router.navigate([route]);
+    this.router.navigate(['']);
   }
 
   goto(view:string){

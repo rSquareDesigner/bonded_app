@@ -1,6 +1,6 @@
 <div class="row" style="padding:0;margin:0;">
     <div class="col-2 sidemenu">
-        <img class="logo" src="../../../assets/images/White_Transparent.png" (click)="goHome('home')">
+        <img class="logo" src="../../../assets/images/White_Transparent.png" (click)="goHome()">
         <ul style="list-style-type: none;padding-top:60px;">
             <li class="sidemenu_item" (click)="goto('users')">Users</li>
             <li class="sidemenu_item" (click)="goto('auctions')">Auctions</li>
@@ -13,7 +13,7 @@
     </div>
     <div class="col-10 contents">
         <app-users *ngIf="view == 'users'"></app-users>
-        <app-auctions *ngIf="view == 'auctions'"></app-auctions>
+        <app-admin-auctions *ngIf="view == 'auctions'"></app-admin-auctions>
         <app-transactions *ngIf="view == 'transactions'"></app-transactions>
         <app-accounts-manager *ngIf="view == 'accounts-manager'"></app-accounts-manager>
         <app-resolution-center *ngIf="view == 'resolution-center'"></app-resolution-center>

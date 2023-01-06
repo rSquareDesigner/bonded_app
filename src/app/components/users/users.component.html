@@ -1,1 +1,120 @@
-<p>users works!</p>
+<div class="content_container">
+    <!--
+    <div class="text-left">
+        <button class="btn btn-default back_button" (click)="goBack()">Back</button>
+    </div>
+    -->
+    <h2 class="page_title">Users</h2>
+    <!--
+    <div class="text-right" style="padding:30px 0;">
+        <button class="btn btn-default button_primary" (click)="showUserModal(undefined)">Add User</button>
+    </div>
+    -->
+    <div class="text-left" style="padding:0 0 35px 0">
+        <input type="text" [(ngModel)]="search_user" class="search_input inputx" placeholder="Search user..." (ngModelChange)="filterUsers()">
+    </div>
+    <table class="table">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of users">
+                <td>{{x.id}}</td>
+                <td>{{x.first_name}}</td>
+                <td>{{x.email}}</td>
+                <td>
+                    <em>{{x.role}}</em>
+                </td>
+                <td>
+                    <button *ngIf="x.is_blocked == true" class="btn btn-default button_secondary" style="border:none;" (click)="unblockUser(x)">Unblock</button>
+                </td>
+                <td>
+                    <button class="btn btn-default button_secondary" style="border:none;min-width:auto;" (click)="showUserModal(x)">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-default button_secondary" style="border:none;min-width:auto;" (click)="gotoUserProfile(x)">Profile</button>
+                </td>
+                <td>
+                    <button class="btn btn-default button_secondary" style="border:none;min-width:auto;" (click)="confirmDeleteUser(x)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="userx">
+            <div class="modal-body modal_body">
+                <div class="text-right">
+                    <button type="button" class="close modal_close_button" style="color:black;" data-dismiss="modal" aria-label="Close"
+                        (click)="closeModal('userModal')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h5 *ngIf="userx.id" class="modal-title modal_title">Edit User</h5>
+                <!--
+                <div class="text-right"> 
+                    <label class="labelf">Is Approved&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label class="switch">
+                        <input type="checkbox" [(ngModel)]="userx.has_been_approved" (ngModelChange)="evalEdit(userx)">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                -->
+                <label class="labelf">Name:
+                </label>
+                <input type="text" class="form-control"  [(ngModel)]="userx.name" (ngModelChange)="evalEdit(userx)">
+                <label class="labelf">Email:
+                </label>
+                <input type="text" class="form-control"  [(ngModel)]="userx.email" (ngModelChange)="evalEdit(userx)">
+
+                <label class="labelf">Role:</label>
+                <select class="btn btn-default dropdown-toggle role_dropdown" style="border: solid 1px lightgrey;" [(ngModel)]="userx.role"
+                    (ngModelChange)="evalEdit(userx)">
+                    <option *ngFor="let y of ['user','admin']" [value]="y">
+                        {{ y }}
+                    </option>
+                </select>
+
+                <div class="text-center" style="margin-top:40px;" [ngStyle]="{'visibility': hasChanged == true  ? 'visible':'hidden'}">
+                    <button class="btn btn-default button_primary" style="width:250px;" (click)="updateUser(userx)">Save</button>
+                </div>
+            
+            </div>
+            <!--
+            <div class="modal-footer modal_footer" *ngIf="userx.id">
+                <button class="btn btn-default" style="margin:6px;" 
+                    (click)="confirmDeleteUser(userx)"><small>DELETE</small></button>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmDeleteUserModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body" *ngIf="userx_delete">
+                <div class="text-right">
+                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+                <p style="padding-top:40px;text-align:center;">Please confirm you wish to delete this user.</p>
+                <h2 class="confirm_delete_title">{{userx_delete.name}}</h2>
+                <img class="confirm_delete_user_image" src="{{userx_delete.image}}">
+                <div class="text-center" style="padding: 25px 0;">
+                    <button type="button" class="btn btn-default button_primary" style="min-width:150px" (click)="deleteUser()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
