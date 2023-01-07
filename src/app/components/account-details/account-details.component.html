@@ -15,19 +15,19 @@
         </div>
         <div class="col-9">
             Email address:<br>
-            <em>{{user.email}}</em><br><br>
+            <em>{{user.email}}</em>&nbsp;&nbsp;<i class="fa fa-pencil edit_icon" (click)="editEmail()"></i><br><br>
             Phone:<br>
-            <em>{{user.phone}}</em><br><br>
-            Name & Address:<br>
+            <em>{{user.phone}}</em>&nbsp;&nbsp;<i class="fa fa-pencil edit_icon" (click)="editPhone()"></i><br><br>
+            Name & Address:&nbsp;&nbsp;<i class="fa fa-pencil edit_icon" (click)="editNameAndAddress()"></i><br>
             <em>{{user.first_name}}&nbsp;{{user.last_name}}</em><br>
-            <em>{{user.address}}</em><br>
-            <em>{{user.city}}, {{user.state}}&nbsp;{{user.zipcode}}</em><br><br>
+            <em>{{user.location_address}}</em><br>
+            <em>{{user.location_city}}, {{user.location_state}}&nbsp;{{user.location_zipcode}}</em><br><br>
             Date of Birth:<br>
-            <em>{{user.date_of_birth}}</em><br><br>
+            <em>{{user.dob_month}}&nbsp;{{user.dob_day}},{{user.dob_year}}</em>&nbsp;&nbsp;<i class="fa fa-pencil edit_icon" (click)="editDateOfBirth()"></i><br><br>
             ID:<br>
-            <span class="sub_section_field">Type:</span><em>{{user.id_type}}</em><br>
-            <span class="sub_section_field">Number:</span><em>{{user.id_number}}</em><br>
-            <span class="sub_section_field">Country:</span><em>{{user.country}}</em><br>
+            <span class="sub_section_field">Type:</span><em>{{user.id_type}}</em>&nbsp;&nbsp;<i class="fa fa-pencil edit_icon"></i><br>
+            <span class="sub_section_field">Number:</span><em>{{user.id_number}}</em>&nbsp;&nbsp;<i class="fa fa-pencil edit_icon"></i><br>
+            <span class="sub_section_field">Country:</span><em>{{user.country}}</em>&nbsp;&nbsp;<i class="fa fa-pencil edit_icon"></i><br>
         </div>
     </div>
 
@@ -44,8 +44,8 @@
             Password
         </div>
         <div class="col-9">
-            <em>temp******</em><br>
-            <button class="btn btn-default white_button">Change Password</button>
+            <em>******</em><br>
+            <button class="btn btn-default white_button" (click)="resetPassword()">Change Password</button>
         </div>
     </div>
 
@@ -72,6 +72,197 @@
             <button class="btn btn-default white_button">Request Banking Change</button>
             <br><br>
             <button class="btn btn-default white_button">Request to Close Account</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editEmailModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal" (click)="closeModal('editEmailModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                
+                <div class="labelf">Email</div>
+                <input type="text" class="form-control" [(ngModel)]="itemx.email">
+                
+                <div class="text-center" style="padding: 40px 0 0px 0;">
+                    <button type="button" class="btn btn-default button_primary" (click)="saveField('email')">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editPhoneModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal" (click)="closeModal('editPhoneModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                
+                <div class="labelf">Phone</div>
+                <input type="text" pattern="\(\d{3}\) \d{3}-\d{4}" class="form-control" [(ngModel)]="itemx.phone">
+                
+                <div class="text-center" style="padding: 40px 0 0px 0;">
+                    <button type="button" class="btn btn-default button_primary" (click)="saveField('phone')">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editNameAndAddressModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal" (click)="closeModal('editNameAndAddressModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                
+                <div class="labelf">First Name</div>
+                <input type="text" class="form-control" [(ngModel)]="itemx.first_name">
+
+                <div class="labelf">Last Name</div>
+                <input type="text" class="form-control" [(ngModel)]="itemx.last_name">
+
+                <div class="labelf">Address</div>
+                <input type="text" class="form-control" [(ngModel)]="itemx.location_address">
+
+                <div class="row">
+                    <div class="col-9" style="padding-right:0;">
+                        <div class="labelf">City</div>
+                        <input type="text" class="form-control" [(ngModel)]="itemx.location_city">
+                    </div>
+                    <div class="col-3">
+                        <div class="labelf">State</div>
+                        <input type="text" class="form-control" [(ngModel)]="itemx.location_state">
+                    </div>
+                </div>
+
+                <div class="labelf">Zip Code</div>
+                <input type="text" class="form-control" [(ngModel)]="itemx.location_zipcode">
+                
+                <div class="text-center" style="padding: 40px 0 0px 0;">
+                    <button type="button" class="btn btn-default button_primary" (click)="saveField('name_and_address')">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editDateOfBirthModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal" (click)="closeModal('editDateOfBirthModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                
+                <div class="labelf">Date Of Birth</div>
+                <div class="row">
+                    <div class="col-7">
+                        <select class="btn btn-default dropdown-toggle"
+                            style="border: 1px solid #ced4da;background-color:white;margin:auto;width:100%" [(ngModel)]="itemx.dob_month">
+                            <option class="dropdown_option" 
+                            *ngFor="let y of ['January','February','March','April','May','June','July','August','September','October','November','December']" [ngValue]="y">
+                                {{ y }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-2" style="padding:0;">
+                        <select class="btn btn-default dropdown-toggle"
+                            style="border: 1px solid #ced4da;background-color:white;margin:auto;width:100%" [(ngModel)]="itemx.dob_day">
+                            <option class="dropdown_option" 
+                            *ngFor="let y of ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31']" [ngValue]="y">
+                                {{ y }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <select class="btn btn-default dropdown-toggle"
+                            style="border: 1px solid #ced4da;background-color:white;margin:auto;width:100%" [(ngModel)]="itemx.dob_year">
+                            <option class="dropdown_option" 
+                            *ngFor="let y of years" [ngValue]="y">
+                                {{ y }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="padding: 40px 0 0px 0;">
+                    <button type="button" class="btn btn-default button_primary" (click)="saveField('dob')">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal" (click)="closeModal('successModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                
+                <div class="text-center" style="padding:50px 0 0 0">
+                    <em>Changes saved succesfully!</em>
+                </div>
+                
+                <div class="text-center" style="padding: 40px 0 0px 0;">
+                    <button type="button" class="btn btn-default button_primary" (click)="closeModal('successModal')">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal" (click)="closeModal('resetPasswordModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                
+                <div class="text-center" style="padding:50px 0 0 0">
+                    Click the button below to send a password reset link to <em>{{user.email}}.</em>
+                </div>
+                
+                <div class="text-center" style="padding: 40px 0 0px 0;">
+                    <button type="button" class="btn btn-default button_primary" (click)="sendResetPasswordLink()">Send link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resetPasswordLinkSentModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal" (click)="closeModal('resetPasswordLinkSentModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                
+                <div class="text-center" style="padding:50px 0 0 0">
+                   <em>Reset password link has been sent!</em>
+                </div>
+                
+                <div class="text-center" style="padding: 40px 0 0px 0;">
+                    <button type="button" class="btn btn-default button_primary" (click)="closeModal('resetPasswordLinkSentModal')">Ok</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
