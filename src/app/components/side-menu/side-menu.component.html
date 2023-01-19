@@ -1,0 +1,29 @@
+<div class="sidemenu">
+    <img class="sidemenu_logo" src="../../../assets/images/Color_Transparent_sm.png" (click)="goto('')">
+
+    <div class="sidemenu_link" style="padding-bottom: 7px;" (click)="goto('edit-auction/0')">
+        <i class="fa fa-plus"></i>&nbsp;&nbsp;Create listing
+    </div>
+
+    <div *ngIf="user" class="sidemenu_link" style="padding-bottom: 7px;" (click)="goto('account')">
+        <i class="fa fa-user"></i>&nbsp;&nbsp;Account
+    </div>
+    <div *ngIf="user" class="sidemenu_link" style="padding-bottom: 7px;" (click)="goto('inbox')">
+        <i class="fa fa-inbox"></i>&nbsp;&nbsp;Messages
+    </div>
+
+    <div *ngIf="user" class="sidemenu_section_title" style="margin-top: 20px;">ACTIVITY</div>
+    <div *ngIf="user" class="sidemenu_link" (click)="goto('recently-viewed')">Recently Viewed</div>
+    <div *ngIf="user" class="sidemenu_link" (click)="goto('bids-and-offers')">Bids and Offers</div>
+    <div *ngIf="user" class="sidemenu_link" (click)="goto('purchases')">Purchases</div>
+    <div *ngIf="user" class="sidemenu_link" (click)="goto('watchlist')">Watchlist</div>
+    <div *ngIf="user" class="sidemenu_link" (click)="goto('selling')">Selling</div>
+
+    <div class="sidemenu_section_title" style="margin-top: 20px;">BROWSE AUCTIONS</div>
+    <div class="sidemenu_link" (click)="goto('auctions/premium-auctions')">Premium Auctions</div>
+    <div class="sidemenu_link" (click)="goto('auctions/open-market-auctions')">Open Market</div>
+    <div class="sidemenu_link" (click)="goto('auctions/rye')">Rye</div>
+    <div class="sidemenu_link" (click)="goto('auctions/malt-whiskey')">Malt-Whiskey</div>
+    <div class="sidemenu_link" (click)="goto('auctions/bourbon')">Bourbon</div>
+    <div class="sidemenu_link" (click)="goto('auctions/other-spirits')">Other Spirits</div>
+</div>

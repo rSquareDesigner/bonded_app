@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-auctions',
@@ -18,6 +19,7 @@ export class AuctionsComponent implements OnInit {
   show_auction_options: boolean = false;
 
   constructor(
+    public commonService: CommonService,
     private route: ActivatedRoute,
     private router: Router
     ) { 
@@ -148,6 +150,8 @@ export class AuctionsComponent implements OnInit {
       }
   
     ];
+
+    this.auctions = this.commonService.shuffle(this.auctions);
 
   }
 

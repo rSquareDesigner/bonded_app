@@ -1,324 +1,346 @@
 
 <app-navbar></app-navbar>
 
-<section class="hero_section">
-    <!--
+<div class="row main_row">
+    <div class="col-2" style="padding:0;">
+        <app-side-menu></app-side-menu>
+    </div>
+
+    <div class="col-10" style="padding:0;">
+
+        <section class="hero_section">
+            <!--
     <div class="hero_buttons_container">
             
     </div>
-    -->
-    <app-sub-menu [color]="'white'"></app-sub-menu>
-    
-    <div class="hero_banner">
-        <h2>Welcome to Bonded.co</h2>
-        <p>The Modern Way To Buy Barrels</p>
-    </div>
-</section>
-
-<!--* ================= S T A R T   W H I T E  B A N N E R  C O M P O N E N T ================= -->
-<section class="white-banner">
-    <div class="container">
-        <h2 class="text-center mx-auto mw-r">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus tempora numquam omnis et atque
-            quam consectetur
-        </h2>
-    </div>
-</section>
-<!--* ================= E N D   W H I T E  B A N N E R  C O M P O N E N T ================= -->
-
-
-<!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
-<section class="main-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 order-0">
-                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Image.jpg')">
-                    <h2 class="h1 ws-700">
-                        Premium Auctions
-                    </h2>
-                </div>
+    --> 
+            <!--
+            <app-sub-menu class="d-block d-md-none" [color]="'white'"></app-sub-menu>
+            -->
+            
+            <div class="hero_banner">
+                <h2>Welcome to Bonded.co</h2>
+                <p>The Modern Way To Buy Barrels</p>
             </div>
-            <div class="col-lg-6 order-1">
-                <div class="section-items">
-                    <div class="items-container">
-                        <div class="row">
-                            <div class="col-md-6" *ngFor="let x of auctions">
-                                <app-result-card [listing]="x"></app-result-card>
+        </section>
+
+        <!--* ================= S T A R T   W H I T E  B A N N E R  C O M P O N E N T ================= -->
+        <section class="white-banner">
+            <div class="container">
+                <h2 class="text-center mx-auto mw-r">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus tempora numquam omnis et
+                    atque
+                    quam consectetur
+                </h2>
+            </div>
+        </section>
+        <!--* ================= E N D   W H I T E  B A N N E R  C O M P O N E N T ================= -->
+
+
+        <!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+        <section class="main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 order-0">
+                        <div class="section-cover"
+                            style="background-image: url('../../../assets/images/Auction Image.jpg')">
+                            <h2 class="h1 ws-700">
+                                Premium Auctions
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1">
+                        <div class="section-items">
+                            <div class="items-container">
+                                <div class="row">
+                                    <div class="col-md-6" *ngFor="let x of auctions">
+                                        <app-result-card [listing]="x"></app-result-card>
+                                    </div>
+                                </div>
+
                             </div>
+
+                            <p class="view_all_auctions_button" (click)="goto('auctions/premium-auctions')">View All
+                                Auctions</p>
                         </div>
-
                     </div>
-
-                    <p class="view_all_auctions_button" (click)="goto('auctions/premium-auctions')">View All Auctions</p>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+        </section>
+        <!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
 
-<!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
-<section class="brown-banner py-5">
-    <div class="container text-center">
-        <h3 class="mx-auto mb-4 text-white mw-r">
-            Join to access our Premium Auctions
-        </h3>
-        <button type="button" class="btn btn-deafult brown_banner_button" (click)="goto('register')">
-            Enroll Today
-        </button>
-    </div>
-</section>
-<!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+        <!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+        <section class="brown-banner py-5">
+            <div class="container text-center">
+                <h3 class="mx-auto mb-4 text-white mw-r">
+                    Join to access our Premium Auctions
+                </h3>
+                <button type="button" class="btn btn-deafult brown_banner_button" (click)="goto('register')">
+                    Enroll Today
+                </button>
+            </div>
+        </section>
+        <!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
 
 
-<!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
-<section class="main-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 order-1 order-lg-0">
-                <div class="section-items">
-                    <div class="items-container py-3">
-                        <div class="row">
-                            <div class="col-md-6" *ngFor="let x of auctions">
-                                <app-result-card [listing]="x"></app-result-card>
+        <!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+        <section class="main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-0">
+                        <div class="section-items">
+                            <div class="items-container py-3">
+                                <div class="row">
+                                    <div class="col-md-6" *ngFor="let x of auctions">
+                                        <app-result-card [listing]="x"></app-result-card>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
 
-                    </div>
-
-                    <p class="view_all_auctions_button">View All Auctions</p>
-                </div>
-            </div>
-            <div class="col-lg-6 order-0 order-lg-1">
-                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Image.jpg')">
-                    <h2 class="h1 ws-700">
-                        Open Market Auctions
-                    </h2>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!--* ================= E N D   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
-
-
-<!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
-<section class="brown-banner py-5">
-    <div class="container text-center">
-        <h3 class="mx-auto mb-4 text-white mw-r">
-            Register today to bid and sell on our open market
-        </h3>
-        <button type="button" class="btn btn-deafult brown_banner_button" (click)="goto('register')">
-            Register Today
-        </button>
-    </div>
-</section>
-<!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
-
-
-<!--* ================= S T A R T   F E A T U R E   A C T I O N   S L I D E R   C O M P O N E N T ================= -->
-<section id="feature-action-slider">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="item">
-                    <div class="box">
-                        <h2 class="h1 mb-4">Featured Action 1</h2>
-                        <p class=" d-flex flex-column mb-5">
-                            <span>Lorem ipsum dolor sit amet,</span>
-                            <span>Lorem ipsum dolor sit amet,</span>
-                        </p>
-                        <div class="btns d-flex align-items-center flex-column flex-lg-row">
-                            <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
-                            <button type="button">Buy Now</button>
+                            <p class="view_all_auctions_button">View All Auctions</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="item">
-                    <div class="box">
-                        <h2 class="h1 mb-4">Featured Action 3</h2>
-                        <p class=" d-flex flex-column mb-5">
-                            <span>Lorem ipsum dolor sit amet,</span>
-                            <span>Lorem ipsum dolor sit amet,</span>
-                        </p>
-                        <div class="btns d-flex align-items-center flex-column flex-lg-row">
-                            <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
-                            <button type="button">Buy Now</button>
+                    <div class="col-lg-6 order-0 order-lg-1">
+                        <div class="section-cover"
+                            style="background-image: url('../../../assets/images/Auction Image.jpg')">
+                            <h2 class="h1 ws-700">
+                                Open Market Auctions
+                            </h2>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </section>
+        <!--* ================= E N D   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
 
-            <div class="carousel-item">
-                <div class="item">
-                    <div class="box">
-                        <h2 class="h1 mb-4">Featured Action 2</h2>
-                        <p class=" d-flex flex-column mb-5">
-                            <span>Lorem ipsum dolor sit amet,</span>
-                            <span>Lorem ipsum dolor sit amet,</span>
-                        </p>
-                        <div class="btns d-flex align-items-center flex-column flex-lg-row">
-                            <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
-                            <button type="button">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
+
+        <!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+        <section class="brown-banner py-5">
+            <div class="container text-center">
+                <h3 class="mx-auto mb-4 text-white mw-r">
+                    Register today to bid and sell on our open market
+                </h3>
+                <button type="button" class="btn btn-deafult brown_banner_button" (click)="goto('register')">
+                    Register Today
+                </button>
             </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-</section>
-<!--* ================= E N D   F E A T U R E   A C T I O N   S L I D E R   C O M P O N E N T ================= -->
+        </section>
+        <!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
 
 
-<!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
-<section class="brown-banner py-5">
-    <div class="container text-center">
-        <h3 class="mx-auto mb-4 text-white mw-r">
-            Would you like your auction to be featured?
-        </h3>
-        <button type="button" class="btn btn-deafult brown_banner_button" (click)="goto('register')">
-            Request Today
-        </button>
-    </div>
-</section>
-<!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
-
-
-<!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
-<section class="main-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 order-0">
-                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
-                    <h2 class="h1 ws-700">
-                        Bourbon Auctions
-                    </h2>
-                </div>
-            </div>
-            <div class="col-lg-6 order-1">
-                <div class="section-items">
-                    <div class="items-container py-3">
-                        <div class="row">
-                            <div class="col-md-6" *ngFor="let x of auctions">
-                                <app-result-card [listing]="x"></app-result-card>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <p class="view_all_auctions_button" (click)="goto('auctions/bourbon')">View All Auctions</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
-
-
-<!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
-<section class="main-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 order-1 order-lg-0">
-                <div class="section-items">
-                    <div class="items-container py-3">
-                        <div class="row">
-                            <div class="col-md-6" *ngFor="let x of auctions">
-                                <app-result-card [listing]="x"></app-result-card>
+        <!--* ================= S T A R T   F E A T U R E   A C T I O N   S L I D E R   C O M P O N E N T ================= -->
+        <section id="feature-action-slider">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="item">
+                            <div class="box">
+                                <h2 class="h1 mb-4">Featured Action 1</h2>
+                                <p class=" d-flex flex-column mb-5">
+                                    <span>Lorem ipsum dolor sit amet,</span>
+                                    <span>Lorem ipsum dolor sit amet,</span>
+                                </p>
+                                <div class="btns d-flex align-items-center flex-column flex-lg-row">
+                                    <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
+                                    <button type="button">Buy Now</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <p class="view_all_auctions_button" (click)="goto('auctions/rye')">View All Auctions</p>
-                </div>
-            </div>
-            <div class="col-lg-6 order-0 order-lg-1">
-                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
-                    <h2 class="h1 ws-700">
-                        Rye Auctions
-                    </h2>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!--* ================= E N D   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
-
-
-<!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
-<section class="main-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 order-0">
-                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
-                    <h2 class="h1 ws-700">
-                        Malt Whiskey Auctions
-                    </h2>
-                </div>
-            </div>
-            <div class="col-lg-6 order-1">
-                <div class="section-items">
-                    <div class="items-container py-3">
-                        <div class="row">
-                            <div class="col-md-6" *ngFor="let x of auctions">
-                                <app-result-card [listing]="x"></app-result-card>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <p class="view_all_auctions_button" (click)="goto('auctions/malt-whiskey')">View All Auctions</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
-
-
-<!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
-<section class="main-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 order-1 order-lg-0">
-                <div class="section-items">
-                    <div class="items-container py-3">
-                        <div class="row">
-                            <div class="col-md-6" *ngFor="let x of auctions">
-                                <app-result-card [listing]="x"></app-result-card>
+                    <div class="carousel-item">
+                        <div class="item">
+                            <div class="box">
+                                <h2 class="h1 mb-4">Featured Action 3</h2>
+                                <p class=" d-flex flex-column mb-5">
+                                    <span>Lorem ipsum dolor sit amet,</span>
+                                    <span>Lorem ipsum dolor sit amet,</span>
+                                </p>
+                                <div class="btns d-flex align-items-center flex-column flex-lg-row">
+                                    <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
+                                    <button type="button">Buy Now</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <p class="view_all_auctions_button" (click)="goto('auctions/other-spirits')">View All Auctions</p>
-                </div>
-            </div>
-            <div class="col-lg-6 order-0 order-lg-1">
-                <div class="section-cover" style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
-                    <h2 class="h1 ws-700">
-                        Other Spirit Auctions
-                    </h2>
-                </div>
-            </div>
+                    <div class="carousel-item">
+                        <div class="item">
+                            <div class="box">
+                                <h2 class="h1 mb-4">Featured Action 2</h2>
+                                <p class=" d-flex flex-column mb-5">
+                                    <span>Lorem ipsum dolor sit amet,</span>
+                                    <span>Lorem ipsum dolor sit amet,</span>
+                                </p>
+                                <div class="btns d-flex align-items-center flex-column flex-lg-row">
+                                    <button type="button" class="me-0 me-lg-3 mb-3 mb-lg-0">Place Bid</button>
+                                    <button type="button">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!--* ================= E N D   F E A T U R E   A C T I O N   S L I D E R   C O M P O N E N T ================= -->
+
+
+        <!--* ================= S T A R T  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+        <section class="brown-banner py-5">
+            <div class="container text-center">
+                <h3 class="mx-auto mb-4 text-white mw-r">
+                    Would you like your auction to be featured?
+                </h3>
+                <button type="button" class="btn btn-deafult brown_banner_button" (click)="goto('register')">
+                    Request Today
+                </button>
+            </div>
+        </section>
+        <!--* ================= E N D  B R O W N  B A N N E R  C O M P O N E N T ================= -->
+
+
+        <!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+        <section class="main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 order-0">
+                        <div class="section-cover"
+                            style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
+                            <h2 class="h1 ws-700">
+                                Bourbon Auctions
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1">
+                        <div class="section-items">
+                            <div class="items-container py-3">
+                                <div class="row">
+                                    <div class="col-md-6" *ngFor="let x of auctions">
+                                        <app-result-card [listing]="x"></app-result-card>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <p class="view_all_auctions_button" (click)="goto('auctions/bourbon')">View All Auctions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+
+
+        <!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+        <section class="main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-0">
+                        <div class="section-items">
+                            <div class="items-container py-3">
+                                <div class="row">
+                                    <div class="col-md-6" *ngFor="let x of auctions">
+                                        <app-result-card [listing]="x"></app-result-card>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="view_all_auctions_button" (click)="goto('auctions/rye')">View All Auctions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-0 order-lg-1">
+                        <div class="section-cover"
+                            style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
+                            <h2 class="h1 ws-700">
+                                Rye Auctions
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--* ================= E N D   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+
+
+        <!--* ================= S T A R T   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+        <section class="main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 order-0">
+                        <div class="section-cover"
+                            style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
+                            <h2 class="h1 ws-700">
+                                Malt Whiskey Auctions
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1">
+                        <div class="section-items">
+                            <div class="items-container py-3">
+                                <div class="row">
+                                    <div class="col-md-6" *ngFor="let x of auctions">
+                                        <app-result-card [listing]="x"></app-result-card>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <p class="view_all_auctions_button" (click)="goto('auctions/malt-whiskey')">View All
+                                Auctions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--* ================= E N D   M A I N   S E C T I O N   L E F T   C O M P O N E N T ================= -->
+
+
+        <!--* ================= S T A R T   M A I N   S E C T I O N   R I G H T   C O M P O N E N T ================= -->
+        <section class="main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-0">
+                        <div class="section-items">
+                            <div class="items-container py-3">
+                                <div class="row">
+                                    <div class="col-md-6" *ngFor="let x of auctions">
+                                        <app-result-card [listing]="x"></app-result-card>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="view_all_auctions_button" (click)="goto('auctions/other-spirits')">View All
+                                Auctions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-0 order-lg-1">
+                        <div class="section-cover"
+                            style="background-image: url('../../../assets/images/Auction Call Out Image.jpg')">
+                            <h2 class="h1 ws-700">
+                                Other Spirit Auctions
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <app-footer></app-footer>
+
     </div>
-</section>
-
-<app-footer></app-footer>
+</div>

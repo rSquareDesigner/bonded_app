@@ -1,8 +1,17 @@
-<div class="cards_container">
-    <div class="items-container">
-        <div class="row">
-            <div class="col-md-4" *ngFor="let x of watchlist_auctions">
-                <app-result-card [listing]="x"></app-result-card>
+<app-navbar></app-navbar>
+<div class="row mz">
+    <div class="col-2">
+        <app-side-menu></app-side-menu>
+    </div>
+    <div class="col-10" style="padding-top:80px;">
+        <h1 class="golden_label_large" style="margin-bottom:30px">Watchlist</h1>
+        <div class="cards_container">
+            <div class="items-container">
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let x of watchlist_auctions">
+                        <app-result-card [listing]="x"></app-result-card>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

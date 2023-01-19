@@ -1,0 +1,36 @@
+@import '../../../globals.scss';
+
+.sidemenu{
+    background-color: $color-four;
+    color: $color-one;
+    width: 16.66%;
+    height: 100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 1500;
+    padding: 30px 20px;
+}
+
+.sidemenu_logo{
+    width: 100%;
+    max-width: 100px;
+    margin: 0 auto 30px auto;
+    display: block;
+    cursor: pointer;
+}
+
+.sidemenu_section_title{
+    font-family: 'worksans-700';
+    font-size: 18px;
+    margin: 0 0;
+    color: $color-one;
+}
+
+.sidemenu_link{
+    font-family: 'worksans-300';
+    font-size: 18px;
+    text-align: start;
+    color: $color-one;
+    cursor: pointer;
+}

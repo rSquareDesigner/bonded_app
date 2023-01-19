@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, AsyncValidatorFn } from '@angular/forms';
 import { UserService } from './../../services/user.service';
+declare var $: any;
 
 
 @Component({
@@ -13,6 +14,11 @@ export class LoginComponent implements OnInit {
 
   login_form: FormGroup;
   form_submitted: boolean = false;
+
+  reset_password_form_submitted: boolean = false;
+  invalid_email: string = '';
+
+  email: string = '';
 
   constructor(
     private router: Router,
@@ -50,5 +56,24 @@ export class LoginComponent implements OnInit {
       this.userService.loginUser(value);  
     }
   }
+
+  forgotPassword(){
+    $('#forgotPasswordModal').modal('show');
+  }
+
+  sendForgotPassword(){
+    //TODO
+    $('#forgotPasswordModal').modal('hide');
+    $('#sendForgotPasswordSuccessModal').modal('show');
+  }
+
+  closeModal(name:string){
+    $('#'+ name).modal('hide');
+  }
+
+  clearLoginAlerts(){
+    
+  }
+
 
 }

@@ -1,79 +1,102 @@
 <app-navbar></app-navbar>
 
+<div class="row main_row">
+    <div class="col-2" style="padding:0;">
+        <app-side-menu></app-side-menu>
+    </div>
+
+    <div class="col-10" style="padding:0;">
+
+        <!--
 <section class="sub_navbar">
     <app-sub-menu [color]="'blue'"></app-sub-menu>
 </section>
-<section class="form_section">
-    <div>
-        <h1 class="golden_label_large" style="margin-bottom:30px;text-align:center;">Create an Account</h1>
-        <form id="registrationForm" class="form_container" [formGroup]="registration_form" validate
-            (ngSubmit)="registerUser(registration_form)">
-            <div class="row">
-                <div class="col-5 form_input_container">
-                    <input type="text" formControlName="first_name" class="form-control" placeholder="First Name">
-                    <div *ngIf="form_submitted == true && registration_form.controls['first_name'].errors"
-                        class="invalid-feedback invalid_feedback" style="display:block;">
-                        <div *ngIf="registration_form.controls['first_name'].errors['required']"><em>First name is required</em></div>
-                    </div>
+-->
+        <section class="form_section" style="padding-top: 100px;">
+            <div>
+                <h1 class="golden_label_large" style="margin-bottom:30px;text-align:center;">Create an Account</h1>
+                <form id="registrationForm" class="form_container" [formGroup]="registration_form" validate
+                    (ngSubmit)="registerUser(registration_form)">
+                    <div class="row">
+                        <div class="col-5 form_input_container">
+                            <input type="text" formControlName="first_name" class="form-control"
+                                placeholder="First Name">
+                            <div *ngIf="form_submitted == true && registration_form.controls['first_name'].errors"
+                                class="invalid-feedback invalid_feedback" style="display:block;">
+                                <div *ngIf="registration_form.controls['first_name'].errors['required']"><em>First name
+                                        is required</em></div>
+                            </div>
 
-                </div>
-                <div class="col-7 form_input_container">
-                    <input type="text" formControlName="last_name" class="form-control" placeholder="Last Name">
-                    <div *ngIf="form_submitted == true && registration_form.controls['last_name'].errors"
-                        class="invalid-feedback invalid_feedback" style="display:block;">
-                        <div *ngIf="registration_form.controls['last_name'].errors['required']"><em>Last name is required</em>
+                        </div>
+                        <div class="col-7 form_input_container">
+                            <input type="text" formControlName="last_name" class="form-control" placeholder="Last Name">
+                            <div *ngIf="form_submitted == true && registration_form.controls['last_name'].errors"
+                                class="invalid-feedback invalid_feedback" style="display:block;">
+                                <div *ngIf="registration_form.controls['last_name'].errors['required']"><em>Last name is
+                                        required</em>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 form_input_container">
+                            <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                            <div *ngIf="form_submitted == true && registration_form.controls['email'].errors"
+                                class="invalid-feedback invalid_feedback" style="display:block;">
+                                <div *ngIf="registration_form.controls['email'].errors['pattern']"><em>Invalid
+                                        email</em></div>
+                                <div *ngIf="registration_form.controls['email'].errors['required']"><em>Email is
+                                        required</em></div>
+                                <div *ngIf="registration_form.controls['email'].errors['email_exists']"><em>Duplicated
+                                        email </em></div>
+                            </div>
+                        </div>
+                        <div class="col-12 form_input_container">
+                            <input type="password" formControlName="password" class="form-control"
+                                placeholder="Password">
+                            <div *ngIf="form_submitted == true && registration_form.controls['password'].errors"
+                                class="invalid-feedback invalid_feedback" style="display:block;">
+                                <div *ngIf="registration_form.controls['password'].errors['required']"><em>Enter a
+                                        password</em></div>
+                                <div *ngIf="registration_form.controls['password'].errors['length']"><em>Password must
+                                        be at least 8
+                                        characters</em></div>
+                            </div>
+                        </div>
+                        <div class="col-12 form_input_container">
+                            <input type="password" formControlName="password_confirm" class="form-control"
+                                placeholder="Confirm Password">
+                            <div *ngIf="form_submitted == true && registration_form.controls['password_confirm'].errors"
+                                class="invalid-feedback invalid_feedback" style="display:block;">
+                                <div *ngIf="registration_form.controls['password_confirm'].errors['required']">
+                                    <em>Confirm
+                                        password</em></div>
+                                <div *ngIf="registration_form.controls['password_confirm'].errors['mismatch']">
+                                    <em>Passwords do not
+                                        match</em></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 form_input_container">
-                    <input type="text" formControlName="email" class="form-control" placeholder="Email">
-                    <div *ngIf="form_submitted == true && registration_form.controls['email'].errors"
-                        class="invalid-feedback invalid_feedback" style="display:block;">
-                        <div *ngIf="registration_form.controls['email'].errors['pattern']"><em>Invalid email</em></div>
-                        <div *ngIf="registration_form.controls['email'].errors['required']"><em>Email is required</em></div>
-                        <div *ngIf="registration_form.controls['email'].errors['email_exists']"><em>Duplicated email </em></div>
+                    <div class="text-center golden_discrete" style="padding:70px 0;">
+                        By creating an account you agree to our<br>
+                        Terms of Service and Privacy Policy
                     </div>
-                </div>
-                <div class="col-12 form_input_container">
-                    <input type="password" formControlName="password" class="form-control" placeholder="Password">
-                    <div *ngIf="form_submitted == true && registration_form.controls['password'].errors"
-                        class="invalid-feedback invalid_feedback" style="display:block;">
-                        <div *ngIf="registration_form.controls['password'].errors['required']"><em>Enter a password</em></div>
-                        <div *ngIf="registration_form.controls['password'].errors['length']"><em>Password must be at least 8
-                                characters</em></div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-default button_primary continue_button">CONTINUE</button>
                     </div>
-                </div>
-                <div class="col-12 form_input_container">
-                    <input type="password" formControlName="password_confirm" class="form-control"
-                        placeholder="Confirm Password">
-                    <div *ngIf="form_submitted == true && registration_form.controls['password_confirm'].errors"
-                        class="invalid-feedback invalid_feedback" style="display:block;">
-                        <div *ngIf="registration_form.controls['password_confirm'].errors['required']"><em>Confirm
-                                password</em></div>
-                        <div *ngIf="registration_form.controls['password_confirm'].errors['mismatch']"><em>Passwords do not
-                                match</em></div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center golden_discrete" style="padding:70px 0;">
-                By creating an account you agree to our<br>
-                Terms of Service and Privacy Policy
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-default button_primary continue_button">CONTINUE</button>
-            </div>
-        </form>
-        
+                </form>
 
-        <div class="text-center" style="padding:70px 0;">
-            <i class="fa fa-facebook auth_option_logo" style="padding: 20px 27px;"></i>
-            <i class="fa fa-apple auth_option_logo" style="padding: 20px 23px;"></i>
-            <i class="fa fa-google auth_option_logo"></i>
-        </div>
-        <div class="text-center golden_discrete" style="cursor:pointer" (click)="goto('login')">
-            Already have an account?
-        </div>
+
+                <div class="text-center" style="padding:70px 0;">
+                    <i class="fa fa-facebook auth_option_logo" style="padding: 20px 27px;"></i>
+                    <i class="fa fa-apple auth_option_logo" style="padding: 20px 23px;"></i>
+                    <i class="fa fa-google auth_option_logo"></i>
+                </div>
+                <div class="text-center golden_discrete" style="cursor:pointer" (click)="goto('login')">
+                    Already have an account?
+                </div>
+
+            </div>
+        </section>
+        <app-footer></app-footer>
 
     </div>
-</section>
-<app-footer></app-footer>
+</div>

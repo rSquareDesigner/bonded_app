@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TablesService } from './../../services/tables.service';
+import { UserService } from './../../services/user.service';
 import { MailingService } from './../../services/mailing.service';
 declare var $: any;
 
@@ -17,13 +18,22 @@ export class AccountDetailsComponent implements OnInit {
 
   constructor(
     public tablesService: TablesService,
+    public userService: UserService,
     public mailingService: MailingService,
   ) { }
 
   ngOnInit(): void {
 
     //load user
-    this.itemx = JSON.parse(JSON.stringify(this.user));
+    this.userService._getUser.subscribe((currentUser) => {
+      
+      this.user = currentUser;
+      this.itemx = JSON.parse(JSON.stringify(this.user));
+
+      //if (this.user) this.userService.updateLastActivity();
+
+    });
+    //this.itemx = JSON.parse(JSON.stringify(this.user));
 
     this.createYearsArray();
   }

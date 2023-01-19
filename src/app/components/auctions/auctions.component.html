@@ -1,48 +1,60 @@
 <app-navbar></app-navbar>
 
-<section class="hero_section" [ngStyle]="{'background-image':'url(' + hero_image +')'}">
-    
-    <app-sub-menu [color]="'white'"></app-sub-menu>
-
-    <div class="hero_banner">
-        <h2>{{type_label}}</h2>
+<div class="row main_row">
+    <div class="col-2" style="padding:0;">
+        <app-side-menu></app-side-menu>
     </div>
-</section>
 
-<!--* ================= S T A R T   W H I T E  B A N N E R  C O M P O N E N T ================= -->
-<section class="white-banner">
-    <div class="container">
-        <h2 class="text-center mx-auto mw-r">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus tempora numquam omnis et atque
-            quam consectetur
-        </h2>
-    </div>
-</section>
-<!--* ================= E N D   W H I T E  B A N N E R  C O M P O N E N T ================= -->
+    <div class="col-10" style="padding:0;">
 
-<section class="items_section">
-        <div class="items-container items_containerx">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-3" *ngFor="let x of auctions">
-                    <app-result-card [listing]="x"></app-result-card>
+        <section class="hero_section" [ngStyle]="{'background-image':'url(' + hero_image +')'}">
+
+            <!--
+            <app-sub-menu [color]="'white'"></app-sub-menu>
+            -->
+
+            <div class="hero_banner">
+                <h2>{{type_label}}</h2>
+            </div>
+        </section>
+
+        <!--* ================= S T A R T   W H I T E  B A N N E R  C O M P O N E N T ================= -->
+        <section class="white-banner">
+            <div class="container">
+                <h2 class="text-center mx-auto mw-r">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus tempora numquam omnis et
+                    atque
+                    quam consectetur
+                </h2>
+            </div>
+        </section>
+        <!--* ================= E N D   W H I T E  B A N N E R  C O M P O N E N T ================= -->
+
+        <section class="items_section">
+            <div class="items-container items_containerx">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3" *ngFor="let x of auctions">
+                        <app-result-card [listing]="x"></app-result-card>
+                    </div>
                 </div>
             </div>
-        </div>
-</section>
+        </section>
 
-<section class="brown-banner py-5">
-    <div class="container text-center">
-        <h3 class="mx-auto mb-4 text-white mw-r">
-            Become a member to access our Premium Auctions
-        </h3>
-        <button type="button" class="btn btn-deafult brown_banner_button">
-            Enroll Today
-        </button>
+        <section class="brown-banner py-5">
+            <div class="container text-center">
+                <h3 class="mx-auto mb-4 text-white mw-r">
+                    Become a member to access our Premium Auctions
+                </h3>
+                <button type="button" class="btn btn-deafult brown_banner_button">
+                    Enroll Today
+                </button>
+            </div>
+        </section>
+
+        <section class="white-banner" style="padding: 50px;">
+
+        </section>
+
+        <app-footer></app-footer>
     </div>
-</section>
-
-<section class="white-banner" style="padding: 50px;">
-
-</section>
-
-<app-footer></app-footer>
+</div>

@@ -1,55 +1,60 @@
 <app-navbar></app-navbar>
-<div class="cc">
-<!--
+<div class="row">
+    <div class="col-2">
+        <app-side-menu></app-side-menu>
+    </div>
+    <div class="col-10 cc">
+        <!--
     <div class="page_title">Seelbach Multi-Vendor Auctions</div>
 -->
-<!--
+        <!--
 <button class="btn btn-default" (click)="goto('edit-auction/0')">Create auction</button>
 <button class="btn btn-default" (click)="goto('sell')">Sell</button>
 <button class="btn btn-default" (click)="goto('watchlist')">Watchlist</button>
 <button class="btn btn-default" (click)="goto('admin')">Admin</button>
 -->
 
-<div class="hero_images_slider" [ngStyle]="{'background-image': 'url(' + slider_image + ')'}">
-    <img class="logo_stamp" src="../../../assets/images/White_Transparent.png">
-    <div class="previous_slide_button">
-        <i class="fa fa-caret-left slider_navigation_icon" (click)="prevSlide()"></i>
-    </div>
-    <div class="next_slide_button">
-        <i class="fa fa-caret-right slider_navigation_icon" (click)="nextSlide()"></i>
-    </div>
-</div>
+        <div class="hero_images_slider" [ngStyle]="{'background-image': 'url(' + slider_image + ')'}">
+            <img class="logo_stamp" src="../../../assets/images/White_Transparent.png">
+            <div class="previous_slide_button">
+                <i class="fa fa-caret-left slider_navigation_icon" (click)="prevSlide()"></i>
+            </div>
+            <div class="next_slide_button">
+                <i class="fa fa-caret-right slider_navigation_icon" (click)="nextSlide()"></i>
+            </div>
+        </div>
 
-<div class="auctions_group">
-    <div class="auction_group_title">Bourbon</div>
-    <div class="row auction_group_cards_container">
-        <div class="col-6 col-sm-4 col-lg-2 auction_group_card" *ngFor="let x of premium_auctions">
-            <img class="auction_group_card_image" src="{{x.image}}">
-            <div class="auction_group_card_title">{{x.title}}</div>
-            <div class="auction_group_card_price">{{x.price}}</div>
+        <div class="auctions_group">
+            <div class="auction_group_title">Bourbon</div>
+            <div class="row auction_group_cards_container">
+                <div class="col-6 col-sm-4 col-lg-2 auction_group_card" *ngFor="let x of premium_auctions">
+                    <img class="auction_group_card_image" src="{{x.image}}">
+                    <div class="auction_group_card_title">{{x.title}}</div>
+                    <div class="auction_group_card_price">{{x.price}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="auctions_group">
+            <div class="auction_group_title">Rye</div>
+            <div class="row auction_group_cards_container">
+                <div class="col-6 col-sm-4 col-lg-2 auction_group_card" *ngFor="let x of premium_auctions">
+                    <img class="auction_group_card_image" src="{{x.image}}">
+                    <div class="auction_group_card_title">{{x.title}}</div>
+                    <div class="auction_group_card_price">{{x.price}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="auctions_group">
+            <div class="auction_group_title">Malt Whiskey</div>
+            <div class="row auction_group_cards_container">
+                <div class="col-6 col-sm-4 col-lg-2 auction_group_card" *ngFor="let x of premium_auctions">
+                    <img class="auction_group_card_image" src="{{x.image}}">
+                    <div class="auction_group_card_title">{{x.title}}</div>
+                    <div class="auction_group_card_price">{{x.price}}</div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="auctions_group">
-    <div class="auction_group_title">Rye</div>
-    <div class="row auction_group_cards_container">
-        <div class="col-6 col-sm-4 col-lg-2 auction_group_card" *ngFor="let x of premium_auctions">
-            <img class="auction_group_card_image" src="{{x.image}}">
-            <div class="auction_group_card_title">{{x.title}}</div>
-            <div class="auction_group_card_price">{{x.price}}</div>
-        </div>
-    </div>
-</div>
-
-<div class="auctions_group">
-    <div class="auction_group_title">Malt Whiskey</div>
-    <div class="row auction_group_cards_container">
-        <div class="col-6 col-sm-4 col-lg-2 auction_group_card" *ngFor="let x of premium_auctions">
-            <img class="auction_group_card_image" src="{{x.image}}">
-            <div class="auction_group_card_title">{{x.title}}</div>
-            <div class="auction_group_card_price">{{x.price}}</div>
-        </div>
-    </div>
-</div>
 </div>

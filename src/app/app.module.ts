@@ -27,6 +27,7 @@ import { InboxComponent } from './components/inbox/inbox.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
 import { AdminAuctionsComponent } from './components/admin-auctions/admin-auctions.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 
 
@@ -55,7 +56,8 @@ import { AdminAuctionsComponent } from './components/admin-auctions/admin-auctio
     InboxComponent,
     MessagesComponent,
     SubMenuComponent,
-    AdminAuctionsComponent
+    AdminAuctionsComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
