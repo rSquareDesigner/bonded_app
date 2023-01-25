@@ -35,6 +35,7 @@ export class EditAuctionComponent implements OnInit {
   form_submitted: boolean = false;
 
   mash_total: number = 0;
+  user_has_agreed_to_terms: boolean = false;
 
   //Subscriptions
   userServiceSubscription: Subscription = this.userService._getUser.subscribe((currentUser) => {
@@ -79,8 +80,9 @@ export class EditAuctionComponent implements OnInit {
       barrel_number: ['',[Validators.required]],
       internal_spirit: ['',[Validators.required]],
       last_fill_date: ['',[Validators.required]],
+      //last_fill_date_raw: [''],
       total_age_of_spirits: ['',[Validators.required]],
-      lot_id: ['',[Validators.required]],
+      //lot_id: ['',[Validators.required]],
       description: ['',[Validators.required]],
       starting_bid: ['',[Validators.required]],
       auction_duration: ['',[Validators.required]],
@@ -88,10 +90,10 @@ export class EditAuctionComponent implements OnInit {
       allow_offers: ['',[Validators.required]],
       reserve_price: ['',[Validators.required]],
       buy_now_price: ['',[Validators.required]],
-      mash_corn_pct: ['',[Validators.required]],
-      mash_wheat_pct: ['',[Validators.required]],
-      mash_rye_pct: ['',[Validators.required]],
-      mash_malt_pct: ['',[Validators.required]],
+      mash_corn_pct: [''],
+      mash_wheat_pct: [''],
+      mash_rye_pct: [''],
+      mash_malt_pct: [''],
       
     });
 
@@ -172,10 +174,11 @@ export class EditAuctionComponent implements OnInit {
   saveAuction({ value, valid }: { value: any, valid: boolean }) {
     this.form_submitted = true;
     console.log(value, valid);
+    console.log('this.auction_form',this.auction_form);
     if (valid){
       //this.userService.signUpUser(value);
       var listing_object = value;
-      listing_object['timestmp'] = Date.now();
+      listing_object['timestamp'] = Date.now();
       listing_object['static_page_needs_update'] = true;
 
       if (this.auction_id == 0){
@@ -184,7 +187,7 @@ export class EditAuctionComponent implements OnInit {
           
           //this.processImages(listing_object.id);
           this.router.navigate(['']);
-          
+          $('#saveListingSuccessModal').modal('show');
         });
       }
       else {
@@ -193,13 +196,16 @@ export class EditAuctionComponent implements OnInit {
           
           Object.assign(this.itemx, listing_object);
           this.router.navigate(['']);
+          $('#saveListingSuccessModal').modal('show');
         });
       }
     }
   }
 
+
   /*
   saveListing(){
+    
     
     var listing_object = {
       id: this.itemx.id ? this.itemx.id: null,
@@ -243,6 +249,7 @@ export class EditAuctionComponent implements OnInit {
     }
   }
   */
+  
 
   processImages(listing_id:number){
     
@@ -299,5 +306,15 @@ export class EditAuctionComponent implements OnInit {
   goto(route:any){
     this.router.navigate([route]);
   }
+
+  showAgreement(){
+    $('#userAgreementModal').modal('show');
+  }
+
+  userAgreedToTerms(){
+    this.user_has_agreed_to_terms = true;
+    $('#userAgreementModal').modal('hide');
+  }
+
 
 }

@@ -70,11 +70,13 @@
                     </div>
 
                     <label class="labelf">Fill Date:&nbsp;&nbsp;</label>
+                    <!--
                     <i class="fa fa-calendar" (click)="show_calendar_popup = true;"></i>
+                    -->
                     <input type="text" class="form-control" formControlName="last_fill_date">
                     <div *ngIf="show_calendar_popup == true" class="calendar_popup">
                         <dl-date-time-picker startView="day" maxView="day" minView="day"
-                            [(ngModel)]="itemx.last_fill_date_raw" (ngModelChange)="dateSelected()">
+                            formControlName="last_fill_date_raw" (ngModelChange)="dateSelected()">
                         </dl-date-time-picker>
                     </div>
                     <div *ngIf="form_submitted == true && auction_form.controls['last_fill_date'].errors"
@@ -228,8 +230,11 @@
                                 required</em></div>
                     </div>
 
-                    <button class="btn btn-default button_secondary button_secondaryx" style="margin-top:60px">Review
+                    <button type="button" class="btn btn-default button_secondary button_secondaryx" ngNoForm style="margin-top:60px" (click)="showAgreement()">Review
                         and Sign Agreement</button>
+                        <em *ngIf="user_has_agreed_to_terms == true">You have agreed to the terms of service
+                            <i class="fa fa-check"></i>
+                        </em>
                     <button class="btn btn-default button_secondary button_secondaryx" style="margin-bottom: 5px;">Upload Warehouse Agreement & Receipts</button>
                     <em>Warehouse Agreement</em><br>
                     <em>Receipt 1</em><br>
@@ -288,6 +293,7 @@
 </div>
 </div>
 
+<!--
 <div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -308,6 +314,95 @@
                     </app-image-upload>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+-->
+
+<div class="modal fade" id="userAgreementModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body" *ngIf="itemx" style="min-height: 712px;">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal"
+                    (click)="closeModal('userAgreementModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                <h1 class="modal_title" style="padding: 0 0 20px 0;">User Agreement</h1>
+                <p>Welcome to Bonded.co, the online marketplace for buying and selling distillery equipment. By accessing or using our website, you agree to be bound by the following terms and conditions ("User Agreement"). If you do not agree to these terms, please do not use our website.</p>
+                <p>
+                    1. Eligibility. You must be at least 18 years old and have the legal capacity to enter into a binding contract to use our website.<br>
+
+2. Listing and Selling. You may list and sell distillery equipment on our website in accordance with our policies. By listing an item for sale, you represent and warrant that you have the right to sell the item and that the listing is accurate, not misleading, and complies with all applicable laws.<br>
+
+3. Buying. When you purchase an item on our website, you are entering into a binding contract with the seller to purchase the item at the listed price. You agree to pay for the item within the timeframe specified in the listing.<br>
+
+4. Payment. All payments on our website must be made through our secure online payment system. We do not accept cash, check, or money order payments.<br>
+
+5. Shipping. The seller is responsible for properly packaging and shipping the purchased item to the buyer. The buyer is responsible for any import taxes or duties that may apply.<br>
+
+6. Returns and Refunds. All sales on our website are final. However, if the item received is significantly different than what was described in the listing, you may be eligible for a refund or replacement.<br>
+
+7. User Conduct. You agree to use our website only for lawful purposes and in a manner that does not infringe the rights of, or restrict or inhibit the use and enjoyment of, this website by any third party.<br>
+
+8. Intellectual Property. All content on our website, including but not limited to text, graphics, logos, images, and software, is the property of Bonded.co or its licensors and is protected by copyright and trademark laws.<br>
+
+9. Disclaimer of Warranties. Our website and the materials and products on this website are provided "as is" and without warranties of any kind, whether express or implied.<br>
+
+10. Limitation of Liability. In no event shall Bonded.co be liable for any damages whatsoever, including but not limited to, direct, indirect, special, incidental, or consequential damages, arising out of or in connection with the use or inability to use our website or the materials or products on this website.<br>
+
+11. Governing Law. This User Agreement and your use of our website shall be governed by and construed in accordance with the laws of the United States and the State of [insert applicable state], without giving effect to any principles of conflicts of law.<br>
+
+12.Changes to the User Agreement. We reserve the right, at our sole discretion, to change, modify, add or remove portions of this User Agreement at any time. Your continued use of the website following the posting of changes will mean that you accept and agree to the changes.<br>
+</p>
+
+<p>Contact Us. If you have any questions about this User Agreement, please contact us at support@bonded.co<br>
+
+Thank you for using Bonded.co!
+</p>
+
+                <div class="text-center" style="padding:30px 0">
+                    <button class="btn btn-default button_primary" (click)="userAgreedToTerms()">I Agree to the Terms of Service</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="saveListingSuccessModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal"
+                    (click)="closeModal('saveListingSuccessModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                <p>Saving listing was succesful!</p>
+                <div class="text-center" style="padding:30px 0">
+                    <button class="btn btn-default button_primary" (click)="closeModal('saveListingSuccessModal')">Ok</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="listingSuccessModal" tabindex="-1" role="dialog" [hidden]="" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal_body">
+                <button class="btn btn-default modal_close_button" data-dismiss="modal"
+                    (click)="closeModal('listingSuccessModal')">
+                    <i class="fa fa-times modal_close_icon"></i>
+                </button>
+                <p>Listing was succesful!</p>
+                <div class="text-center" style="padding:30px 0">
+                    <button class="btn btn-default button_primary" (click)="closeModal('listingSuccessModal')">Ok</button>
+                </div>
+            </div>  
         </div>
     </div>
 </div>
