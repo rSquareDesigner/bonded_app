@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseurl: 'https://seelbachserver.azurewebsites.net',
+  baseurl: 'https://server.bonded.co',
 };
